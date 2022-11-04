@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.example.common.vo.PageRequest" alias="pageRequest"/>
+        <typeAlias type="com.example.book.vo.BookVO" alias="bookVO"/>
+        <typeAlias type="com.example.book.vo.CategoryVO" alias="categoryVO"/>
+    </typeAliases>
+</configuration>

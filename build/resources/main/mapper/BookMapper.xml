@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.book.dao.BookMapper">
+    <insert id="insertBook" parameterType="com.example.book.vo.BookVO" useGeneratedKeys="true" keyProperty="bno">
+        insert into book (isbn, title, pubDate, category_name, author, description, price, mileage,stock, cover, publisher)
+        values (#{isbn},#{title},#{pubDate},#{categoryName},#{author},#{description},#{price},#{mileage},#{stock},#{cover},#{publisher})
+    </insert>
+
+    <insert id="insertCategoryBook">
+        insert into category_book
+        values (#{bno},#{categoryNameId})
+    </insert>
+
+    <insert id="insertCategory" parameterType="com.example.book.vo.CategoryVO">
+        INSERT INTO category
+        VALUES (#{categoryNameId},#{categoryName})
+    </insert>
+
+    <select id="selectOne" resultType="com.example.book.vo.BookVO">
+        select * from book where bno = ${bno};
+    </select>
+
+
+</mapper>

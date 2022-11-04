@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - BookMapperTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>BookMapperTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.book.dao.html">com.example.book.dao</a> &gt; BookMapperTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">5</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.133s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">dataSource연결 테스트</td>
+<td class="success">connTest1()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">bookdao연결 테스트</td>
+<td class="success">connTest2()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">insertBook 테스트</td>
+<td class="success">insertBookTest()</td>
+<td class="success">0.095s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">insertCategory 테스트</td>
+<td class="success">insertCategoryTest()</td>
+<td class="success">0.027s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">selectOne 테스트</td>
+<td class="success">selectOneTest()</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>16:27:40.750 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+16:27:40.750 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+16:27:40.751 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.book.dao.BookMapperTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
+16:27:40.751 [Test worker] DEBUG org.springframework.test.context.support.AbstractDelegatingSmartContextLoader - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@84487f4 declaringClass = 'com.example.book.dao.BookMapperTest', classes = '{}', locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.test.context.ContextLoader'].
+16:27:40.752 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.book.dao.BookMapperTest]
+16:27:40.752 [Test worker] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.book.dao.BookMapperTest]: using defaults.
+16:27:40.752 [Test worker] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+16:27:40.752 [Test worker] DEBUG org.springframework.test.context.support.DefaultTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [javax/servlet/ServletContext]
+16:27:40.753 [Test worker] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@bfc14b9, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@fb6097b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2dfe5525, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1290c49, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6a9b9909, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@55d9b8f0, org.springframework.test.context.event.EventPublishingTestExecutionListener@a518813]
+16:27:40.753 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
+16:27:40.753 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.753 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 13, missCount = 1]
+16:27:40.753 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@6d303498, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]].
+16:27:40.753 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.753 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 14, missCount = 1]
+16:27:40.757 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.757 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 15, missCount = 1]
+16:27:40.759 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@6d303498, testMethod = insertBookTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.762 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - Explicit transaction definition [PROPAGATION_REQUIRED,ISOLATION_DEFAULT] found for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@6d303498, testMethod = insertBookTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.763 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.763 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 16, missCount = 1]
+16:27:40.764 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - No method-level @Rollback override: using default rollback [true] for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@6d303498, testMethod = insertBookTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]].
+16:27:40.766 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Creating new transaction with name [com.example.book.dao.BookMapperTest.insertBookTest]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+16:27:40.767 [Test worker] DEBUG jdbc.audit - 3. Connection.isValid(5) returned true  com.zaxxer.hikari.pool.PoolBase.isConnectionDead(PoolBase.java:156)
+16:27:40.770 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Acquired Connection [HikariProxyConnection@731870416 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] for JDBC transaction
+16:27:40.773 [Test worker] DEBUG jdbc.audit - 3. Connection.getAutoCommit() returned true  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1)
+16:27:40.773 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Switching JDBC Connection [HikariProxyConnection@731870416 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] to manual commit
+16:27:40.773 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=0
+16:27:40.774 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = OFF
+16:27:40.774 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(false) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.775 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@6d303498, testMethod = insertBookTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@4f5f6e45]; rollback [true]
+16:27:40.775 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.775 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 17, missCount = 1]
+16:27:40.775 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.776 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 18, missCount = 1]
+16:27:40.779 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+16:27:40.782 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@987455b]
+16:27:40.786 [Test worker] DEBUG jdbc.audit - 3. Connection.getAutoCommit() returned false  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1)
+16:27:40.787 [Test worker] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@731870416 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] will be managed by Spring
+16:27:40.789 [Test worker] DEBUG com.example.book.dao.BookMapper.insertBook - ==&gt;  Preparing: insert into book (isbn, title, pubDate, category_name, author, description, price, mileage,stock, cover, publisher) values (?,?,?,?,?,?,?,?,?,?,?)
+16:27:40.789 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:334)
+16:27:40.789 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(insert into book (isbn, title, pubDate, category_name, author, description, price, mileage,stock, cover, publisher)
+        values (?,?,?,?,?,?,?,?,?,?,?), 1) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@3f4f5330  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:334)
+16:27:40.799 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setNull(1, 1111) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setNull(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;title&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setNull(3, 1111) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setNull(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setNull(4, 1111) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setNull(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(5, &quot;author&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setNull(6, 1111) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setNull(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(7, 0) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(8, 0) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(9, 0) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setNull(10, 1111) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setNull(HikariProxyPreparedStatement.java:-1)
+16:27:40.800 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setNull(11, 1111) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setNull(HikariProxyPreparedStatement.java:-1)
+16:27:40.801 [Test worker] DEBUG com.example.book.dao.BookMapper.insertBook - ==&gt; Parameters: null, title(String), null, null, author(String), null, 0(Integer), 0(Integer), 0(Integer), null, null
+16:27:40.801 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. insert into book (isbn, title, pubDate, category_name, author, description, price, mileage,stock, 
+cover, publisher) values (NULL,'title',NULL,NULL,'author',NULL,0,0,0,NULL,NULL) 
+
+16:27:40.801 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: insert into book (isbn, title, pubDate, category_name, author, description, price, mileage,stock, cover, publisher)
+        values (?,?,?,?,?,?,?,?,?,?,?)
+16:27:40.802 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. insert into book (isbn, title, pubDate, category_name, author, description, price, mileage,stock, 
+cover, publisher) values (NULL,'title',NULL,NULL,'author',NULL,0,0,0,NULL,NULL) 
+ {executed in 0 msec}
+16:27:40.802 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.802 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.802 [Test worker] DEBUG com.example.book.dao.BookMapper.insertBook - &lt;==    Updates: 1
+16:27:40.802 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229)
+3. getGeneratedKeys on query: insert into book (isbn, title, pubDate, category_name, author, description, 
+price, mileage,stock, cover, publisher) values (NULL,'title',NULL,NULL,'author',NULL,0,0,0,NULL,NULL) 
+ {executed in 0 msec}
+16:27:40.805 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.new ResultSet returned   com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229)
+16:27:40.805 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getGeneratedKeys() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@2a2ef072  com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229)
+16:27:40.807 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getMetaData() returned org.mariadb.jdbc.client.result.ResultSetMetaData@534c6767  com.zaxxer.hikari.pool.HikariProxyResultSet.getMetaData(HikariProxyResultSet.java:-1)
+16:27:40.808 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.next() returned true  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1)
+16:27:40.808 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getLong(1) returned 76249  com.zaxxer.hikari.pool.HikariProxyResultSet.getLong(HikariProxyResultSet.java:-1)
+16:27:40.808 [Test worker] INFO jdbc.resultsettable - 
+|----------|
+|insert_id |
+|----------|
+|76249     |
+|----------|
+
+16:27:40.809 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.next() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1)
+16:27:40.809 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.close() returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.close(HikariProxyResultSet.java:-1)
+16:27:40.809 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.809 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@987455b]
+16:27:40.812 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@987455b] from current transaction
+16:27:40.821 [Test worker] DEBUG com.example.book.dao.BookMapper.selectOne - ==&gt;  Preparing: select * from book where bno = 76249;
+16:27:40.821 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.821 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(select * from book where bno = 76249;) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@30e9ca13  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.821 [Test worker] DEBUG com.example.book.dao.BookMapper.selectOne - ==&gt; Parameters: 
+16:27:40.821 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. select * from book where bno = 76249; 
+
+16:27:40.821 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: select * from book where bno = 76249;
+16:27:40.833 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. select * from book where bno = 76249; 
+ {executed in 12 msec}
+16:27:40.833 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned true  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.833 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.new ResultSet returned   com.zaxxer.hikari.pool.ProxyStatement.getResultSet(ProxyStatement.java:213)
+16:27:40.833 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getResultSet() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@46185a1b  com.zaxxer.hikari.pool.ProxyStatement.getResultSet(ProxyStatement.java:213)
+16:27:40.842 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getMetaData() returned org.mariadb.jdbc.client.result.ResultSetMetaData@1e8ab90f  com.zaxxer.hikari.pool.HikariProxyResultSet.getMetaData(HikariProxyResultSet.java:-1)
+16:27:40.843 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getType() returned 1003  com.zaxxer.hikari.pool.HikariProxyResultSet.getType(HikariProxyResultSet.java:-1)
+16:27:40.843 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.isClosed() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.isClosed(HikariProxyResultSet.java:-1)
+16:27:40.843 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.next() returned true  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getLong(bno) returned 76249  com.zaxxer.hikari.pool.HikariProxyResultSet.getLong(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(isbn) returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(title) returned title  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getDate(pubDate) returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.getDate(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(author) returned author  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(description) returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getInt(price) returned 0  com.zaxxer.hikari.pool.HikariProxyResultSet.getInt(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.wasNull() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.wasNull(HikariProxyResultSet.java:-1)
+16:27:40.844 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getInt(mileage) returned 0  com.zaxxer.hikari.pool.HikariProxyResultSet.getInt(HikariProxyResultSet.java:-1)
+16:27:40.845 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.wasNull() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.wasNull(HikariProxyResultSet.java:-1)
+16:27:40.845 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getInt(stock) returned 0  com.zaxxer.hikari.pool.HikariProxyResultSet.getInt(HikariProxyResultSet.java:-1)
+16:27:40.845 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.wasNull() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.wasNull(HikariProxyResultSet.java:-1)
+16:27:40.845 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(cover) returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.845 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(publisher) returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.845 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.isClosed() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.isClosed(HikariProxyResultSet.java:-1)
+16:27:40.846 [Test worker] INFO jdbc.resultsettable - 
+|------|-----|------|--------|--------------|-------|------------|------|--------|------|------|----------|
+|bno   |isbn |title |pubdate |category_name |author |description |price |mileage |stock |cover |publisher |
+|------|-----|------|--------|--------------|-------|------------|------|--------|------|------|----------|
+|76249 |null |title |null    |[null]        |author |null        |0     |0       |0     |null  |null      |
+|------|-----|------|--------|--------------|-------|------------|------|--------|------|------|----------|
+
+16:27:40.846 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.next() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1)
+16:27:40.846 [Test worker] DEBUG com.example.book.dao.BookMapper.selectOne - &lt;==      Total: 1
+16:27:40.846 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.close() returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.close(HikariProxyResultSet.java:-1)
+16:27:40.848 [Test worker] DEBUG jdbc.audit - 3. Connection.getMetaData() returned org.mariadb.jdbc.DatabaseMetaData@1dba4e06  com.zaxxer.hikari.pool.ProxyConnection.getMetaData(ProxyConnection.java:370)
+16:27:40.849 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getMoreResults() returned false  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getMoreResults(HikariProxyPreparedStatement.java:-1)
+16:27:40.849 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned -1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.850 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.850 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@987455b]
+16:27:40.850 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.850 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 19, missCount = 1]
+16:27:40.850 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.850 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 20, missCount = 1]
+16:27:40.851 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@987455b]
+16:27:40.851 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@987455b]
+16:27:40.851 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Initiating transaction rollback
+16:27:40.851 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Rolling back JDBC transaction on Connection [HikariProxyConnection@731870416 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621]
+16:27:40.851 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: ROLLBACK
+16:27:40.852 [Test worker] DEBUG jdbc.audit - 3. Connection.rollback() returned   com.zaxxer.hikari.pool.ProxyConnection.rollback(ProxyConnection.java:385)
+16:27:40.852 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=1
+16:27:40.852 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = ON
+16:27:40.852 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(true) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.852 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Releasing JDBC Connection [HikariProxyConnection@731870416 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] after transaction
+16:27:40.853 [Test worker] DEBUG jdbc.audit - 3. Connection.clearWarnings() returned   com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257)
+16:27:40.853 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@6d303498, testMethod = insertBookTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.853 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@6d303498, testMethod = insertBookTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.854 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0ef219, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]].
+16:27:40.854 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.854 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 21, missCount = 1]
+16:27:40.854 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.854 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 22, missCount = 1]
+16:27:40.854 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0ef219, testMethod = insertCategoryTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.855 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - Explicit transaction definition [PROPAGATION_REQUIRED,ISOLATION_DEFAULT] found for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0ef219, testMethod = insertCategoryTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.855 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.855 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 23, missCount = 1]
+16:27:40.855 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - No method-level @Rollback override: using default rollback [true] for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0ef219, testMethod = insertCategoryTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]].
+16:27:40.855 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Creating new transaction with name [com.example.book.dao.BookMapperTest.insertCategoryTest]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+16:27:40.855 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Acquired Connection [HikariProxyConnection@455036946 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] for JDBC transaction
+16:27:40.855 [Test worker] DEBUG jdbc.audit - 3. Connection.getAutoCommit() returned true  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1)
+16:27:40.855 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Switching JDBC Connection [HikariProxyConnection@455036946 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] to manual commit
+16:27:40.855 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=0
+16:27:40.855 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = OFF
+16:27:40.855 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(false) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.855 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0ef219, testMethod = insertCategoryTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@4f5f6e45]; rollback [true]
+16:27:40.855 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.855 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 24, missCount = 1]
+16:27:40.855 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.856 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 25, missCount = 1]
+16:27:40.856 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+16:27:40.856 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.856 [Test worker] DEBUG jdbc.audit - 3. Connection.getAutoCommit() returned false  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1)
+16:27:40.856 [Test worker] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@455036946 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] will be managed by Spring
+16:27:40.856 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.856 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.856 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@4760f169  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.856 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 1) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.856 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;건강&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.856 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 1(Integer), 건강(String)
+16:27:40.856 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (1,'건강') 
+
+16:27:40.856 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.857 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (1,'건강') 
+ {executed in 1 msec}
+16:27:40.857 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.857 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.857 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.857 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.857 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.857 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.857 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.857 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.857 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@261ea657  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.857 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 2) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.857 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;경제경영&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.857 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 2(Integer), 경제경영(String)
+16:27:40.857 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (2,'경제경영') 
+
+16:27:40.857 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.857 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (2,'경제경영') 
+ {executed in 0 msec}
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.858 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.858 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.858 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.858 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@35c12c7a  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 3) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;고등학교참고서&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.858 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 3(Integer), 고등학교참고서(String)
+16:27:40.858 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (3,'고등학교참고서') 
+
+16:27:40.858 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.858 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (3,'고등학교참고서') 
+ {executed in 0 msec}
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.858 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.858 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.858 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.858 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.858 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@658255aa  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 4) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;과학&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.859 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 4(Integer), 과학(String)
+16:27:40.859 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (4,'과학') 
+
+16:27:40.859 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.859 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (4,'과학') 
+ {executed in 0 msec}
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.859 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.859 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.859 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.859 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@25290bca  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.859 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 5) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.860 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;대학교재&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.860 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 5(Integer), 대학교재(String)
+16:27:40.860 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (5,'대학교재') 
+
+16:27:40.860 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.860 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (5,'대학교재') 
+ {executed in 0 msec}
+16:27:40.860 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.860 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.860 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.860 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.860 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.860 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.860 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.860 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.860 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@76563d26  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.860 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 6) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.860 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;만화&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.860 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 6(Integer), 만화(String)
+16:27:40.860 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (6,'만화') 
+
+16:27:40.860 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.861 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (6,'만화') 
+ {executed in 1 msec}
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.861 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.861 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.861 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.861 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@4ac86d6a  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 7) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;사회과학&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.861 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 7(Integer), 사회과학(String)
+16:27:40.861 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (7,'사회과학') 
+
+16:27:40.861 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.861 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (7,'사회과학') 
+ {executed in 0 msec}
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.861 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.861 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.861 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.862 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.862 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@3d904e9c  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 8) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;소설&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.862 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 8(Integer), 소설(String)
+16:27:40.862 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (8,'소설') 
+
+16:27:40.862 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.862 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (8,'소설') 
+ {executed in 0 msec}
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.862 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.862 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.862 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.862 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.862 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@508a65bf  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 9) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;수험서&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.863 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 9(Integer), 수험서(String)
+16:27:40.863 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (9,'수험서') 
+
+16:27:40.863 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.863 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (9,'수험서') 
+ {executed in 0 msec}
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.863 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.863 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.863 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.863 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@17f2dd85  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 10) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.863 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;어린이&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.863 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 10(Integer), 어린이(String)
+16:27:40.863 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (10,'어린이') 
+
+16:27:40.863 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.864 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (10,'어린이') 
+ {executed in 1 msec}
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.864 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.864 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.864 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.864 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@1e58512c  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 11) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;에세이&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.864 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 11(Integer), 에세이(String)
+16:27:40.864 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (11,'에세이') 
+
+16:27:40.864 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.864 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (11,'에세이') 
+ {executed in 0 msec}
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.864 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.864 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.865 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.865 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.865 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.865 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.865 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.866 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@210308d5  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.866 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 12) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.866 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;여행&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.866 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 12(Integer), 여행(String)
+16:27:40.866 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (12,'여행') 
+
+16:27:40.866 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.866 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (12,'여행') 
+ {executed in 0 msec}
+16:27:40.866 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.866 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.866 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.866 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.866 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.866 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.867 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.867 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.867 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@7f353d99  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.867 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 13) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.867 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;역사&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.867 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 13(Integer), 역사(String)
+16:27:40.867 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (13,'역사') 
+
+16:27:40.867 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.867 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (13,'역사') 
+ {executed in 0 msec}
+16:27:40.867 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.867 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.867 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.868 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.868 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.868 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.868 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.868 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.868 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@38d17d80  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.868 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 14) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.868 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;예술&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.868 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 14(Integer), 예술(String)
+16:27:40.868 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (14,'예술') 
+
+16:27:40.869 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.869 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (14,'예술') 
+ {executed in 0 msec}
+16:27:40.869 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.869 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.869 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.870 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.870 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.870 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.870 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.870 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.870 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@6920614  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.870 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 15) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.870 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;외국어&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.870 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 15(Integer), 외국어(String)
+16:27:40.870 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (15,'외국어') 
+
+16:27:40.870 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.871 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (15,'외국어') 
+ {executed in 1 msec}
+16:27:40.871 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.871 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.871 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.871 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.871 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.871 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.871 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.871 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.871 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@6069dd38  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.871 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 16) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.871 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;요리&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.871 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 16(Integer), 요리(String)
+16:27:40.871 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (16,'요리') 
+
+16:27:40.871 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.872 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (16,'요리') 
+ {executed in 1 msec}
+16:27:40.872 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.872 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.872 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.872 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.872 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.872 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.872 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.872 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.872 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@102ecc22  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.872 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 17) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.872 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;유아&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.872 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 17(Integer), 유아(String)
+16:27:40.872 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (17,'유아') 
+
+16:27:40.872 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.873 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (17,'유아') 
+ {executed in 1 msec}
+16:27:40.873 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.873 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.873 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.873 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.873 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.873 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.873 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.873 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.873 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@7ff35a3f  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.873 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 18) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.873 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;인문학&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.873 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 18(Integer), 인문학(String)
+16:27:40.873 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (18,'인문학') 
+
+16:27:40.873 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.874 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (18,'인문학') 
+ {executed in 1 msec}
+16:27:40.874 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.874 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.874 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.874 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.874 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.874 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.874 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.874 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.874 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@26dc9bd5  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.874 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 19) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.874 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;자기계발&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.874 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 19(Integer), 자기계발(String)
+16:27:40.874 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (19,'자기계발') 
+
+16:27:40.874 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.874 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (19,'자기계발') 
+ {executed in 0 msec}
+16:27:40.874 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.875 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.875 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.875 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.875 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@252dc8c4  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 20) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;잡지&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.875 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 20(Integer), 잡지(String)
+16:27:40.875 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (20,'잡지') 
+
+16:27:40.875 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.875 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (20,'잡지') 
+ {executed in 0 msec}
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.875 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.875 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.875 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.875 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.875 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@43045f9f  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.876 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 21) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.876 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;종교&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.876 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 21(Integer), 종교(String)
+16:27:40.876 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (21,'종교') 
+
+16:27:40.876 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.876 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (21,'종교') 
+ {executed in 0 msec}
+16:27:40.876 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.876 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.876 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.876 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.876 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.876 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.876 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.876 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.876 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@2643d762  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.876 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 22) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.877 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;좋은부모&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.877 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 22(Integer), 좋은부모(String)
+16:27:40.877 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (22,'좋은부모') 
+
+16:27:40.877 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.877 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (22,'좋은부모') 
+ {executed in 0 msec}
+16:27:40.877 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.877 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.877 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.877 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.877 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.877 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.877 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.877 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.877 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@6403e24c  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.877 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 23) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.877 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;중학교참고서&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.877 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 23(Integer), 중학교참고서(String)
+16:27:40.877 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (23,'중학교참고서') 
+
+16:27:40.877 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.878 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (23,'중학교참고서') 
+ {executed in 0 msec}
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.878 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.878 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.878 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.878 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@2f236de0  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 24) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;청소년&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.878 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 24(Integer), 청소년(String)
+16:27:40.878 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (24,'청소년') 
+
+16:27:40.878 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.878 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (24,'청소년') 
+ {executed in 0 msec}
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.878 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.878 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.878 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.878 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.878 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@4eba373c  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 25) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;초등학교참고서&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.879 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 25(Integer), 초등학교참고서(String)
+16:27:40.879 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (25,'초등학교참고서') 
+
+16:27:40.879 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.879 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (25,'초등학교참고서') 
+ {executed in 0 msec}
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.879 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.879 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.879 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c] from current transaction
+16:27:40.879 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt;  Preparing: INSERT INTO category VALUES (?,?)
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(INSERT INTO category
+        VALUES (?,?)) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@767a014e  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setInt(1, 26) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1)
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.setString(2, &quot;컴퓨터&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1)
+16:27:40.879 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - ==&gt; Parameters: 26(Integer), 컴퓨터(String)
+16:27:40.879 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (26,'컴퓨터') 
+
+16:27:40.879 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: INSERT INTO category
+        VALUES (?,?)
+16:27:40.879 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. INSERT INTO category VALUES (26,'컴퓨터') 
+ {executed in 0 msec}
+16:27:40.879 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.880 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.880 [Test worker] DEBUG com.example.book.dao.BookMapper.insertCategory - &lt;==    Updates: 1
+16:27:40.880 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.880 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.880 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.880 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 26, missCount = 1]
+16:27:40.880 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.880 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 27, missCount = 1]
+16:27:40.880 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.880 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7add323c]
+16:27:40.880 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Initiating transaction rollback
+16:27:40.880 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Rolling back JDBC transaction on Connection [HikariProxyConnection@455036946 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621]
+16:27:40.880 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: ROLLBACK
+16:27:40.880 [Test worker] DEBUG jdbc.audit - 3. Connection.rollback() returned   com.zaxxer.hikari.pool.ProxyConnection.rollback(ProxyConnection.java:385)
+16:27:40.880 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=1
+16:27:40.881 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = ON
+16:27:40.881 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(true) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.881 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Releasing JDBC Connection [HikariProxyConnection@455036946 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] after transaction
+16:27:40.881 [Test worker] DEBUG jdbc.audit - 3. Connection.clearWarnings() returned   com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257)
+16:27:40.881 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0ef219, testMethod = insertCategoryTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.881 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0ef219, testMethod = insertCategoryTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.881 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@d109c4f, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]].
+16:27:40.881 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.881 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 28, missCount = 1]
+16:27:40.881 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.882 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 29, missCount = 1]
+16:27:40.882 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@d109c4f, testMethod = selectOneTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.882 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - Explicit transaction definition [PROPAGATION_REQUIRED,ISOLATION_DEFAULT] found for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@d109c4f, testMethod = selectOneTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.882 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.882 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 30, missCount = 1]
+16:27:40.882 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - No method-level @Rollback override: using default rollback [true] for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@d109c4f, testMethod = selectOneTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]].
+16:27:40.883 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Creating new transaction with name [com.example.book.dao.BookMapperTest.selectOneTest]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+16:27:40.883 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Acquired Connection [HikariProxyConnection@963165280 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] for JDBC transaction
+16:27:40.883 [Test worker] DEBUG jdbc.audit - 3. Connection.getAutoCommit() returned true  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1)
+16:27:40.883 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Switching JDBC Connection [HikariProxyConnection@963165280 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] to manual commit
+16:27:40.883 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=0
+16:27:40.883 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = OFF
+16:27:40.883 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(false) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.883 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@d109c4f, testMethod = selectOneTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@4f5f6e45]; rollback [true]
+16:27:40.883 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.883 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 31, missCount = 1]
+16:27:40.883 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.883 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 32, missCount = 1]
+16:27:40.883 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+16:27:40.883 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26f46fa6]
+16:27:40.883 [Test worker] DEBUG jdbc.audit - 3. Connection.getAutoCommit() returned false  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1)
+16:27:40.883 [Test worker] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@963165280 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] will be managed by Spring
+16:27:40.883 [Test worker] DEBUG com.example.book.dao.BookMapper.selectOne - ==&gt;  Preparing: select * from book where bno = 51212;
+16:27:40.884 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.884 [Test worker] DEBUG jdbc.audit - 3. Connection.prepareStatement(select * from book where bno = 51212;) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@9596ce8  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+16:27:40.884 [Test worker] DEBUG com.example.book.dao.BookMapper.selectOne - ==&gt; Parameters: 
+16:27:40.884 [Test worker] DEBUG jdbc.sqlonly -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. select * from book where bno = 51212; 
+
+16:27:40.884 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: select * from book where bno = 51212;
+16:27:40.884 [Test worker] DEBUG jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+3. select * from book where bno = 51212; 
+ {executed in 0 msec}
+16:27:40.884 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.execute() returned true  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+16:27:40.884 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.new ResultSet returned   com.zaxxer.hikari.pool.ProxyStatement.getResultSet(ProxyStatement.java:213)
+16:27:40.884 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getResultSet() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@75ae4a1f  com.zaxxer.hikari.pool.ProxyStatement.getResultSet(ProxyStatement.java:213)
+16:27:40.884 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getMetaData() returned org.mariadb.jdbc.client.result.ResultSetMetaData@70228253  com.zaxxer.hikari.pool.HikariProxyResultSet.getMetaData(HikariProxyResultSet.java:-1)
+16:27:40.884 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getType() returned 1003  com.zaxxer.hikari.pool.HikariProxyResultSet.getType(HikariProxyResultSet.java:-1)
+16:27:40.885 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.isClosed() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.isClosed(HikariProxyResultSet.java:-1)
+16:27:40.885 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.next() returned true  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1)
+16:27:40.885 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getLong(bno) returned 51212  com.zaxxer.hikari.pool.HikariProxyResultSet.getLong(HikariProxyResultSet.java:-1)
+16:27:40.885 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(isbn) returned 8961772988  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.885 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(title) returned 무사히 1학년  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.885 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getDate(pubDate) returned 2022-10-31  com.zaxxer.hikari.pool.HikariProxyResultSet.getDate(HikariProxyResultSet.java:-1)
+16:27:40.885 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(author) returned 이지현 (지은이), 나인완 (그림)  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.886 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(description) returned 그림책의 즐거움 시리즈. 지금도 교실에서 아이들과 피 땀 눈물로 동고동락하고 있는 이지현 선생님이 직접 답변을 들려준다. 새 학기 적응 꿀팁은 물론 학교에선 너무 바빠 그때그때 알려주지 못해 아쉬웠던 것들까지 모두 담았다.  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.886 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getInt(price) returned 12000  com.zaxxer.hikari.pool.HikariProxyResultSet.getInt(HikariProxyResultSet.java:-1)
+16:27:40.886 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getInt(mileage) returned 1200  com.zaxxer.hikari.pool.HikariProxyResultSet.getInt(HikariProxyResultSet.java:-1)
+16:27:40.886 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getInt(stock) returned 531  com.zaxxer.hikari.pool.HikariProxyResultSet.getInt(HikariProxyResultSet.java:-1)
+16:27:40.886 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(cover) returned https://image.aladin.co.kr/product/30427/27/cover/8961772988_1.jpg  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.886 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.getString(publisher) returned 다림  com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java:-1)
+16:27:40.886 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.isClosed() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.isClosed(HikariProxyResultSet.java:-1)
+16:27:40.887 [Test worker] INFO jdbc.resultsettable - 
+|------|-----------|--------|-----------|--------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------|------|--------|------|-------------------------------------------------------------------|----------|
+|bno   |isbn       |title   |pubdate    |category_name |author              |description                                                                                                                  |price |mileage |stock |cover                                                              |publisher |
+|------|-----------|--------|-----------|--------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------|------|--------|------|-------------------------------------------------------------------|----------|
+|51212 |8961772988 |무사히 1학년 |2022-10-31 |어린이           |이지현 (지은이), 나인완 (그림) |그림책의 즐거움 시리즈. 지금도 교실에서 아이들과 피 땀 눈물로 동고동락하고 있는 이지현 선생님이 직접 답변을 들려준다. 새 학기 적응 꿀팁은 물론 학교에선 너무 바빠 그때그때 알려주지 못해 아쉬웠던 것들까지 모두 담았다. |12000 |1200    |531   |https://image.aladin.co.kr/product/30427/27/cover/8961772988_1.jpg |다림        |
+|------|-----------|--------|-----------|--------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------|------|--------|------|-------------------------------------------------------------------|----------|
+
+16:27:40.887 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.next() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1)
+16:27:40.887 [Test worker] DEBUG com.example.book.dao.BookMapper.selectOne - &lt;==      Total: 1
+16:27:40.887 [Test worker] DEBUG jdbc.resultset - 3. ResultSet.close() returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.close(HikariProxyResultSet.java:-1)
+16:27:40.887 [Test worker] DEBUG jdbc.audit - 3. Connection.getMetaData() returned org.mariadb.jdbc.DatabaseMetaData@421056e5  com.zaxxer.hikari.pool.ProxyConnection.getMetaData(ProxyConnection.java:370)
+16:27:40.887 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getMoreResults() returned false  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getMoreResults(HikariProxyPreparedStatement.java:-1)
+16:27:40.887 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.getUpdateCount() returned -1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1)
+16:27:40.887 [Test worker] DEBUG jdbc.audit - 3. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75)
+16:27:40.887 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26f46fa6]
+16:27:40.888 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.888 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 33, missCount = 1]
+16:27:40.888 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.888 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 34, missCount = 1]
+16:27:40.888 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26f46fa6]
+16:27:40.888 [Test worker] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26f46fa6]
+16:27:40.888 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Initiating transaction rollback
+16:27:40.888 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Rolling back JDBC transaction on Connection [HikariProxyConnection@963165280 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621]
+16:27:40.888 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: ROLLBACK
+16:27:40.888 [Test worker] DEBUG jdbc.audit - 3. Connection.rollback() returned   com.zaxxer.hikari.pool.ProxyConnection.rollback(ProxyConnection.java:385)
+16:27:40.889 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=1
+16:27:40.889 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = ON
+16:27:40.889 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(true) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.889 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Releasing JDBC Connection [HikariProxyConnection@963165280 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] after transaction
+16:27:40.889 [Test worker] DEBUG jdbc.audit - 3. Connection.clearWarnings() returned   com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257)
+16:27:40.889 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@d109c4f, testMethod = selectOneTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.889 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@d109c4f, testMethod = selectOneTest@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.890 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0e7ecd, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]].
+16:27:40.890 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.890 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 35, missCount = 1]
+16:27:40.890 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.890 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 36, missCount = 1]
+16:27:40.890 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0e7ecd, testMethod = connTest1@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.891 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - Explicit transaction definition [PROPAGATION_REQUIRED,ISOLATION_DEFAULT] found for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0e7ecd, testMethod = connTest1@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.891 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.891 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 37, missCount = 1]
+16:27:40.891 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - No method-level @Rollback override: using default rollback [true] for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0e7ecd, testMethod = connTest1@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]].
+16:27:40.891 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Creating new transaction with name [com.example.book.dao.BookMapperTest.connTest1]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+16:27:40.891 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Acquired Connection [HikariProxyConnection@1424188812 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] for JDBC transaction
+16:27:40.891 [Test worker] DEBUG jdbc.audit - 3. Connection.getAutoCommit() returned true  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1)
+16:27:40.891 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Switching JDBC Connection [HikariProxyConnection@1424188812 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] to manual commit
+16:27:40.891 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=0
+16:27:40.891 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = OFF
+16:27:40.891 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(false) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.891 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0e7ecd, testMethod = connTest1@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@4f5f6e45]; rollback [true]
+16:27:40.891 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.891 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 38, missCount = 1]
+16:27:40.891 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.891 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 39, missCount = 1]
+16:27:40.892 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.892 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 40, missCount = 1]
+16:27:40.892 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.892 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 41, missCount = 1]
+16:27:40.892 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Initiating transaction rollback
+16:27:40.892 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Rolling back JDBC transaction on Connection [HikariProxyConnection@1424188812 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621]
+16:27:40.892 [Test worker] DEBUG jdbc.audit - 3. Connection.rollback() returned   com.zaxxer.hikari.pool.ProxyConnection.rollback(ProxyConnection.java:385)
+16:27:40.892 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=1
+16:27:40.892 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = ON
+16:27:40.892 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(true) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.892 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Releasing JDBC Connection [HikariProxyConnection@1424188812 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] after transaction
+16:27:40.892 [Test worker] DEBUG jdbc.audit - 3. Connection.clearWarnings() returned   com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257)
+16:27:40.892 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0e7ecd, testMethod = connTest1@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.892 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7a0e7ecd, testMethod = connTest1@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7aac8884, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]].
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 42, missCount = 1]
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 43, missCount = 1]
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7aac8884, testMethod = connTest2@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - Explicit transaction definition [PROPAGATION_REQUIRED,ISOLATION_DEFAULT] found for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7aac8884, testMethod = connTest2@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 44, missCount = 1]
+16:27:40.893 [Test worker] DEBUG org.springframework.test.context.transaction.TransactionalTestExecutionListener - No method-level @Rollback override: using default rollback [true] for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7aac8884, testMethod = connTest2@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]].
+16:27:40.894 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Creating new transaction with name [com.example.book.dao.BookMapperTest.connTest2]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+16:27:40.894 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Acquired Connection [HikariProxyConnection@174515584 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] for JDBC transaction
+16:27:40.894 [Test worker] DEBUG jdbc.audit - 3. Connection.getAutoCommit() returned true  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1)
+16:27:40.894 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Switching JDBC Connection [HikariProxyConnection@174515584 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] to manual commit
+16:27:40.894 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=0
+16:27:40.894 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = OFF
+16:27:40.894 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(false) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.894 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7aac8884, testMethod = connTest2@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@4f5f6e45]; rollback [true]
+16:27:40.894 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.894 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 45, missCount = 1]
+16:27:40.894 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.894 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 46, missCount = 1]
+16:27:40.894 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.894 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 47, missCount = 1]
+16:27:40.894 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.894 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 48, missCount = 1]
+16:27:40.894 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Initiating transaction rollback
+16:27:40.894 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Rolling back JDBC transaction on Connection [HikariProxyConnection@174515584 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621]
+16:27:40.894 [Test worker] DEBUG jdbc.audit - 3. Connection.rollback() returned   com.zaxxer.hikari.pool.ProxyConnection.rollback(ProxyConnection.java:385)
+16:27:40.894 [Test worker] DEBUG org.mariadb.jdbc.client.impl.StandardClient - execute query: set autocommit=1
+16:27:40.895 [Test worker] DEBUG org.mariadb.jdbc.message.server.OkPacket - System variable change:  autocommit = ON
+16:27:40.895 [Test worker] DEBUG jdbc.audit - 3. Connection.setAutoCommit(true) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401)
+16:27:40.895 [Test worker] DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager - Releasing JDBC Connection [HikariProxyConnection@174515584 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3367c621] after transaction
+16:27:40.895 [Test worker] DEBUG jdbc.audit - 3. Connection.clearWarnings() returned   com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257)
+16:27:40.895 [Test worker] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7aac8884, testMethod = connTest2@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+16:27:40.895 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = com.example.book.dao.BookMapperTest@7aac8884, testMethod = connTest2@BookMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+16:27:40.895 [Test worker] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [1699578227] from cache with key [[MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+16:27:40.895 [Test worker] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@53a5e217 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 49, missCount = 1]
+16:27:40.895 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test class: context [DefaultTestContext@43d38654 testClass = BookMapperTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@75361cf6 testClass = BookMapperTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null].
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5.1</a> at 2022. 11. 3. 오후 4:27:41</p>
+</div>
+</div>
+</body>
+</html>
