@@ -39,21 +39,21 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.ming9.myPage" additivity="false">
-		<level value="DEBUG" />
-		<appender-ref ref="STDOUT" />
-		<appender-ref ref="FILE" />
-	</logger>
+	<!--	<logger name="com.ming9.myPage" additivity="false">-->
+	<!--		<level value="DEBUG" />-->
+	<!--		<appender-ref ref="STDOUT" />-->
+	<!--		<appender-ref ref="FILE" />-->
+	<!--	</logger>-->
 
 	<logger name="org.springframework">
 		<level value="INFO" />
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="FILE" />
+		<!--		<appender-ref ref="FILE" />-->
 	</logger>
 
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="FILE" />
+		<!--		<appender-ref ref="FILE" />-->
 	</root>
 
 </configuration>

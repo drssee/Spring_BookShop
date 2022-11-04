@@ -9,7 +9,7 @@ public interface BookService {
     /**
      * 상품(book)등록
      */
-    BookVO registBook(BookVO bookVO);
+    BookVO registBook(BookVO bookVO, CategoryVO categoryVO);
 
     /**
      * 상품(book)의 가격과, 재고 업데이트
@@ -25,9 +25,4 @@ public interface BookService {
      * 상품(book)의 조회
      */
     PageResponse<BookVO> getBooks(PageRequest pageRequest);
-
-    /**
-     * 상품(book)의 구매
-     */
-
 }

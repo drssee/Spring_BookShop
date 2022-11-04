@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+        <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+            <!--        <property name="driverClassName" value="org.mariadb.jdbc.Driver"/>-->
+            <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+            <property name="jdbcUrl" value="jdbc:log4jdbc:mariadb://localhost:3306/book_db"/>
+            <property name="username" value="root"/>
+            <property name="password" value="root"/>
+            <property name="dataSourceProperties">
+                <props>
+                    <prop key="cachePrepStmts">true</prop>
+                    <prop key="prepStmtCacheSize">250</prop>
+                    <prop key="prepStmtCacheSqlLimit">2048</prop>
+                </props>
+            </property>
+        </bean>
+
+        <!--hikariconfig설정을 가진 datasource 빈클래스-->
+        <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+            <constructor-arg ref="hikariConfig"/>
+        </bean>
+
+        <!--hikari_datasource를 가진 mybatis_sqlsessionfactory-->
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"/>
+            <!--Mapper.xml 경로설정-->
+            <property name="mapperLocations" value="classpath:/mapper/*.xml"/> <!--main/resources/mapper-->
+            <!--Mapper의 설정파일 경로-->
+            <property name="configLocation" value="classpath:/mapper/alias/mybatis-config.xml"/> <!--이부분입니다.-->
+        </bean>
+        <!--tx매니저-->
+        <bean id="transactionManager"
+              class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+            <property name="dataSource" ref="dataSource"/>
+        </bean>
+
+        <mybatis:scan base-package="com.example.book.mapper"/>
+        <mybatis:scan base-package="com.example.orders.mapper"/>
+        <context:component-scan base-package="com.example.book.service"/>
+        <context:component-scan base-package="com.example.orders.service"/>
+</beans>

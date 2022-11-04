@@ -6,7 +6,7 @@ create table book
     stock int default 0 null,
     isbn varchar(50) null,
     title varchar(200) not null ,
-    pubDate date null,
+    pubDate datetime null,
     categoryName varchar(200) null,
     author varchar(200) not null ,
     description text null,
@@ -23,6 +23,9 @@ create index book__title
 
 create index book__categoryName
     on book (categoryName);
+
+create index book__pubDate
+    on book (pubDate);
 
 create index book__price
     on book (price);
@@ -47,9 +50,38 @@ create table category_book
         foreign key (ca_no) references category (ca_no)
 );
 
-# #회원
-# create table user
-# (
-#     id varchar(50) not null primary key,
-#
-# )
+#회원
+create table user(
+     id varchar(50),
+     pwd varchar(50) not null ,
+     name varchar(50) not null ,
+     pay_amount int default 0 null,
+     regdate datetime default now(),
+     constraint 테이블_user_pk
+         primary key (id)
+);
+
+#주문
+create table orders(
+    order_id bigint auto_increment,
+    id varchar(50) not null ,
+    order_book_id bigint not null,
+    order_status varchar(50) not null ,
+    constraint orders_pk
+        primary key (order_id)
+);
+
+#주문_상품
+create table orders_book(
+    order_book_id bigint auto_increment,
+    order_id bigint not null ,
+    bno bigint not null ,
+    order_price int not null ,
+    order_quantity int not null ,
+    constraint orders_book_pk
+        primary key (order_book_id)
+);
+
+#auto-increment 1로 수정
+# ALTER TABLE book AUTO_INCREMENT=1;
+# ALTER TABLE category_book AUTO_INCREMENT=1;

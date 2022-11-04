@@ -6,6 +6,7 @@ import com.example.book.vo.CategoryVO;
 import com.example.common.vo.PageRequest;
 import com.example.common.vo.PageResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class BookServiceImpl implements BookService{
 
     private final BookMapper bookMapper;
@@ -22,24 +24,25 @@ public class BookServiceImpl implements BookService{
      * 상품(book)등록
      */
     @Override
-    public BookVO registBook(BookVO bookVO) {
-        //0.해당 bookVO의 카테고리 이름을 조회해 categoryVo를 초기화
-        CategoryVO categoryVO = new CategoryVO
-                (bookMapper.selectCategory_name(bookMapper.selectCategory_name_id(bookVO.getBno())));
+    public BookVO registBook(BookVO bookVO,CategoryVO categoryVO) {
+        /*
+        isbn api 추가해야함
+         */
+
         //책을 등록하려면
         //1.book db 에 bookVo를 저장
         bookMapper.insertBook(bookVO);
-        //2.categoryVo 검증 1보다 작은 값은 존재하지 않는 카테고리이름
+        //3.categoryVo 검증 1보다 작은 값은 존재하지 않는 카테고리이름
         //현재 존재하지 않는 카테고리 = 기타
         if(categoryVO.getCategory_name_id()<1){
             categoryVO.setCategory_name_id(0);
             categoryVO.setCategory_name("기타");
         }
-        //3.category 에 bookvo.categoryName이 없다면 저장
+        //4.category 에 bookvo.categoryName이 없다면 저장
         bookMapper.insertCategory(categoryVO);
-        //3.category_book에 pk들을 저장
+        //5.category_book에 pk들을 저장
         bookMapper.insertCategoryBook(bookVO.getBno(),categoryVO.getCategory_name_id());
-        //4.저장한 bookVo를 반환
+        //6.저장한 bookVo를 반환
         return bookVO;
     }
 
@@ -75,7 +78,7 @@ public class BookServiceImpl implements BookService{
         return PageResponse.<BookVO>withAll()
                 .pageRequest(pageRequest)
                 .pageList(books)
-                .total(bookMapper.BookCnt())
+                .total(bookMapper.bookCnt())
                 .build();
     }
 }

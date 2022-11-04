@@ -40,6 +40,9 @@
         </bean>
 
         <mybatis:scan base-package="com.example.book.mapper"/>
-        <context:component-scan base-package="com.example.demo"/>
+        <mybatis:scan base-package="com.example.orders.mapper"/>
+        <mybatis:scan base-package="com.example.user.mapper"/>
         <context:component-scan base-package="com.example.book.service"/>
+        <context:component-scan base-package="com.example.orders.service"/>
+        <context:component-scan base-package="com.example.user.service"/>
 </beans>

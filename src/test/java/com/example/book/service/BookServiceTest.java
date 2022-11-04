@@ -2,7 +2,9 @@ package com.example.book.service;
 
 import com.example.book.mapper.BookMapper;
 import com.example.book.vo.BookVO;
-import org.assertj.core.api.Assertions;
+import com.example.book.vo.CategoryVO;
+import com.example.common.vo.PageRequest;
+import com.example.common.vo.PageResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,19 +25,21 @@ public class BookServiceTest {
     @Autowired(required = false)
     BookMapper bookMapper;
 
-    Long bno = 76828L;
+    Long bno = 1L;
 
     @Test
     @DisplayName("책 등록")
     void registBookTest(){
         //given
-        //임의의 bno를 이용해 bookVo를 가져온다
+        //임의의 bno를 이용해 bookVo,CategoryVo를 가져온다
         BookVO bookVO = bookMapper.selectOne(bno);
         assertNotNull(bookVO);
-
+        CategoryVO categoryVO = new CategoryVO(
+                bookMapper.selectCategory_name(bookMapper.selectCa_Books_categoryNameId(bno))
+        );
         //when
         //책 등록
-        BookVO bookVO1 = bookService.registBook(bookVO);
+        BookVO bookVO1 = bookService.registBook(bookVO,categoryVO);
         assertNotNull(bookVO1);
 
         //then
@@ -74,5 +78,23 @@ public class BookServiceTest {
         assertDoesNotThrow(()->{
             bookService.removeBook(bno);
         });
+    }
+
+    @Test
+    @DisplayName("책 리스트 조회")
+    void getBooksTest(){
+        //pageRequest를 이용해 선택한 페이지의 pageResponse를 가져온다 page=1,size=9
+        PageRequest pageRequest = PageRequest.builder().build();
+        PageResponse<BookVO> pageResponse_BookVO = bookService.getBooks(pageRequest);
+        //pageResponse_BookVO = PageResponse(page=1, size=9, total=10000, start=1, end=10, last=1112, showPrev=false, showNext=true
+
+        //가져온 pageResponse값은 유효한 값이어야한다
+        assertEquals(pageResponse_BookVO.getSize(),pageResponse_BookVO.getPageList().size());
+        assertEquals(pageResponse_BookVO.getPage(),pageResponse_BookVO.getPage());
+        assertEquals(pageResponse_BookVO.getSize(),pageResponse_BookVO.getSize());
+        assertEquals(bookMapper.bookCnt(),pageResponse_BookVO.getTotal());
+        assertEquals(pageRequest.getPage(),pageResponse_BookVO.getStart());
+        assertEquals(pageRequest.getPage()+9,pageResponse_BookVO.getEnd());
+        assertEquals((int)(Math.ceil(bookMapper.bookCnt()/(double)pageRequest.getSize())),pageResponse_BookVO.getLast());
     }
 }

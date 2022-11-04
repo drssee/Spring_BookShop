@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.orders.mapper.OrdersMapper">
+    <insert id="insertOrders" parameterType="ordersVO" useGeneratedKeys="true" keyProperty="order_id">
+        insert into orders (id,delivery_id,order_status) values (#{id},#{delivery_id},#{order_status})
+    </insert>
+
+    <insert id="insert_orders_book" parameterType="orders_bookVO" useGeneratedKeys="true" keyProperty="order_book_id">
+        insert into orders_book (order_id,bno,order_price,order_quantity) values (#{order_id},#{bno},#{order_price},#{order_quantity})
+    </insert>
+    <select id="selectOrdersBook" resultType="orders_bookVO">
+        select * from orders_book where order_book_id = #{order_book_id}
+    </select>
+    <select id="selectOrders" resultType="ordersVO">
+        select * from orders where order_id = #{order_id}
+    </select>
+</mapper>
