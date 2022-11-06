@@ -39,8 +39,13 @@
             <property name="dataSource" ref="dataSource"/>
         </bean>
 
-        <mybatis:scan base-package="com.example.book.mapper"/>
-        <mybatis:scan base-package="com.example.orders.mapper"/>
+        <!--서비스 빈 등록-->
         <context:component-scan base-package="com.example.book.service"/>
         <context:component-scan base-package="com.example.orders.service"/>
+        <context:component-scan base-package="com.example.user.service"/>
+
+        <!--dao 인터페이스 위치 등록-->
+        <mybatis:scan base-package="com.example.book.dao"/>
+        <mybatis:scan base-package="com.example.orders.dao"/>
+        <mybatis:scan base-package="com.example.user.dao"/>
 </beans>

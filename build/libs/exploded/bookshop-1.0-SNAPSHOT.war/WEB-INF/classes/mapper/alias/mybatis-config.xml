@@ -3,10 +3,13 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.example.common.vo.PageRequest" alias="pageRequest"/>
+        <typeAlias type="com.example.common.dto.PageRequest" alias="pageRequest"/>
         <typeAlias type="com.example.book.vo.BookVO" alias="bookVO"/>
         <typeAlias type="com.example.book.vo.CategoryVO" alias="categoryVO"/>
 
         <typeAlias type="com.example.orders.vo.OrdersVO" alias="ordersVO"/>
+        <typeAlias type="com.example.orders.vo.OrdersBookVO" alias="orders_bookVO"/>
+
+        <typeAlias type="com.example.user.vo.UserVO" alias="userVO"/>
     </typeAliases>
 </configuration>

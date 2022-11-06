@@ -1,6 +1,6 @@
 package com.example.user.service;
 
-import com.example.user.mapper.UserMapper;
+import com.example.user.dao.UserDao;
 import com.example.user.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,10 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
-    private final UserMapper userMapper;
+    private final UserDao userDao;
 
     @Override
     public UserVO getUser(String id) {
-        return userMapper.selectOne(id);
+        return userDao.selectOne(id);
     }
 }

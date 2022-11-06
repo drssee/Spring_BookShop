@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.book.mapper.BookMapper">
+<mapper namespace="com.example.book.dao.BookDao">
     <insert id="insertBook" parameterType="bookVO" useGeneratedKeys="true" keyProperty="bno">
-        insert into book (isbn, title, pubDate, author, description, price, mileage,stock, cover, publisher)
-        values (#{isbn},#{title},#{pubDate},#{author},#{description},#{price},#{mileage},#{stock},#{cover},#{publisher})
+        insert into book (isbn, title, pubDate, author, description, price, stock, cover, publisher)
+        values (#{isbn},#{title},#{pubDate},#{author},#{description},#{price},#{stock},#{cover},#{publisher})
     </insert>
     <select id="selectOne" resultType="bookVO">
         select * from book where bno = ${bno}

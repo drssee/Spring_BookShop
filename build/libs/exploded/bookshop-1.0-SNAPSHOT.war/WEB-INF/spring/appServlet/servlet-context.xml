@@ -9,7 +9,10 @@
 
     <!--디스패처 서블릿이 servlet-context.xml을 의존하므로 안에 디스패처 서블릿이 필요한 viewresolver 등이 선언되어 있다-->
     <!--디스패처 서블릿이 로딩되어 있으면 컨트롤러 매핑을 사용할 수 있음-->
-    <context:component-scan base-package="com.example"/> <!--컨트롤러 맵핑은 여기-->
+    <context:component-scan base-package="com.example.book.controller"/> <!--컨트롤러 맵핑은 여기-->
+    <context:component-scan base-package="com.example.orders.controller"/>
+    <context:component-scan base-package="com.example.user.controller"/>
+    <context:component-scan base-package="com.example.common"/>
 
     <mvc:annotation-driven/> <!--컨트롤러맵핑을 탐색해서 연결해주는 디스패처 서블릿기능-->
 

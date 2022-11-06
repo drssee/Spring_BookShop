@@ -1,10 +1,10 @@
 package com.example.book.service;
 
-import com.example.book.mapper.BookMapper;
+import com.example.book.dao.BookDao;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
-import com.example.common.vo.PageRequest;
-import com.example.common.vo.PageResponse;
+import com.example.common.dto.PageRequest;
+import com.example.common.dto.PageResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +23,7 @@ public class BookServiceTest {
     @Autowired
     BookService bookService;
     @Autowired(required = false)
-    BookMapper bookMapper;
+    BookDao bookDao;
 
     Long bno = 1L;
 
@@ -32,19 +32,19 @@ public class BookServiceTest {
     void registBookTest(){
         //given
         //임의의 bno를 이용해 bookVo,CategoryVo를 가져온다
-        BookVO bookVO = bookMapper.selectOne(bno);
+        BookVO bookVO = bookDao.selectOne(bno);
         assertNotNull(bookVO);
         CategoryVO categoryVO = new CategoryVO(
-                bookMapper.selectCategory_name(bookMapper.selectCa_Books_categoryNameId(bno))
+                bookDao.selectCategory_name(bookDao.selectCa_Books_categoryNameId(bno))
         );
         //when
         //책 등록
-        BookVO bookVO1 = bookService.registBook(bookVO,categoryVO);
+        BookVO bookVO1 = bookService.registerBook(bookVO,categoryVO);
         assertNotNull(bookVO1);
 
         //then
         //임의의 bookVO와 등록한 bookVO1의 isbn은 같아야 한다(같은책)
-        assertEquals(bookVO.getIsbn(),bookVO1.getIsbn());
+        assertEquals(bookVO.getIsbn(), bookVO1.getIsbn());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class BookServiceTest {
     void updateBookTest(){
         //given
         //임의의 bno를 이용해 bookVo,bookVo1를 가져온다
-        BookVO bookVO = bookMapper.selectOne(bno);
+        BookVO bookVO = bookDao.selectOne(bno);
         assertNotNull(bookVO);
 
         //when
@@ -65,10 +65,10 @@ public class BookServiceTest {
         //then
         //업데이트는 성공해야함
         assertTrue(bookService.updateBook(bookVO));
-        BookVO bookVO1 = bookMapper.selectOne(bno);
+        BookVO bookVO1 = bookDao.selectOne(bno);
         //업데이트된 bookVo1의 bookVO1.stock, bookVO1.price는 임의의 값 stock,price와 같아야 한다
-        assertEquals(stock,bookVO1.getStock());
-        assertEquals(price,bookVO1.getPrice());
+        assertEquals(stock, bookVO1.getStock());
+        assertEquals(price, bookVO1.getPrice());
     }
 
     @Test
@@ -92,9 +92,9 @@ public class BookServiceTest {
         assertEquals(pageResponse_BookVO.getSize(),pageResponse_BookVO.getPageList().size());
         assertEquals(pageResponse_BookVO.getPage(),pageResponse_BookVO.getPage());
         assertEquals(pageResponse_BookVO.getSize(),pageResponse_BookVO.getSize());
-        assertEquals(bookMapper.bookCnt(),pageResponse_BookVO.getTotal());
+        assertEquals(bookDao.bookCnt(),pageResponse_BookVO.getTotal());
         assertEquals(pageRequest.getPage(),pageResponse_BookVO.getStart());
         assertEquals(pageRequest.getPage()+9,pageResponse_BookVO.getEnd());
-        assertEquals((int)(Math.ceil(bookMapper.bookCnt()/(double)pageRequest.getSize())),pageResponse_BookVO.getLast());
+        assertEquals((int)(Math.ceil(bookDao.bookCnt()/(double)pageRequest.getSize())),pageResponse_BookVO.getLast());
     }
 }

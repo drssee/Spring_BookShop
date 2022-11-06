@@ -1,9 +1,7 @@
 package com.example.book.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.book.controller.form.BookSaveForm;
+import lombok.*;
 
 import java.util.Date;
 
@@ -21,13 +19,19 @@ public class BookVO {
     private String description;
     private int price;
     //////////
-    private int mileage;
     private int stock;
     //////////
     private String cover;
     private String publisher;
 
-    public int getMileage(){
-        return price/10;
+    public BookVO(BookSaveForm form){
+        this.title=form.getTitle();
+        this.pubDate=form.getPubDate();
+        this.author=form.getAuthor();
+        this.description= form.getDescription();
+        this.price= form.getPrice();
+        this.stock=form.getStock();
+        this.cover=form.getCover();
+        this.publisher= form.getPublisher();
     }
 }

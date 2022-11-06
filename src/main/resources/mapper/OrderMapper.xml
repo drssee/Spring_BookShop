@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.orders.mapper.OrdersMapper">
+<mapper namespace="com.example.orders.dao.OrdersDao">
     <insert id="insertOrders" parameterType="ordersVO" useGeneratedKeys="true" keyProperty="order_id">
         insert into orders (id,delivery_id,order_status) values (#{id},#{delivery_id},#{order_status})
     </insert>
