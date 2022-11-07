@@ -9,7 +9,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 public class AppConfig {
 
     /**
-     * 메시지 프러퍼티 빈
+     * 메시지 프러퍼티 빈(classpath:messages/front_messages.properties)
      */
     @Bean
     public MessageSource messageSource() {
@@ -18,7 +18,7 @@ public class AppConfig {
                 ResourceBundleMessageSource();
         //messageSource 로 사용할 프러퍼티 파일 이름들
         //src/main/resources/messages,errors 경로로 지정
-        messageSource.setBasenames("messages");
+        messageSource.setBasenames("messages.front_messages");
         //메시지 인코딩 지정
         messageSource.setDefaultEncoding("UTF-8");
         //리턴값을 빈으로

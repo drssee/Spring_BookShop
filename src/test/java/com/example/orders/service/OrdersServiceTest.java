@@ -2,8 +2,8 @@ package com.example.orders.service;
 
 import com.example.book.dao.BookDao;
 import com.example.book.vo.BookVO;
+import com.example.common.status.OrderStatus;
 import com.example.orders.dao.OrdersDao;
-import com.example.common.OrderStatus;
 import com.example.orders.vo.OrdersBookVO;
 import com.example.orders.vo.OrdersVO;
 import com.example.user.vo.UserVO;
@@ -16,7 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")

@@ -2,7 +2,8 @@ package com.example.book.dao;
 
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
-import com.example.common.dto.PageRequest;
+import com.example.book.vo.ImageVO;
+import com.example.common.paging.PageRequest;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,6 +15,10 @@ public interface BookDao {
      */
     //book db에 저장
     int insertBook(BookVO bookVO);
+    //book_info에 저장
+    int insertBook_info(BookVO bookVO);
+    //book_images에 저장
+    int insertBook_images(ImageVO imageVO);
 
     //book db (단일)조회
     BookVO selectOne(Long bno);

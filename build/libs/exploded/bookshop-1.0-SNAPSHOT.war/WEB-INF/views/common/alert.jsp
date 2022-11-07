@@ -13,7 +13,6 @@
     <title>alert</title>
 </head>
 <body>
-${errors}
     <script>
         //redirectAttributes를 받는 변수 선언,초기화
         let msg = "<c:out value='${msg}'/>";

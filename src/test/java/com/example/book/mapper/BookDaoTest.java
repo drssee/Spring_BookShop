@@ -3,7 +3,7 @@ package com.example.book.mapper;
 import com.example.book.dao.BookDao;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
-import com.example.common.dto.PageRequest;
+import com.example.common.paging.PageRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

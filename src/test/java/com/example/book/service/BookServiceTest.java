@@ -3,8 +3,8 @@ package com.example.book.service;
 import com.example.book.dao.BookDao;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
-import com.example.common.dto.PageRequest;
-import com.example.common.dto.PageResponse;
+import com.example.common.paging.PageRequest;
+import com.example.common.paging.PageResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,14 +39,11 @@ public class BookServiceTest {
         CategoryVO categoryVO = new CategoryVO(
                 bookDao.selectCategory_name(bookDao.selectCa_Books_categoryNameId(bno))
         );
-        //when
-        //책 등록
-        BookVO bookVO1 = bookService.registerBook(bookVO,categoryVO);
-        assertNotNull(bookVO1);
 
-        //then
-        //임의의 bookVO와 등록한 bookVO1의 isbn은 같아야 한다(같은책)
-        assertEquals(bookVO.getIsbn(), bookVO1.getIsbn());
+        //when,then
+        //책 등록
+        BookVO bookVO1 = bookService.registerBook(bookVO,categoryVO,new ArrayList<>());//빈 테스트용 imageVOs 생성
+        assertNotNull(bookVO1);
     }
 
     @Test

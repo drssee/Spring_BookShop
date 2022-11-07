@@ -82,6 +82,37 @@ create table orders_book(
         primary key (order_book_id)
 );
 
+create table book_info
+(
+    bno         bigint auto_increment,
+    pubDate     date         not null,
+    author      varchar(200) not null,
+    description text         null,
+    publisher   varchar(50)  null,
+    constraint book_info_pk
+        primary key (bno)
+);
+
+create index book_info_pubDate_index
+    on book_info (pubDate);
+
+
+create table book_images
+(
+    bno              bigint auto_increment,
+    storeFileName    varchar(100)           not null,
+    originalFileName varchar(100)           not null,
+    imgCategory      varchar(20)            not null,
+    ext              varchar(20)            null,
+    size             bigint                 null,
+    regDate          datetime default now() null,
+    constraint book_images_pk
+        primary key (bno)
+);
+
+
 #auto-increment 1로 수정
 # ALTER TABLE book AUTO_INCREMENT=1;
+# ALTER TABLE book_images AUTO_INCREMENT=1;
+# ALTER TABLE book_info AUTO_INCREMENT=1;
 # ALTER TABLE category_book AUTO_INCREMENT=1;

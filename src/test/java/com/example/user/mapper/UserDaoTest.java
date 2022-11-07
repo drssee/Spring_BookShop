@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Transactional
+//@PropertySource(value = {"classpath:config/config.properties"}, encoding = "UTF-8")
 public class UserDaoTest {
 
     @Autowired(required = false)

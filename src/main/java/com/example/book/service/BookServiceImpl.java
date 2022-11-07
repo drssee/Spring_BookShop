@@ -3,8 +3,9 @@ package com.example.book.service;
 import com.example.book.dao.BookDao;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
-import com.example.common.dto.PageRequest;
-import com.example.common.dto.PageResponse;
+import com.example.book.vo.ImageVO;
+import com.example.common.paging.PageRequest;
+import com.example.common.paging.PageResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,25 +25,29 @@ public class BookServiceImpl implements BookService{
      * 상품(book)등록
      */
     @Override
-    public BookVO registerBook(BookVO bookVO, CategoryVO categoryVO) {
-        /*
-        isbn api 추가해야함
-         */
+    public BookVO registerBook(BookVO bookVO, CategoryVO categoryVO, List<ImageVO> imageVOs) {
 
-        //책을 등록하려면
-        //1.book db 에 bookVo를 저장
+        /*
+        book관련 insert
+         */
+        //book db 에 bookVO를 저장
         bookDao.insertBook(bookVO);
-        //2.categoryVo 검증 1보다 작은 값은 존재하지 않는 카테고리이름
-        //현재 존재하지 않는 카테고리 = 기타
-        if(categoryVO.getCategory_name_id()<1){
-            categoryVO.setCategory_name_id(0);
-            categoryVO.setCategory_name("기타");
-        }
-        //3.category 에 bookvo.categoryName이 없다면 저장
+        System.out.println("image를 위한 bno!!!!!!!!!!! = "+bookVO.getBno());
+        //book_info db에 bookVO를 저장
+        bookDao.insertBook_info(bookVO);
+        //book_images db에 bookVO를 저장
+        insertBook_images(bookVO, imageVOs);
+
+        /*
+        category관련 insert
+         */
+        //categoryName 검증
+        validCategoryName(categoryVO);
+        //category 에 bookvo.categoryName이 없다면 저장
         bookDao.insertCategory(categoryVO);
-        //4.category_book에 pk들을 저장
+        //category_book에 pk들을 저장
         bookDao.insertCategoryBook(bookVO.getBno(),categoryVO.getCategory_name_id());
-        //5.저장한 bookVo를 반환
+
         return bookVO;
     }
 
@@ -90,5 +95,30 @@ public class BookServiceImpl implements BookService{
         bookDao.deleteCategory_book(bno);
     }
 
+    /*
+    카테고리 이름 검증
+     */
+    private static void validCategoryName(CategoryVO categoryVO) {
+        //categoryVo 검증 1보다 작은 값은 존재하지 않는 카테고리이름
+        //현재 존재하지 않는 카테고리 = 기타
+        if(categoryVO.getCategory_name_id()<1){
+            categoryVO.setCategory_name_id(0);
+            categoryVO.setCategory_name("기타");
+        }
+    }
+
+    /*
+    각각의 imageVO에 bno를 입력하고 db에 저장
+     */
+    private void insertBook_images(BookVO bookVO, List<ImageVO> imageVOs) {
+        //imageVOs가 존재할때만
+        if(imageVOs !=null&& imageVOs.size()>0){
+            for (ImageVO imageVO : imageVOs) {
+                //이미지 기억을 위한 부모 bno set
+                imageVO.setBno(bookVO.getBno());
+                bookDao.insertBook_images(imageVO);
+            }
+        }
+    }
 
 }

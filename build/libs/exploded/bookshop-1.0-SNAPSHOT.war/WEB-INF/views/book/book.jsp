@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+${bnoDto}bnoDto로 페이징 처리 해야함
 ${book}
 </body>
 </html>

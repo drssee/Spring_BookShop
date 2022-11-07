@@ -2,14 +2,17 @@ package com.example.book.service;
 
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
-import com.example.common.dto.PageRequest;
-import com.example.common.dto.PageResponse;
+import com.example.book.vo.ImageVO;
+import com.example.common.paging.PageRequest;
+import com.example.common.paging.PageResponse;
+
+import java.util.List;
 
 public interface BookService {
     /**
      * 상품(book)등록
      */
-    BookVO registerBook(BookVO bookVO, CategoryVO categoryVO);
+    BookVO registerBook(BookVO bookVO, CategoryVO categoryVO, List<ImageVO> imageVOs);
 
     /**
      * 상품(book)의 (목록)조회

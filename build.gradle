@@ -105,6 +105,15 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.4.2'
     /**
+     * file IO
+     */
+    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+    // https://mvnrepository.com/artifact/com.jfinal/cos
+    implementation group: 'com.jfinal', name: 'cos', version: '2020.4'
+    /**
      * assertj
      */
     // https://mvnrepository.com/artifact/org.assertj/assertj-core

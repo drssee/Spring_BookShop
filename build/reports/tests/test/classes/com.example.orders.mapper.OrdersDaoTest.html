@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - OrdersDaoTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>OrdersDaoTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.orders.mapper.html">com.example.orders.mapper</a> &gt; OrdersDaoTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.037s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">insertOrder 테스트</td>
+<td class="success">insertOrderTest()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">insert_order_book 테스트</td>
+<td class="success">insert_orders_bookTest()</td>
+<td class="success">0.034s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-11-07 23:05:28 INFO  [org.springframework.test.context.support.DefaultTestContextBootstrapper] - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener] 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.support.DefaultTestContextBootstrapper] - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener] 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.support.DefaultTestContextBootstrapper] - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@59b65dce, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1386313f, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5e922647, org.springframework.test.context.support.DirtiesContextTestExecutionListener@433c6abb, org.springframework.test.context.transaction.TransactionalTestExecutionListener@288f173f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@a22c4d8, org.springframework.test.context.event.EventPublishingTestExecutionListener@45cd7bc5] 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.support.DefaultTestContextBootstrapper] - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@59b65dce, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1386313f, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5e922647, org.springframework.test.context.support.DirtiesContextTestExecutionListener@433c6abb, org.springframework.test.context.transaction.TransactionalTestExecutionListener@288f173f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@a22c4d8, org.springframework.test.context.event.EventPublishingTestExecutionListener@45cd7bc5] 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.getAutoCommit() returned true  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1) 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.client.impl.StandardClient] - execute query: set autocommit=0 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.message.server.OkPacket] - System variable change:  autocommit = OFF 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.setAutoCommit(false) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401) 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.transaction.TransactionContext] - Began transaction (1) for test context [DefaultTestContext@35e26d05 testClass = OrdersDaoTest, testInstance = com.example.orders.mapper.OrdersDaoTest@29fa6b65, testMethod = insert_orders_bookTest@OrdersDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7c72ecc testClass = OrdersDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@a66e580]; rollback [true] 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.transaction.TransactionContext] - Began transaction (1) for test context [DefaultTestContext@35e26d05 testClass = OrdersDaoTest, testInstance = com.example.orders.mapper.OrdersDaoTest@29fa6b65, testMethod = insert_orders_bookTest@OrdersDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7c72ecc testClass = OrdersDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@a66e580]; rollback [true] 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Creating a new SqlSession 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ddb3ae8] 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.getAutoCommit() returned false  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1) 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.transaction.SpringManagedTransaction] - JDBC Connection [HikariProxyConnection@1016156941 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@174e1b69] will be managed by Spring 
+2022-11-07 23:05:28 DEBUG [com.example.orders.dao.OrdersDao.insert_orders_book] - ==&gt;  Preparing: insert into orders_book (order_id,bno,order_price,order_quantity) values (?,?,?,?) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:334) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.prepareStatement(insert into orders_book (order_id,bno,order_price,order_quantity) values (?,?,?,?), 1) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@7d70638  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:334) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.setLong(1, 1) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setLong(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.setLong(2, 1) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setLong(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.setInt(3, 1000) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.setInt(4, 1) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setInt(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [com.example.orders.dao.OrdersDao.insert_orders_book] - ==&gt; Parameters: 1(Long), 1(Long), 1000(Integer), 1(Integer) 
+2022-11-07 23:05:28 DEBUG [jdbc.sqlonly] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)1. insert into orders_book (order_id,bno,order_price,order_quantity) values (1,1,1000,1)  
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.client.impl.StandardClient] - execute query: insert into orders_book (order_id,bno,order_price,order_quantity) values (?,?,?,?) 
+2022-11-07 23:05:28 DEBUG [jdbc.sqltiming] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)1. insert into orders_book (order_id,bno,order_price,order_quantity) values (1,1,1000,1)  {executed in 0 msec} 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [com.example.orders.dao.OrdersDao.insert_orders_book] - &lt;==    Updates: 1 
+2022-11-07 23:05:28 DEBUG [jdbc.sqltiming] -  com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229)1. getGeneratedKeys on query: insert into orders_book (order_id,bno,order_price,order_quantity) values (1,1,1000,1)  {executed in 0 msec} 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.new ResultSet returned   com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.getGeneratedKeys() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@732f6050  com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229) 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.getMetaData() returned org.mariadb.jdbc.client.result.ResultSetMetaData@6fbc1bb  com.zaxxer.hikari.pool.HikariProxyResultSet.getMetaData(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.next() returned true  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.getLong(1) returned 59  com.zaxxer.hikari.pool.HikariProxyResultSet.getLong(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 INFO  [jdbc.resultsettable] - |----------||insert_id ||----------||59        ||----------| 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.next() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.close() returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.close(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75) 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ddb3ae8] 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ddb3ae8] 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ddb3ae8] 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.client.impl.StandardClient] - execute query: ROLLBACK 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.rollback() returned   com.zaxxer.hikari.pool.ProxyConnection.rollback(ProxyConnection.java:385) 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.client.impl.StandardClient] - execute query: set autocommit=1 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.message.server.OkPacket] - System variable change:  autocommit = ON 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.setAutoCommit(true) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.clearWarnings() returned   com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257) 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.transaction.TransactionContext] - Rolled back transaction for test: [DefaultTestContext@35e26d05 testClass = OrdersDaoTest, testInstance = com.example.orders.mapper.OrdersDaoTest@29fa6b65, testMethod = insert_orders_bookTest@OrdersDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7c72ecc testClass = OrdersDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]] 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.transaction.TransactionContext] - Rolled back transaction for test: [DefaultTestContext@35e26d05 testClass = OrdersDaoTest, testInstance = com.example.orders.mapper.OrdersDaoTest@29fa6b65, testMethod = insert_orders_bookTest@OrdersDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7c72ecc testClass = OrdersDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]] 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.getAutoCommit() returned true  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1) 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.client.impl.StandardClient] - execute query: set autocommit=0 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.message.server.OkPacket] - System variable change:  autocommit = OFF 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.setAutoCommit(false) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401) 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.transaction.TransactionContext] - Began transaction (1) for test context [DefaultTestContext@35e26d05 testClass = OrdersDaoTest, testInstance = com.example.orders.mapper.OrdersDaoTest@30c4e352, testMethod = insertOrderTest@OrdersDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7c72ecc testClass = OrdersDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@a66e580]; rollback [true] 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.transaction.TransactionContext] - Began transaction (1) for test context [DefaultTestContext@35e26d05 testClass = OrdersDaoTest, testInstance = com.example.orders.mapper.OrdersDaoTest@30c4e352, testMethod = insertOrderTest@OrdersDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7c72ecc testClass = OrdersDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@a66e580]; rollback [true] 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Creating a new SqlSession 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73809e7] 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.getAutoCommit() returned false  com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java:-1) 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.transaction.SpringManagedTransaction] - JDBC Connection [HikariProxyConnection@1222590577 wrapping net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@174e1b69] will be managed by Spring 
+2022-11-07 23:05:28 DEBUG [com.example.orders.dao.OrdersDao.insertOrders] - ==&gt;  Preparing: insert into orders (id,delivery_id,order_status) values (?,?,?) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.new PreparedStatement returned   com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:334) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.prepareStatement(insert into orders (id,delivery_id,order_status) values (?,?,?), 1) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@290e8cab  com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:334) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.setString(1, &quot;user1&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.setLong(2, 1) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setLong(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.setString(3, &quot;주문완료&quot;) returned   com.zaxxer.hikari.pool.HikariProxyPreparedStatement.setString(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [com.example.orders.dao.OrdersDao.insertOrders] - ==&gt; Parameters: user1(String), 1(Long), 주문완료(String) 
+2022-11-07 23:05:28 DEBUG [jdbc.sqlonly] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)1. insert into orders (id,delivery_id,order_status) values ('user1',1,'주문완료')  
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.client.impl.StandardClient] - execute query: insert into orders (id,delivery_id,order_status) values (?,?,?) 
+2022-11-07 23:05:28 DEBUG [jdbc.sqltiming] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)1. insert into orders (id,delivery_id,order_status) values ('user1',1,'주문완료')  {executed in 1 msec} 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.execute() returned false  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.getUpdateCount() returned 1  com.zaxxer.hikari.pool.HikariProxyPreparedStatement.getUpdateCount(HikariProxyPreparedStatement.java:-1) 
+2022-11-07 23:05:28 DEBUG [com.example.orders.dao.OrdersDao.insertOrders] - &lt;==    Updates: 1 
+2022-11-07 23:05:28 DEBUG [jdbc.sqltiming] -  com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229)1. getGeneratedKeys on query: insert into orders (id,delivery_id,order_status) values ('user1',1,'주문완료')  {executed in 0 msec} 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.new ResultSet returned   com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.getGeneratedKeys() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@6e3ecf5c  com.zaxxer.hikari.pool.ProxyStatement.getGeneratedKeys(ProxyStatement.java:229) 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.getMetaData() returned org.mariadb.jdbc.client.result.ResultSetMetaData@67507df  com.zaxxer.hikari.pool.HikariProxyResultSet.getMetaData(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.next() returned true  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.getLong(1) returned 65  com.zaxxer.hikari.pool.HikariProxyResultSet.getLong(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 INFO  [jdbc.resultsettable] - |----------||insert_id ||----------||65        ||----------| 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.next() returned false  com.zaxxer.hikari.pool.HikariProxyResultSet.next(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.resultset] - 1. ResultSet.close() returned void  com.zaxxer.hikari.pool.HikariProxyResultSet.close(HikariProxyResultSet.java:-1) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. PreparedStatement.close() returned   com.zaxxer.hikari.pool.ProxyStatement.close(ProxyStatement.java:75) 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73809e7] 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73809e7] 
+2022-11-07 23:05:28 DEBUG [org.mybatis.spring.SqlSessionUtils] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73809e7] 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.client.impl.StandardClient] - execute query: ROLLBACK 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.rollback() returned   com.zaxxer.hikari.pool.ProxyConnection.rollback(ProxyConnection.java:385) 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.client.impl.StandardClient] - execute query: set autocommit=1 
+2022-11-07 23:05:28 DEBUG [org.mariadb.jdbc.message.server.OkPacket] - System variable change:  autocommit = ON 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.setAutoCommit(true) returned   com.zaxxer.hikari.pool.ProxyConnection.setAutoCommit(ProxyConnection.java:401) 
+2022-11-07 23:05:28 DEBUG [jdbc.audit] - 1. Connection.clearWarnings() returned   com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257) 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.transaction.TransactionContext] - Rolled back transaction for test: [DefaultTestContext@35e26d05 testClass = OrdersDaoTest, testInstance = com.example.orders.mapper.OrdersDaoTest@30c4e352, testMethod = insertOrderTest@OrdersDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7c72ecc testClass = OrdersDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]] 
+2022-11-07 23:05:28 INFO  [org.springframework.test.context.transaction.TransactionContext] - Rolled back transaction for test: [DefaultTestContext@35e26d05 testClass = OrdersDaoTest, testInstance = com.example.orders.mapper.OrdersDaoTest@30c4e352, testMethod = insertOrderTest@OrdersDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7c72ecc testClass = OrdersDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]] 
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5.1</a> at 2022. 11. 7. 오후 11:05:28</p>
+</div>
+</div>
+</body>
+</html>
