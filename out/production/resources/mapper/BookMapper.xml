@@ -3,6 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.book.dao.BookDao">
+    <!--book-->
+    <sql id="select_from_joinTable_bookAndCategoryName">
+        select *
+        from book as main
+        inner join book_info as info on main.bno=info.bno
+        inner join book_images as images on info.bno=images.bno
+        inner join category_book as cb on images.bno=cb.bno
+    </sql>
     <insert id="insertBook" parameterType="bookVO" useGeneratedKeys="true" keyProperty="bno">
         insert into book (title, price,stock)
         values (#{title},#{price},#{stock})
@@ -16,11 +24,7 @@
         values (#{bno},#{storeFileName},#{originalFileName},#{imgCategory},#{ext},#{size})
     </insert>
     <select id="selectBook" resultType="bookVO">
-        select *
-        from book as main
-        inner join book_info as info on main.bno=info.bno
-        inner join book_images as images on info.bno=images.bno
-        inner join category_book as cb on images.bno=cb.bno
+        <include refid="select_from_joinTable_bookAndCategoryName"/>
         where main.bno = ${bno}
     </select>
     <select id="selectBooks" parameterType="pageRequest" resultType="bookVO">
@@ -43,7 +47,9 @@
         delete from book
         where bno = #{bno}
     </delete>
+    <!--book-->
 
+    <!--category-->
     <insert id="insertCategoryBook">
         insert into category_book
         values (#{bno},#{category_name_id})
@@ -62,4 +68,26 @@
     <select id="selectCategory_name" resultType="String">
         select category_name from category where category_name_id = #{category_name_id}
     </select>
+    <!--category-->
+
+    <!--search-->
+    <sql id="searchCondition">
+        <choose>
+            <when test='option=="T"'>
+                AND title LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="C"'>
+                AND category_name LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="L"'>
+                AND like_cnt LIKE concat('%', #{keyword}, '%')
+            </when>
+            <otherwise>
+                AND (title   LIKE concat('%', #{keyword}, '%')
+                OR   description LIKE concat('%', #{keyword}, '%'))
+            </otherwise>
+        </choose>
+    </sql>
+
+    <!--search-->
 </mapper>

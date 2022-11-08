@@ -41,7 +41,6 @@ public class BookController {
     ///////////////////////////////////////////코어로직 실패하면 예외 던지기 500에러
 
     // *BookController api*
-    // get /book/books <-전체조회
     // get /book/{bno} <-단일조회
     // get /book/add <-단일등록폼
     // post /book/add <-단일등록
@@ -50,26 +49,6 @@ public class BookController {
     // post /book/{bno}/delete <-단일삭제
 
     //다운로드 경로 추가?
-
-    /**
-     * 전체조회
-     */
-    @GetMapping("/books")
-    public String books(@Validated PageRequest pageRequest , BindingResult bindingResult
-    , Model model){
-        /*
-        valid
-         */
-        //파라미터로 넘어온 pageRequest(page,size)을 pageRequestResolver에 넘겨 유효한 pageRequest값을 가져온다
-        pageRequest = pageRequestResolver(pageRequest, bindingResult);
-
-        /*
-        core
-         */
-        //pageRequest를 이용해 페이징처리용 pageResponse 을 가져온후, 모델에 담아 리턴
-        model.addAttribute("pageResponse",bookService.getBooks(pageRequest));
-        return "book/books";
-    }
 
     /**
      * 단일조회
@@ -155,7 +134,7 @@ public class BookController {
         */
         //bnoDto 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateBnoDto(bnoDto, bindingResult, model
-                ,"common/alert","/book/books?page="+bnoDto.getPage()+"&size="+bnoDto.getSize());
+                ,"common/alert","//bookshop?page="+bnoDto.getPage()+"&size="+bnoDto.getSize());
         if (errorUrl != null) return errorUrl;
 
 
@@ -208,7 +187,7 @@ public class BookController {
         */
         //bnoDto 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateBnoDto(bnoDto, bindingResult, model
-                ,"common/alert","/book/books?page="+bnoDto.getPage()+"&size="+bnoDto.getSize());
+                ,"common/alert","/bookshop?page="+bnoDto.getPage()+"&size="+bnoDto.getSize());
         if (errorUrl != null) return errorUrl;
 
         /*
@@ -219,6 +198,12 @@ public class BookController {
         log.info("도서삭제 성공");
         //삭제에 성공하면 리스트로 리다이렉트
         return "redirect:"+"/book/books?page="+bnoDto.getPage()+"&size="+bnoDto.getSize();
+    }
+
+    @GetMapping("/search")
+    public String searchBook(){
+        log.info("searchBook");
+        return null;
     }
 
     /*

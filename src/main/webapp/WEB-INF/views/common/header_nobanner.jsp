@@ -13,12 +13,10 @@
     <meta charset="UTF-8">
     <title>김남현</title>
     <script src="<c:url value="/resources/js/common/jquery-3.6.0.min.js"/>"></script>
-    <script src="<c:url value="/resources/js/common/jquery.bxslider.min.js"/>"></script>
     <script src="<c:url value="/resources/js/common/jquery-ui-1.10.4.custom.min.js"/>"></script>
     <script src="<c:url value="/resources/js/header/header.js"/>"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="<c:url value="/resources/css/common/jquery.bxslider.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/common/reset.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/header/header.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/footer/footer.css"/>">
@@ -27,14 +25,6 @@
 
 <body>
 <div id="top_wrap">
-    <div class="s_banner_wrap">
-        <ul class="bxslider">
-            <li class="banner_0"></li>
-            <li class="banner_1"></li>
-            <li class="banner_2"></li>
-            <li class="banner_3"></li>
-        </ul>
-    </div>
     <header id="top">
         <div class="quick_wrap1">
             <div class="quick_wrap2">

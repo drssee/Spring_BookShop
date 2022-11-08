@@ -15,9 +15,9 @@ public class PageRequest {
     @Builder.Default
     private Integer page=1;
     @NotNull
-    @Range(min=9,max=100)
+    @Range(min=10,max=100)
     @Builder.Default
-    private Integer size=9;
+    private Integer size=10;
     public Integer getSkip(){
         return (page-1)*size;
     }

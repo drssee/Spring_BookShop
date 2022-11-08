@@ -1,11 +1,4 @@
 $(document).ready(function(){
-
-    //전체메뉴
-    $("#menu1_wrap").hide();
-    $("#main_navi ul li").eq(0).click(function(){
-        $("#menu1_wrap").toggle();
-    });
-
     // .toggleClass("emphasized");
 
     //메인navi

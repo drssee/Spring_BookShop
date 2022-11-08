@@ -24,6 +24,7 @@ public class BookVO {
     private int stock;
     private Date update_date;
     private Date reg_date;
+    private Long like_cnt;
 
     /*
     book_images

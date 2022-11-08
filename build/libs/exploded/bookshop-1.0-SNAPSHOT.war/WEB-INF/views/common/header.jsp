@@ -53,7 +53,7 @@
         <!--quick wrap1-->
         <div id="main_navi_wrap">
             <h1>
-                <a href="index.html">
+                <a href="<c:url value="/"/>">
                     <img src="<c:url value="/resources/images/common/main_logo.png"/>" alt="하나투어메인로고" width="165" height="52">
                 </a>
             </h1>
@@ -96,10 +96,46 @@
 <div id="menu1_wrap">
     <ul id="menu1"><!--js메뉴1-->
         <li>
-            <ul>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-            </ul>
         </li>
     </ul><!--main1-->
 </div><!--main1_wrap-->
+<script>
+    $(document).ready(function() {
+        getCategorys();
+        //카테고리
+        $("#menu1_wrap").hide();
+        $("#main_navi ul li").eq(0).click(function () {
+            $("#menu1_wrap").toggle();
+        });
+    });
+
+    let getCategorys = function(){
+        $.ajax({
+            url: '/bookshop/categorys',
+            type: 'GET',
+            headers: {"content-type": "application/json"},
+            success: function (result) {
+                $("#menu1 li").html(toHtml(result))
+            },
+            error: function () {
+                alert("error");
+            }
+        });//ajax
+    }
+
+    //배열로 들어온 (js 객체를 html 문자로) 바꿔주는 함수
+    let toHtml = function(categorys) {
+        let tmp = '<ul>'
+        for(let i = 0; i<categorys.length; i++){
+            let category = categorys[i];
+            if(category==null||category===''||category==='undefined'){
+                category='기타';
+            }
+            tmp+='<li>'
+            tmp += '<a href="/bookshop/book/search?searchconditon='+category+'">'+category+'</a>'
+            tmp += '</li>';
+        }
+        tmp += '</ul>';
+        return tmp;
+    }
+</script>

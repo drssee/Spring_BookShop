@@ -1,4 +1,4 @@
-package com.example.common.paging;
+package com.example.book.vo;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,17 +7,18 @@ import org.hibernate.validator.constraints.Range;
 import javax.validation.constraints.NotNull;
 
 @Data
-@Builder
-public class PageRequestwithValid {
+public class BookSearchVO {
+    String keyword;
+    Integer searchedCnt;
+    String option;
     @NotNull
     @Range(min=1,max=1000)
     @Builder.Default
     private Integer page=1;
-
     @NotNull
-    @Range(min=9,max=100)
+    @Range(min=10,max=100)
     @Builder.Default
-    private Integer size=9;
+    private Integer size=10;
     public Integer getSkip(){
         return (page-1)*size;
     }

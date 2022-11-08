@@ -2,11 +2,13 @@
 
 html,body{
     height:100%;
+    background: url(../../images/common/white-abstract-background_23-2148810113.webp) no-repeat left 600px;
+    background-size: 1920px 1150px;
 }
 /*wrap*/
 #top_wrap{
     width:100%;
-    min-width:1920px;
+    /*min-width:1920px;*/
     height:935px;
     position:relative;
 }
@@ -44,16 +46,23 @@ html,body{
 #travle_mini img:hover{
     transform: scale(1.03);
 }
+.custom1{
+    box-shadow: 6px 4px 4px 5px rgba(0,0,0,0.32);
+}
+
+.custom1:hover{
+    transform: scale(1.03);
+}
 /*헤더*/
 #top{
     width:100%;
+    min-width: 1920px;
     height: 9.5%;
     position:absolute;
     left:0;
     top:0;
     z-index:10;
-    background-color:#ffffff;
-    border-bottom:1px solid purple;
+    background-color: linen;
 }
 /*퀵메뉴*/
 .quick_wrap1{
@@ -62,7 +71,7 @@ html,body{
     height:20px;
 }
 .quick_wrap2{
-    width:1800px;
+    width:1200px;
     height:20px;
     margin:0 auto;    
 }
@@ -103,7 +112,8 @@ html,body{
     width:180px;
     height:30px;
     border-radius:25px;
-    background-color:transparent;
+    /*background-color:transparent;*/
+    background-color: white;
     font-size:15px;
     text-indent:15px;
     margin-left:20px;
@@ -212,7 +222,7 @@ html,body{
     top:90px;
     z-index: 20;
     background-color: #ffffff;
-    /*border-top:1px solid black;*/
+    border-top:1px solid black;
     /*border-bottom: 1px solid black;*/
 }
 #menu1{
@@ -231,7 +241,7 @@ html,body{
     float:left;    
 }
 #menu1>li ul{
-    /* border-top: 2px solid black; */
+     /*border-top: 2px solid black;*/
     margin-top:10px;
 }
 #menu1>li ul li{

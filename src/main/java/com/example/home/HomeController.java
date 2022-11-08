@@ -1,14 +1,20 @@
 package com.example.home;
 
 import com.example.book.service.BookService;
+import com.example.common.data.CategoryData;
 import com.example.common.paging.PageRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 import static com.example.book.validator.BookValidator.pageRequestResolver;
 
@@ -35,5 +41,12 @@ public class HomeController {
         //pageRequest를 이용해 페이징처리용 pageResponse 을 가져온후, 모델에 담아 리턴
         model.addAttribute("pageResponse",bookService.getBooks(pageRequest));
         return "index";
+    }
+
+    @RequestMapping("/categorys")
+    @ResponseBody
+    public ResponseEntity<List<String>> categorys(){
+        //메인 페이지가 로딩될때 rest api로 카테고리 리스트 자동 초기화
+        return ResponseEntity.ok().body(CategoryData.categoryNames);
     }
 }

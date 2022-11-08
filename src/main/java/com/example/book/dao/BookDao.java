@@ -1,5 +1,6 @@
 package com.example.book.dao;
 
+import com.example.book.vo.BookSearchVO;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
 import com.example.book.vo.ImageVO;
@@ -49,4 +50,10 @@ public interface BookDao {
     //카테고리 저장
     int insertCategory(CategoryVO categoryVO);
     String selectCategory_name(int category_name_id);
+
+    /**
+     * search
+     */
+    List<BookVO> searchBooks(BookSearchVO bookSearchVO);
+    int selectSearchedCnt(BookSearchVO bookSearchVO);
 }

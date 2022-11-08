@@ -24,7 +24,7 @@ public class BnoDto implements PageSetable {
     private Integer page=1;
 
     @Builder.Default
-    private Integer size=9;
+    private Integer size=10;
 
     @Override
     public void setPage(int page) {
