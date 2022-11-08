@@ -15,11 +15,21 @@
         insert into book_images (bno,storeFileName,originalFileName,imgCategory,ext,size)
         values (#{bno},#{storeFileName},#{originalFileName},#{imgCategory},#{ext},#{size})
     </insert>
-    <select id="selectOne" resultType="bookVO">
-        select * from book where bno = ${bno}
+    <select id="selectBook" resultType="bookVO">
+        select *
+        from book as main
+        inner join book_info as info on main.bno=info.bno
+        inner join book_images as images on info.bno=images.bno
+        inner join category_book as cb on images.bno=cb.bno
+        where main.bno = ${bno}
     </select>
     <select id="selectBooks" parameterType="pageRequest" resultType="bookVO">
-        select * from book order by bno desc limit #{skip} , #{size}
+        select *
+        from book as main
+        inner join book_info as info on main.bno=info.bno
+        inner join book_images as images on info.bno=images.bno
+        inner join category_book as cb on images.bno=cb.bno
+        order by main.bno desc limit #{skip} , #{size}
     </select>
     <select id="bookCnt" resultType="int">
         select count(*) from book

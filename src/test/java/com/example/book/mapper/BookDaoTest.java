@@ -49,7 +49,7 @@ class BookDaoTest {
         //임의의 bno를 이용해 bookVO를 불러온다,불러오지 못하면 실패
         BookVO bookVO = null;
         try {
-            bookVO = bookDao.selectOne(bno);
+            bookVO = bookDao.selectBook(bno);
         } catch (Exception e) {
             fail("selectOne 실패");
         }
@@ -74,7 +74,7 @@ class BookDaoTest {
         //when
         //insertbook은 성공해야 하고 rowcnt==1 , 전달한 bookVO와 저장된 getBookVO는 같은 값이어야한다
         assertEquals(1, bookDao.insertBook(bookVO));
-        BookVO getBookVO = bookDao.selectOne(bookVO.getBno());
+        BookVO getBookVO = bookDao.selectBook(bookVO.getBno());
 //        assertEquals(bookVO,getBookVO);
     }
 
@@ -91,7 +91,7 @@ class BookDaoTest {
     @DisplayName("updateBook 테스트")
     void updateCategoryTest(){
         //임의의 bno를 초기화후 bookVo를 가져옴
-        BookVO bookVO = bookDao.selectOne(bno);
+        BookVO bookVO = bookDao.selectBook(bno);
         //수정할 가격과 수량을 가져와 bookVO를 수정
         int price = 10000;
         int stock = 0;
@@ -99,7 +99,7 @@ class BookDaoTest {
         bookVO.setStock(stock);
         //수정한 bookvo의 업데이트는 성공 해야 하고, 칼럼들은 수정값으로 변경되어야함
         assertEquals(1, bookDao.updateBook(bookVO));
-        BookVO bookVO1 = bookDao.selectOne(bno);
+        BookVO bookVO1 = bookDao.selectBook(bno);
         assertEquals(bookVO.getPrice(), bookVO1.getPrice());
         assertEquals(bookVO.getStock(), bookVO1.getStock());
     }

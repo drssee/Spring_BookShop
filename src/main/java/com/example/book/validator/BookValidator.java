@@ -111,6 +111,7 @@ public class BookValidator {
         //입력된 form에 오류가 있을경우
         if(bindingResult.hasErrors()){
             log.error("form has error");
+            log.info("error={}",bindingResult.getAllErrors());
             //bindingResult와 함께 다시 입력폼으로 이동
             model.addAttribute("bindingResult", bindingResult);
             return errUrl;

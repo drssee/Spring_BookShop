@@ -42,7 +42,8 @@ public class FileIO {
         } catch (IOException e) {
             throw new RuntimeException("파일 업로드 실패");
         }
-
+        ImageVO imageVO = new ImageVO(originalFileName,storedFileName,imgCategory,ext,size);
+        System.out.println("imageVO!!!!!!in FileIO = " + imageVO);
         //사용자업로드 파일이름,서버업로드 파일이름 저장한 vo 리턴
         return new ImageVO(originalFileName,storedFileName,imgCategory,ext,size);
     }
@@ -58,7 +59,9 @@ public class FileIO {
         for (MultipartFile multipartFile : multipartFiles) {
             ImageVO bookimgVO = uploadFile(multipartFile, fileDir);
             //이미지 카테고리 cover=c,book_imgs=i
-            bookimgVO.setImgCategory("i");
+            if(bookimgVO!=null){
+                bookimgVO.setImgCategory("i");
+            }
             uploadFilesList.add(bookimgVO);
         }
         return uploadFilesList;

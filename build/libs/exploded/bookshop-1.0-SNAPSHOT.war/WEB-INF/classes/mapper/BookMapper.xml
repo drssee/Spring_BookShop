@@ -4,21 +4,39 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.book.dao.BookDao">
     <insert id="insertBook" parameterType="bookVO" useGeneratedKeys="true" keyProperty="bno">
-        insert into book (isbn, title, pubDate, author, description, price, stock, cover, publisher)
-        values (#{isbn},#{title},#{pubDate},#{author},#{description},#{price},#{stock},#{cover},#{publisher})
+        insert into book (title, price,stock)
+        values (#{title},#{price},#{stock})
     </insert>
-    <select id="selectOne" resultType="bookVO">
-        select * from book where bno = ${bno}
+    <insert id="insertBook_info" parameterType="bookVO" useGeneratedKeys="true" keyProperty="bno">
+        insert into book_info (pubDate,author,description,publisher)
+        values (#{pubDate},#{author},#{description},#{publisher})
+    </insert>
+    <insert id="insertBook_images" parameterType="imageVO" useGeneratedKeys="true" keyProperty="bno">
+        insert into book_images (bno,storeFileName,originalFileName,imgCategory,ext,size)
+        values (#{bno},#{storeFileName},#{originalFileName},#{imgCategory},#{ext},#{size})
+    </insert>
+    <select id="selectBook" resultType="bookVO">
+        select *
+        from book as main
+        inner join book_info as info on main.bno=info.bno
+        inner join book_images as images on info.bno=images.bno
+        inner join category_book as cb on images.bno=cb.bno
+        where main.bno = ${bno}
     </select>
     <select id="selectBooks" parameterType="pageRequest" resultType="bookVO">
-        select * from book order by bno desc limit #{skip} , #{size}
+        select *
+        from book as main
+        inner join book_info as info on main.bno=info.bno
+        inner join book_images as images on info.bno=images.bno
+        inner join category_book as cb on images.bno=cb.bno
+        order by main.bno desc limit #{skip} , #{size}
     </select>
     <select id="bookCnt" resultType="int">
         select count(*) from book
     </select>
     <update id="updateBook" parameterType="bookVO">
         update book
-        set price =  #{price} ,stock = #{stock} ,cover = #{cover}, update_date = now()
+        set price =  #{price} ,stock = #{stock} , update_date = now()
         where bno = #{bno}
     </update>
     <delete id="deleteBook">

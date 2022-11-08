@@ -22,6 +22,7 @@ public class ImageVO {
     public ImageVO(String originalFileName, String storedFileName, String imgCategory, String ext, long size) {
         this.originalFileName=originalFileName;
         this.storeFileName=storedFileName;
+        this.imgCategory=imgCategory;
         this.ext=ext;
         this.size=size;
     }

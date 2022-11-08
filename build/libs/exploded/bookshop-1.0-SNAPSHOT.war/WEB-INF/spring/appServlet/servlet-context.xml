@@ -13,10 +13,11 @@
     <context:component-scan base-package="com.example.orders.controller"/>
     <context:component-scan base-package="com.example.user.controller"/>
     <context:component-scan base-package="com.example.common"/>
+    <context:component-scan base-package="com.example.home"/>
 
     <mvc:annotation-driven/> <!--컨트롤러맵핑을 탐색해서 연결해주는 디스패처 서블릿기능-->
 
-    <mvc:resources mapping="/resources/**" location="/resources"/> <!--webapp 아래 resources 정적 리소스 경로-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/> <!--webapp 아래 resources 정적 리소스 경로-->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

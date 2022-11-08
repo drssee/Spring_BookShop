@@ -51,7 +51,7 @@ public class OrdersServiceImpl implements OrdersService {
 
         //4.주문수량만큼 상품의 재고가 줄어들어야함
         //해당 bookVO를 가져온다
-        BookVO getBookVO = bookDao.selectOne(bookVO.getBno());
+        BookVO getBookVO = bookDao.selectBook(bookVO.getBno());
         //해당 bookVO의 재고 - 주문 재고
         getBookVO.setStock(getBookVO.getStock()-ordersBookVO.getOrder_quantity());
         //해당 bookVO업데이트

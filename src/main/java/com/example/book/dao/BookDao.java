@@ -16,12 +16,14 @@ public interface BookDao {
     //book db에 저장
     int insertBook(BookVO bookVO);
     //book_info에 저장
-    int insertBook_info(BookVO bookVO);
+    int insertBook_info(BookVO bookVO); //test 필요
     //book_images에 저장
-    int insertBook_images(ImageVO imageVO);
+    int insertBook_images(ImageVO imageVO); //test 필요
 
     //book db (단일)조회
-    BookVO selectOne(Long bno);
+    BookVO selectBook(Long bno);
+    //book_info db (단일)조회
+
 
     //book db (목록)조회
     List<BookVO> selectBooks(PageRequest pageRequest);

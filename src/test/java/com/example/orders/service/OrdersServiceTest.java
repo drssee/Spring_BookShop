@@ -41,7 +41,7 @@ class OrdersServiceTest {
         //임의의 userVO를 초기화
         UserVO userVO = UserVO.builder().id(id).pwd(id).build();
         //임의의 bookVO를 초기화
-        BookVO bookVO = bookDao.selectOne(1L);
+        BookVO bookVO = bookDao.selectBook(1L);
         //임의의 ordersbookVO를 초기화
         OrdersBookVO ordersBookVO = OrdersBookVO.builder().order_id(1L).bno(1L).order_price(1000)
                 .order_quantity(stock).build();
@@ -59,7 +59,7 @@ class OrdersServiceTest {
         //재고(beforeStock)는 10(stock)만큼 감소 해야함
         int currentStock = beforeStock - stock;
         assertThat(currentStock)
-                .isEqualTo(bookDao.selectOne(bookVO.getBno()).getStock());
+                .isEqualTo(bookDao.selectBook(bookVO.getBno()).getStock());
 
         //오더의 상태는 주문완료가 되어야함
         //주문한 orderVO를 가져온다

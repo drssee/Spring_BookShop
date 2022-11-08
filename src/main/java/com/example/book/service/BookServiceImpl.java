@@ -32,7 +32,6 @@ public class BookServiceImpl implements BookService{
          */
         //book db 에 bookVO를 저장
         bookDao.insertBook(bookVO);
-        System.out.println("image를 위한 bno!!!!!!!!!!! = "+bookVO.getBno());
         //book_info db에 bookVO를 저장
         bookDao.insertBook_info(bookVO);
         //book_images db에 bookVO를 저장
@@ -58,6 +57,7 @@ public class BookServiceImpl implements BookService{
     public PageResponse<BookVO> getBooks(PageRequest pageRequest) {
         //파라미터로 입력받은 pagerequest 정보(page,size)를 이용해서 해당 북 리스트를 얻어온다
         List<BookVO> books = bookDao.selectBooks(pageRequest);
+        System.out.println("books = " + books);
         //얻어온 리스트와 pagerequest를 이용 pageresponse를 초기화해 리턴한다
         return PageResponse.<BookVO>withAll()
                 .pageRequest(pageRequest)
@@ -71,7 +71,7 @@ public class BookServiceImpl implements BookService{
      */
     @Override
     public BookVO getBook(Long bno) {
-        return bookDao.selectOne(bno);
+        return bookDao.selectBook(bno);
     }
 
     /**
@@ -115,10 +115,13 @@ public class BookServiceImpl implements BookService{
         if(imageVOs !=null&& imageVOs.size()>0){
             for (ImageVO imageVO : imageVOs) {
                 //이미지 기억을 위한 부모 bno set
-                imageVO.setBno(bookVO.getBno());
-                bookDao.insertBook_images(imageVO);
-            }
-        }
-    }
+                if(imageVO!=null){
+                    imageVO.setBno(bookVO.getBno());
+                    System.out.println("imageVO!!!! = " + imageVO);
+                    bookDao.insertBook_images(imageVO);
+                }
+            }//for
+        }//if
+    }//insertBook_images
 
 }

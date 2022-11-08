@@ -23,7 +23,7 @@
         typeMismatch를 체크해 다른 메시지를 보여줌
     -->
 
-    <form action="<c:url value="/book/add"/>" method="post">
+    <form action="<c:url value="/book/add"/>" method="post" enctype="multipart/form-data">
         <!--타이틀-->
         <label for="title">
             <input type="text" id="title" name="title" value="${bindingResult.getFieldValue("title")}" placeholder="<spring:message code="placeholder.book.title"/>">
@@ -117,18 +117,6 @@
         </spring:hasBindErrors>
         <!--재고-->
 
-        <!--커버이미지-->
-        <label for="cover"> <!--수정해야함, 이미지 업로드 기능 추가-->
-            <input type="text" id="cover" name="cover" value="${bindingResult.getFieldValue("cover")}" placeholder="<spring:message code="placeholder.book.cover"/>">
-
-        </label>
-        <spring:hasBindErrors name="book">
-            <c:if test="${errors.hasFieldErrors('cover')}">
-                <div class="binding-error">${errors.getFieldError("cover").defaultMessage}</div>
-            </c:if>
-        </spring:hasBindErrors>
-        <!--커버이미지-->
-
         <!--출판사-->
         <label for="publisher">
             <input type="text" id="publisher" name="publisher" value="${bindingResult.getFieldValue("publisher")}" placeholder="<spring:message code="placeholder.book.publisher"/>">
@@ -144,7 +132,6 @@
         <!--카테고리-->
         <label for="categoryName"><!--수정해야함, 옵션으로 고를수있게-->
             <input type="text" id="categoryName" name="categoryName" value="${bindingResult.getFieldValue("categoryName")}" placeholder="<spring:message code="placeholder.book.categoryName"/>">
-
         </label>
         <spring:hasBindErrors name="book">
             <c:if test="${errors.hasFieldErrors('categoryName')}">
@@ -152,6 +139,14 @@
             </c:if>
         </spring:hasBindErrors>
         <!--카테고리-->
+
+        <!--이미지 업로드-->
+        <label for="uploadFile">
+            <input type="file" id="uploadFile" name="uploadFile" value="${bindingResult.getFieldValue("uploadFile")}" placeholder="<spring:message code="placeholder.book.uploadFile"/>">
+        </label>
+        <label for="uploadFiles">
+            <input type="file" multiple="multiple" id="uploadFiles" name="uploadFiles" value="${bindingResult.getFieldValue("uploadFiles")}" placeholder="<spring:message code="placeholder.book.uploadFiles"/>">
+        </label>
 
         <input type="hidden" name="page" value="${pageRequest.page}">
         <input type="hidden" name="size" value="${pageRequest.size}">

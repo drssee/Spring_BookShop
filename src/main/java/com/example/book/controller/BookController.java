@@ -88,8 +88,12 @@ public class BookController {
         /*
         core
          */
-        //해당 bno의 book을 조회 후 모델에 담아 리턴
-        model.addAttribute("book",bookService.getBook(bnoDto.getBno()));
+        //model로 넘겨줄 book객체를 초기화
+        BookVO book = bookService.getBook(bnoDto.getBno());
+
+
+        //해당 bno의 book을 담아 리턴
+        model.addAttribute("book",book);
         return "book/book";
     }
 

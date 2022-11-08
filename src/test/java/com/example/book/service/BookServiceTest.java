@@ -34,7 +34,7 @@ public class BookServiceTest {
     void registBookTest(){
         //given
         //임의의 bno를 이용해 bookVo,CategoryVo를 가져온다
-        BookVO bookVO = bookDao.selectOne(bno);
+        BookVO bookVO = bookDao.selectBook(bno);
         assertNotNull(bookVO);
         CategoryVO categoryVO = new CategoryVO(
                 bookDao.selectCategory_name(bookDao.selectCa_Books_categoryNameId(bno))
@@ -51,7 +51,7 @@ public class BookServiceTest {
     void updateBookTest(){
         //given
         //임의의 bno를 이용해 bookVo,bookVo1를 가져온다
-        BookVO bookVO = bookDao.selectOne(bno);
+        BookVO bookVO = bookDao.selectBook(bno);
         assertNotNull(bookVO);
 
         //when
@@ -64,7 +64,7 @@ public class BookServiceTest {
         //then
         //업데이트는 성공해야함
         assertTrue(bookService.updateBook(bookVO));
-        BookVO bookVO1 = bookDao.selectOne(bno);
+        BookVO bookVO1 = bookDao.selectBook(bno);
         //업데이트된 bookVo1의 bookVO1.stock, bookVO1.price는 임의의 값 stock,price와 같아야 한다
         assertEquals(stock, bookVO1.getStock());
         assertEquals(price, bookVO1.getPrice());
