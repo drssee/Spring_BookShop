@@ -26,8 +26,8 @@
 </head>
 
 <body>
-<div id="top_wrap">
-    <div class="s_banner_wrap">
+<div id="top_wrap" style="height: 700px">
+    <div class="s_banner_wrap" style="position: relative; top:200px;">
         <ul class="bxslider">
             <li class="banner_0"></li>
             <li class="banner_1"></li>
@@ -63,7 +63,7 @@
                 <script>
                     $(".search_btn").click(function(){
                         let search_condition = $("input[name=u_search]").val();
-                        window.location="#?=u_search="+search_condition; //검색 버튼 이동
+                        window.location="/bookshop/book/search?keyword="+search_condition+"&option=T"; //검색 버튼 이동
                     });
                 </script>
             </p>
@@ -76,12 +76,12 @@
                             카테고리
                         </a>
                     </li><!--전체메뉴1-->
-                    <li class="sel"><a href="#">베스트셀러</a>
+                    <li class="sel"><a href="<c:url value="/book/books_bs"/>">베스트셀러</a>
                     </li>
-                    <li class="sel"><a href="#">새로나온책</a>
+                    <li class="sel"><a href="<c:url value="/book/books"/>">새로나온책</a>
                     </li>
-                    <li><a href="#">추천도서</a></li>
-                    <li><a href="#">음반/영화</a>
+                    <li><a href="<c:url value="/book/books_new"/>">출판예정도서</a></li>
+                    <li><a href="#" onclick="alert('준비중인 메뉴입니다.')">음반/영화</a>
                     </li>
                     <li><a href="#">고객센터</a>
                     </li>
@@ -132,7 +132,7 @@
                 category='기타';
             }
             tmp+='<li>'
-            tmp += '<a href="/bookshop/book/search?searchconditon='+category+'">'+category+'</a>'
+            tmp += '<a href="/bookshop/book/search?keyword='+category+'&option=C">'+category+'</a>'
             tmp += '</li>';
         }
         tmp += '</ul>';

@@ -13,6 +13,10 @@ import java.util.UUID;
 
 @Component
 public class FileIO {
+//    //로컬 파일의 절대경로
+//    @Value("${local.file.dir}")
+//    private String filePath;
+
     //파일 업로드는 서버에 파일저장 + db에 uuid로 파일 이름 경로 저장
 
     /**
@@ -42,12 +46,11 @@ public class FileIO {
         } catch (IOException e) {
             throw new RuntimeException("파일 업로드 실패");
         }
-        ImageVO imageVO = new ImageVO(originalFileName,storedFileName,imgCategory,ext,size);
+        ImageVO imageVO = new ImageVO(originalFileName,storedFileName,imgCategory,ext,size,fileDir);
         System.out.println("imageVO!!!!!!in FileIO = " + imageVO);
         //사용자업로드 파일이름,서버업로드 파일이름 저장한 vo 리턴
-        return new ImageVO(originalFileName,storedFileName,imgCategory,ext,size);
+        return new ImageVO(originalFileName,storedFileName,imgCategory,ext,size,fileDir);
     }
-
 
     /**
      * 파일목록 업로드

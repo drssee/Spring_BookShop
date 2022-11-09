@@ -1,6 +1,7 @@
 package com.example.book.mapper;
 
 import com.example.book.dao.BookDao;
+import com.example.book.vo.BookSearchVO;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
 import com.example.common.paging.PageRequest;
@@ -160,14 +161,48 @@ class BookDaoTest {
         PageRequest pageRequest = PageRequest.builder().build();
         //pagerequest를 이용해 book list를 얻어온다
         List<BookVO> books = bookDao.selectBooks(pageRequest);
-        //가져온 books의 size는 9이어야함
-        assertEquals(9,books.size());
+        //가져온 books의 size는 10이어야함
+        assertEquals(10,books.size());
     }
 
     @Test
     @DisplayName("bookCnt 테스트")
     void bookCntTest(){
         //가져온 bookVo의 개수는 0개 이상이어야한다
-        assertTrue(bookDao.bookCnt()>0);
+        assertTrue(bookDao.selectBookCnt_before()>0);
+    }
+
+    @Test
+    @DisplayName("selectBooks 베스트셀러 조회")
+    void selectBooks_bs(){
+        List<BookVO> bookVOS = bookDao.selectBooks_bs(PageRequest.builder().build());
+        //가져온 bookVo의 개수는 0개 이상이어야한다
+        assertTrue(bookVOS.size()>0);
+    }
+
+    @Test
+    @DisplayName("selectBooks 새로나온책 조회")
+    void selectBooks_new(){
+        List<BookVO> bookVOS = bookDao.selectBooks_new(PageRequest.builder().build());
+        //가져온 bookVo의 개수는 0개 이상이어야한다
+        assertTrue(bookVOS.size()>0);
+    }
+
+    @Test
+    @DisplayName("searchBooks 테스트")
+    void searchBooksTest(){
+        String keyword = "건강";
+        String option = "C"; //제목
+        BookSearchVO bookSearchVO = BookSearchVO
+                .builder()
+                .keyword(keyword)
+                .option(option)
+                .page(1)
+                .size(10)
+                .build();
+        int searchedCnt = bookDao.selectSearchedCnt(bookSearchVO);
+        bookSearchVO.setSearchedCnt(searchedCnt);
+        List<BookVO> bookVOS = bookDao.searchBooks(bookSearchVO);
+        assertEquals(searchedCnt,bookVOS.size());
     }
 }

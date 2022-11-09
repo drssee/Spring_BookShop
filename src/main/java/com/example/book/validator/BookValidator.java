@@ -2,6 +2,7 @@ package com.example.book.validator;
 
 import com.example.book.controller.dto.BnoDto;
 import com.example.book.controller.form.BookForm;
+import com.example.book.vo.BookSearchVO;
 import com.example.common.paging.PageRequest;
 import com.example.common.paging.PageSetable;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +43,28 @@ public class BookValidator {
             pageRequest.setSize(size);
         } catch (IllegalArgumentException ignored) {}
 
+        return pageRequest;
+    }
+
+    public static PageRequest pageRequestResolver(BookSearchVO bookSearchVO, BindingResult bindingResult) {
+        //넘어온 pageRequest를 검증(@min,@max)해 오류가 있으면 기본값(page=1,size=9) 설정 ,
+        //오류가 없으면 그대로 반환
+        PageRequest pageRequest;
+        if(bindingResult.hasErrors()){
+            //단 페이지(pageRequest.getPage())값만 정확히 넘어온 경우,
+            //그 값은 사이즈의 기본값과 함께 사용
+            if(bindingResult.getFieldError("page")==null){
+                pageRequest = PageRequest.builder().page(bookSearchVO.getPage()).build();
+            }else{
+                pageRequest = PageRequest.builder().build();
+            }
+        } else{ //오류가 없으면 그대로 반환
+            pageRequest = PageRequest
+                    .builder()
+                    .page(bookSearchVO.getPage())
+                    .size(bookSearchVO.getSize())
+                    .build();
+        }
         return pageRequest;
     }
 

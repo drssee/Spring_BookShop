@@ -1,6 +1,7 @@
 package com.example.book.service;
 
 import com.example.book.dao.BookDao;
+import com.example.book.vo.BookSearchVO;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
 import com.example.book.vo.ImageVO;
@@ -51,7 +52,7 @@ public class BookServiceImpl implements BookService{
     }
 
     /**
-     * 상품(book)의 (목록)조회
+     * 상품(출판된book)의 (목록)조회
      */
     @Override
     public PageResponse<BookVO> getBooks(PageRequest pageRequest) {
@@ -62,7 +63,35 @@ public class BookServiceImpl implements BookService{
         return PageResponse.<BookVO>withAll()
                 .pageRequest(pageRequest)
                 .pageList(books)
-                .total(bookDao.bookCnt())
+                .total(bookDao.selectBookCnt_before())
+                .build();
+    }
+
+    /**
+     * 상품(출판예정book)의 (목록)조회
+     */
+    @Override
+    public PageResponse<BookVO> getBooks_new_paging(PageRequest pageRequest) {
+        return PageResponse.<BookVO>withAll()
+                .pageRequest(pageRequest)
+                .total(bookDao.selectBookCnt_after())
+                .pageList(bookDao.selectBooks_new(pageRequest))
+                .build();
+    }
+
+    /**
+     * 상품(베스트셀러) 목록 조회
+     */
+    @Override
+    public List<BookVO> getBooks_bs() {
+        return bookDao.selectBooks_bs(PageRequest.builder().build());
+    }
+    @Override
+    public PageResponse<BookVO> getBooks_bs_paging(PageRequest pageRequest) {
+        return PageResponse.<BookVO>withAll()
+                .pageRequest(pageRequest)
+                .total(bookDao.selectBookCnt_before())
+                .pageList(bookDao.selectBooks_bs(pageRequest))
                 .build();
     }
 
@@ -95,9 +124,27 @@ public class BookServiceImpl implements BookService{
         bookDao.deleteCategory_book(bno);
     }
 
-    /*
-    카테고리 이름 검증
+
+    /**
+     * 삼품(이름,카테고리,이름+내용) 검색
      */
+    @Override
+    public PageResponse<BookVO> getSearchedBooks(BookSearchVO bookSearchVO) {
+        PageRequest pageRequest = PageRequest
+                .builder()
+                .page(bookSearchVO.getPage())
+                .size(bookSearchVO.getSize())
+                .build();
+        return PageResponse.<BookVO>withAll()
+                .pageRequest(pageRequest)
+                .total(bookDao.selectSearchedCnt(bookSearchVO))
+                .pageList(bookDao.searchBooks(bookSearchVO))
+                .build();
+    }
+
+    /*
+        카테고리 이름 검증
+         */
     private static void validCategoryName(CategoryVO categoryVO) {
         //categoryVo 검증 1보다 작은 값은 존재하지 않는 카테고리이름
         //현재 존재하지 않는 카테고리 = 기타

@@ -20,23 +20,27 @@
         values (#{pubDate},#{author},#{description},#{publisher})
     </insert>
     <insert id="insertBook_images" parameterType="imageVO" useGeneratedKeys="true" keyProperty="bno">
-        insert into book_images (bno,storeFileName,originalFileName,imgCategory,ext,size)
-        values (#{bno},#{storeFileName},#{originalFileName},#{imgCategory},#{ext},#{size})
+        insert into book_images (bno,storeFileName,originalFileName,imgCategory,ext,size,fileDir)
+        values (#{bno},#{storeFileName},#{originalFileName},#{imgCategory},#{ext},#{size},#{fileDir})
     </insert>
     <select id="selectBook" resultType="bookVO">
         <include refid="select_from_joinTable_bookAndCategoryName"/>
         where main.bno = ${bno}
     </select>
     <select id="selectBooks" parameterType="pageRequest" resultType="bookVO">
-        select *
-        from book as main
-        inner join book_info as info on main.bno=info.bno
-        inner join book_images as images on info.bno=images.bno
-        inner join category_book as cb on images.bno=cb.bno
+        <include refid="select_from_joinTable_bookAndCategoryName"/>
         order by main.bno desc limit #{skip} , #{size}
+    </select>
+    <select id="selectBooks_new" parameterType="pageRequest" resultType="bookVO">
+        <include refid="select_from_joinTable_bookAndCategoryName"/>
+        order by info.pubDate desc , main.bno desc limit #{skip} , #{size}
     </select>
     <select id="bookCnt" resultType="int">
         select count(*) from book
+    </select>
+    <select id="selectBooks_bs" parameterType="pageRequest" resultType="bookVO">
+        <include refid="select_from_joinTable_bookAndCategoryName"/>
+        order by main.like_cnt desc , main.bno desc limit #{skip} , #{size}
     </select>
     <update id="updateBook" parameterType="bookVO">
         update book
@@ -79,15 +83,29 @@
             <when test='option=="C"'>
                 AND category_name LIKE concat('%', #{keyword}, '%')
             </when>
-            <when test='option=="L"'>
-                AND like_cnt LIKE concat('%', #{keyword}, '%')
-            </when>
             <otherwise>
                 AND (title   LIKE concat('%', #{keyword}, '%')
                 OR   description LIKE concat('%', #{keyword}, '%'))
             </otherwise>
         </choose>
     </sql>
-
+    <select id="searchBooks" resultType="bookVO">
+        <include refid="select_from_joinTable_bookAndCategoryName"/>
+        inner join category as ca on cb.category_name_id=ca.category_name_id
+        where true
+        <include refid="searchCondition"/>
+        order by main.bno desc limit #{skip} , #{size}
+    </select>
+    <select id="selectSearchedCnt" resultType="int">
+        select count(*)
+        from book as main
+        inner join book_info as info on main.bno=info.bno
+        inner join book_images as images on info.bno=images.bno
+        inner join category_book as cb on images.bno=cb.bno
+        inner join category as ca on cb.category_name_id=ca.category_name_id
+        where true
+        <include refid="searchCondition"/>
+    </select>
     <!--search-->
+<!--    <![CDATA[<]]>-->
 </mapper>

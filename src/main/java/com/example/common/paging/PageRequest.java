@@ -15,7 +15,7 @@ public class PageRequest {
     @Builder.Default
     private Integer page=1;
     @NotNull
-    @Range(min=10,max=100)
+    @Range(min=5,max=100)
     @Builder.Default
     private Integer size=10;
     public Integer getSkip(){

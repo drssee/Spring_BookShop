@@ -1,12 +1,13 @@
 package com.example.book.controller;
 
 import com.example.book.controller.dto.BnoDto;
-import com.example.book.vo.ImageVO;
 import com.example.book.controller.form.BookEditForm;
 import com.example.book.controller.form.BookSaveForm;
 import com.example.book.service.BookService;
+import com.example.book.vo.BookSearchVO;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
+import com.example.book.vo.ImageVO;
 import com.example.common.file.FileIO;
 import com.example.common.paging.PageRequest;
 import lombok.RequiredArgsConstructor;
@@ -41,14 +42,71 @@ public class BookController {
     ///////////////////////////////////////////코어로직 실패하면 예외 던지기 500에러
 
     // *BookController api*
+
+    // get /book/books <-전체(출판된) 목록 조회
+    // get /book/books_new <-전체(출판예정된) 목록 조회
+    // get /book/bs <-베스트셀러 목록조회
     // get /book/{bno} <-단일조회
     // get /book/add <-단일등록폼
     // post /book/add <-단일등록
     // get /book/{bno}/edit <-단일수정폼
     // post /book/{bno}/edit <-단일수정
     // post /book/{bno}/delete <-단일삭제
+    // get /book/search <-상품검색
 
-    //다운로드 경로 추가?
+
+    /**
+     * 출판된 목록조회
+     */
+    @GetMapping("/books")
+    public String books(@Validated PageRequest pageRequest , BindingResult bindingResult
+            , Model model){
+        /*
+        valid
+         */
+        //파라미터로 넘어온 pageRequest(page,size)을 pageRequestResolver에 넘겨 유효한 pageRequest값을 가져온다
+        pageRequest = pageRequestResolver(pageRequest, bindingResult);
+
+        /*
+        core
+         */
+        //pageRequest를 이용해 페이징처리용 pageResponse 을 가져온후, 모델에 담아 리턴
+        model.addAttribute("pageResponse",bookService.getBooks(pageRequest));
+        return "book/books";
+    }
+
+    /**
+     * 출판 예정인 목록조회
+     */
+    @GetMapping("/books_new")
+    public String books_new(@Validated PageRequest pageRequest , BindingResult bindingResult
+            , Model model){
+        /*
+        valid
+         */
+        //파라미터로 넘어온 pageRequest(page,size)을 pageRequestResolver에 넘겨 유효한 pageRequest값을 가져온다
+        pageRequest = pageRequestResolver(pageRequest, bindingResult);
+
+        /*
+        core
+         */
+        //pageRequest를 이용해 페이징처리용 pageResponse 을 가져온후, 모델에 담아 리턴
+        model.addAttribute("pageResponse",bookService.getBooks_new_paging(pageRequest));
+        return "book/books_new";
+    }
+
+    /**
+     * 베스트셀러 조회
+     */
+    @GetMapping("/books_bs")
+    public String Books_bs(Model model) {
+        /*
+        core
+        */
+        //베스트 셀러(상위10)개의 목록을 모델에 담아 리턴
+        model.addAttribute("books",bookService.getBooks_bs());
+        return "book/books_bs";
+    }
 
     /**
      * 단일조회
@@ -61,7 +119,7 @@ public class BookController {
          */
         //bnoDto 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateBnoDto(bnoDto, bindingResult, model
-                ,"common/alert","/bookshop/book/books?page="+bnoDto.getPage()+"&size="+bnoDto.getSize());
+                ,"common/alert","/bookshop");
         if (errorUrl != null) return errorUrl;
 
         /*
@@ -134,7 +192,7 @@ public class BookController {
         */
         //bnoDto 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateBnoDto(bnoDto, bindingResult, model
-                ,"common/alert","//bookshop?page="+bnoDto.getPage()+"&size="+bnoDto.getSize());
+                ,"common/alert","/bookshop");
         if (errorUrl != null) return errorUrl;
 
 
@@ -187,7 +245,7 @@ public class BookController {
         */
         //bnoDto 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateBnoDto(bnoDto, bindingResult, model
-                ,"common/alert","/bookshop?page="+bnoDto.getPage()+"&size="+bnoDto.getSize());
+                ,"common/alert","/bookshop");
         if (errorUrl != null) return errorUrl;
 
         /*
@@ -197,13 +255,29 @@ public class BookController {
         bookService.removeBook(bnoDto.getBno());
         log.info("도서삭제 성공");
         //삭제에 성공하면 리스트로 리다이렉트
-        return "redirect:"+"/book/books?page="+bnoDto.getPage()+"&size="+bnoDto.getSize();
+        return "redirect:"+"/bookshop";
     }
 
+    /**
+     * 상품 검색
+     */
     @GetMapping("/search")
-    public String searchBook(){
-        log.info("searchBook");
-        return null;
+    public String searchBook(@Validated BookSearchVO bookSearchVO,BindingResult bindingResult
+            ,Model model){
+        /*
+        valid
+        */
+        //검색목록 페이징을 위한 pagerequest 초기화
+        PageRequest pageRequest = pageRequestResolver(bookSearchVO,bindingResult);
+        bookSearchVO.setPage(pageRequest.getPage());
+        bookSearchVO.setSize(pageRequest.getSize());
+        /*
+        core
+        */
+        //완성된 검색 조건을 넘긴후 결과를 받아온다
+        model.addAttribute("pageResponse",bookService.getSearchedBooks(bookSearchVO));
+        model.addAttribute("keyword",bookSearchVO.getKeyword());
+        return "book/books_sc";
     }
 
     /*

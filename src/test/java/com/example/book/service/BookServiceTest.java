@@ -91,9 +91,9 @@ public class BookServiceTest {
         assertEquals(pageResponse_BookVO.getSize(),pageResponse_BookVO.getPageList().size());
         assertEquals(pageResponse_BookVO.getPage(),pageResponse_BookVO.getPage());
         assertEquals(pageResponse_BookVO.getSize(),pageResponse_BookVO.getSize());
-        assertEquals(bookDao.bookCnt(),pageResponse_BookVO.getTotal());
+        assertEquals(bookDao.selectBookCnt_before(),pageResponse_BookVO.getTotal());
         assertEquals(pageRequest.getPage(),pageResponse_BookVO.getStart());
         assertEquals(pageRequest.getPage()+9,pageResponse_BookVO.getEnd());
-        assertEquals((int)(Math.ceil(bookDao.bookCnt()/(double)pageRequest.getSize())),pageResponse_BookVO.getLast());
+        assertEquals((int)(Math.ceil(bookDao.selectBookCnt_before()/(double)pageRequest.getSize())),pageResponse_BookVO.getLast());
     }
 }
