@@ -28,13 +28,6 @@
                                      width="200px" height="324px">
                             </c:otherwise>
                         </c:choose>
-                        <!--커버 이미지가 없으면 기본 이미지 사용 끝-->
-<%--                        <div class="card-body">--%>
-<%--                            <h5 class="card-title custum_size2" style="font-size: 12px; font-weight: bold">${book.title}</h5>--%>
-<%--                            <p class="card-text"><strong>저자</strong> : ${book.author}</p>--%>
-<%--                            <p class="card-text"><strong>출판일</strong> : ${book.pubDate.toString().substring(0,10)}</p>--%>
-<%--                            <p class="card-text"><strong>출판사</strong> : ${book.publisher}</p>--%>
-<%--                        </div>--%>
                     </div>
                 </a>
             </div>
@@ -48,11 +41,11 @@
 <!--book(새로나온책) 리스트-->
 <div class="center" style="height: 450px; margin-top: 50px; overflow: hidden;">
     <h2>새로나온책</h2>
-    <a class="right" href="<c:url value="/book/books"/>" style="margin-top:15px;">
+    <a class="right" href="<c:url value="/book/books_new"/>" style="margin-top:15px;">
         <span>더보기</span>
     </a>
     <div class="row row-cols-1 row-cols-md-5 g-4 card_custum">
-        <c:forEach items="${book_new}" var="book">
+        <c:forEach items="${book_new.pageList}" var="book">
             <div class="col size">
                 <a href="<c:url value="/book/search/${book.bno}"/>">
                     <div class="card custom1 custom_size">
@@ -69,13 +62,6 @@
                                      width="200px" height="324px">
                             </c:otherwise>
                         </c:choose>
-                        <!--커버 이미지가 없으면 기본 이미지 사용 끝-->
-<%--                        <div class="card-body">--%>
-<%--                            <h5 class="card-title custum_size2" style="font-size: 12px; font-weight: bold">${book.title}</h5>--%>
-<%--                            <p class="card-text"><strong>저자</strong> : ${book.author}</p>--%>
-<%--                            <p class="card-text"><strong>출판일</strong> : ${book.pubDate.toString().substring(0,10)}</p>--%>
-<%--                            <p class="card-text"><strong>출판사</strong> : ${book.publisher}</p>--%>
-<%--                        </div>--%>
                     </div>
                 </a>
             </div>

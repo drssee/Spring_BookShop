@@ -3,7 +3,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="<c:url value="/resources/css/book.css"/>">
 <!--book 리스트-->
-<h3 style="font-size: 24px; margin-left:170px;">출판 예정 도서목록 : ${pageResponse.total}개</h3>
+<h3 style="font-size: 24px; margin-left:170px;">검색된 도서 목록 : ${pageResponse.total}개</h3>
 <div style="height: 800px; margin-top:350px; padding-top:0;">
     <div>
     </div>
@@ -16,14 +16,14 @@
                         <c:choose>
                             <c:when test="${book.storeFileName!=null}">
                                 <c:choose>
-                                    <c:when test="${book.fileDir==null}">
+                                    <c:when test="${book.size==0}">
                                         <img src="${book.storeFileName}"
                                              class="card-img-top" alt="..."
                                              width="200px" height="324px">
                                     </c:when>
                                     <c:otherwise>
-                                        <img src="${book.fileDir}${book.storeFileName}"
-                                             class="card-img-top" alt="..."
+                                        <img src="${pageContext.request.contextPath}/resources/upload/images${book.storeFileName}"
+                                             class="card-img-top" alt="no-image"
                                              width="200px" height="324px">
                                     </c:otherwise>
                                 </c:choose>
@@ -54,20 +54,20 @@
     <ul>
         <c:if test="${pageResponse.showPrev}">
             <li class="nav_prev">
-                <a href="<c:url value="/book/books?page=${pageResponse.page-1}&size=${pageResponse.size}"/>">
+                <a href="<c:url value="/book/books_new?page=${pageResponse.page-1}&size=${pageResponse.size}"/>">
                     [PREV]
                 </a>
             </li>
         </c:if>
         <c:forEach begin="${pageResponse.start}" end="${pageResponse.end}" var="num">
             <li>
-                <a href="<c:url value="/book/books?page=${num}&size=${pageResponse.size}"/>"
+                <a href="<c:url value="/book/books_new?page=${num}&size=${pageResponse.size}"/>"
                    class="${num==pageResponse.page?'sel':''}">${num} </a>
             </li>
         </c:forEach>
         <c:if test="${pageResponse.showNext}">
             <li class="nav_next">
-                <a href="<c:url value="/book/books?page=${pageResponse.page+1}&size=${pageResponse.size}"/>">
+                <a href="<c:url value="/book/books_new?page=${pageResponse.page+1}&size=${pageResponse.size}"/>">
                     [NEXT]
                 </a>
             </li>

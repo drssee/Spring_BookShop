@@ -20,6 +20,10 @@ public class PageResponse<E> {
     private boolean showNext;
     private List<E> pageList;
 
+    public void setPageList(List<E> pageList) {
+        this.pageList = pageList;
+    }
+
     @Builder(builderMethodName = "withAll")
     public PageResponse(PageRequest pageRequest, List<E> pageList, int total){
         this.page= pageRequest.getPage();

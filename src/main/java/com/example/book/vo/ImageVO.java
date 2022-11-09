@@ -17,15 +17,13 @@ public class ImageVO {
     private String imgCategory; //이미지 카테고리 cover=c,book_imgs=i
     private String ext; //확장자
     private long size; //파일용량
-    private String fileDir; //파일디렉토리
     private Date regDate; //등록일
 
-    public ImageVO(String originalFileName, String storedFileName, String imgCategory, String ext, long size, String fileDir) {
+    public ImageVO(String originalFileName, String storedFileName, String imgCategory, String ext, long size) {
         this.originalFileName=originalFileName;
         this.storeFileName=storedFileName;
         this.imgCategory=imgCategory;
         this.ext=ext;
         this.size=size;
-        this.fileDir=fileDir;
     }
 }

@@ -23,7 +23,6 @@ public class FileIO {
      * 파일 업로드 후 vo를 리턴
      */
     public ImageVO uploadFile(MultipartFile multipartFile, String fileDir) {
-        System.out.println("multipartFile = " + multipartFile);
         //업로드할 파일이 비어있으면 return null
         if(multipartFile.isEmpty()){
             return null;
@@ -46,10 +45,9 @@ public class FileIO {
         } catch (IOException e) {
             throw new RuntimeException("파일 업로드 실패");
         }
-        ImageVO imageVO = new ImageVO(originalFileName,storedFileName,imgCategory,ext,size,fileDir);
-        System.out.println("imageVO!!!!!!in FileIO = " + imageVO);
+        ImageVO imageVO = new ImageVO(originalFileName,storedFileName,imgCategory,ext,size);
         //사용자업로드 파일이름,서버업로드 파일이름 저장한 vo 리턴
-        return new ImageVO(originalFileName,storedFileName,imgCategory,ext,size,fileDir);
+        return new ImageVO(originalFileName,storedFileName,imgCategory,ext,size);
     }
 
     /**

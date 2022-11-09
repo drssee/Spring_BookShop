@@ -36,7 +36,12 @@ public class BookServiceImpl implements BookService{
         //book_info db에 bookVO를 저장
         bookDao.insertBook_info(bookVO);
         //book_images db에 bookVO를 저장
-        insertBook_images(bookVO, imageVOs);
+        //이미지 저장 실패 롤백을 위한 try-catch
+        try {
+            insertBook_images(bookVO, imageVOs);
+        } catch (Exception e) {
+            throw new RuntimeException("이미지 저장 실패");
+        }
 
         /*
         category관련 insert
@@ -52,30 +57,25 @@ public class BookServiceImpl implements BookService{
     }
 
     /**
+     * 상품(book)의 (단일)조회
+     */
+    @Override
+    public BookVO getBook(Long bno) {
+        return bookDao.selectBook(bno);
+    }
+
+    /**
      * 상품(출판된book)의 (목록)조회
      */
     @Override
     public PageResponse<BookVO> getBooks(PageRequest pageRequest) {
         //파라미터로 입력받은 pagerequest 정보(page,size)를 이용해서 해당 북 리스트를 얻어온다
         List<BookVO> books = bookDao.selectBooks(pageRequest);
-        System.out.println("books = " + books);
         //얻어온 리스트와 pagerequest를 이용 pageresponse를 초기화해 리턴한다
         return PageResponse.<BookVO>withAll()
                 .pageRequest(pageRequest)
                 .pageList(books)
                 .total(bookDao.selectBookCnt_before())
-                .build();
-    }
-
-    /**
-     * 상품(출판예정book)의 (목록)조회
-     */
-    @Override
-    public PageResponse<BookVO> getBooks_new_paging(PageRequest pageRequest) {
-        return PageResponse.<BookVO>withAll()
-                .pageRequest(pageRequest)
-                .total(bookDao.selectBookCnt_after())
-                .pageList(bookDao.selectBooks_new(pageRequest))
                 .build();
     }
 
@@ -96,11 +96,27 @@ public class BookServiceImpl implements BookService{
     }
 
     /**
-     * 상품(book)의 (단일)조회
+     * 상품(새로나온책) 목록 조회
      */
     @Override
-    public BookVO getBook(Long bno) {
-        return bookDao.selectBook(bno);
+    public PageResponse<BookVO> getBookds_new(PageRequest pageRequest) {
+        return PageResponse.<BookVO>withAll()
+                .pageRequest(pageRequest)
+                .total(bookDao.selectBookCnt_new())
+                .pageList(bookDao.selectBooks_new(pageRequest))
+                .build();
+    }
+
+    /**
+     * 상품(출판예정book)의 (목록)조회
+     */
+    @Override
+    public PageResponse<BookVO> getBooks_toBePublished(PageRequest pageRequest) {
+        return PageResponse.<BookVO>withAll()
+                .pageRequest(pageRequest)
+                .total(bookDao.selectBookCnt_after())
+                .pageList(bookDao.selectBooks_toBePublished(pageRequest))
+                .build();
     }
 
     /**
@@ -164,7 +180,6 @@ public class BookServiceImpl implements BookService{
                 //이미지 기억을 위한 부모 bno set
                 if(imageVO!=null){
                     imageVO.setBno(bookVO.getBno());
-                    System.out.println("imageVO!!!! = " + imageVO);
                     bookDao.insertBook_images(imageVO);
                 }
             }//for

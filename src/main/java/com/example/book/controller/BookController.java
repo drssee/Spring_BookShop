@@ -43,9 +43,10 @@ public class BookController {
 
     // *BookController api*
 
-    // get /book/books <-전체(출판된) 목록 조회
-    // get /book/books_new <-전체(출판예정된) 목록 조회
+    // get /book/books <-전체(출판된) 목록조회
     // get /book/bs <-베스트셀러 목록조회
+    // get /book/books_new <-새로나온책 목록조회
+    // get /book/books_toBePublished <-출판예정 목록조회
     // get /book/{bno} <-단일조회
     // get /book/add <-단일등록폼
     // post /book/add <-단일등록
@@ -76,10 +77,43 @@ public class BookController {
     }
 
     /**
-     * 출판 예정인 목록조회
+     * 베스트셀러 목록조회
+     */
+    @GetMapping("/books_bs")
+    public String Books_bs(Model model) {
+        /*
+        core
+        */
+        //베스트 셀러(상위10)개의 목록을 모델에 담아 리턴
+        model.addAttribute("books",bookService.getBooks_bs());
+        return "book/books_bs";
+    }
+
+    /**
+     * 새로나온책(이번달) 목록조회
      */
     @GetMapping("/books_new")
     public String books_new(@Validated PageRequest pageRequest , BindingResult bindingResult
+            , Model model) {
+        /*
+        valid
+         */
+        //파라미터로 넘어온 pageRequest(page,size)을 pageRequestResolver에 넘겨 유효한 pageRequest값을 가져온다
+        pageRequest = pageRequestResolver(pageRequest, bindingResult);
+
+        /*
+        core
+         */
+        //pageRequest를 이용해 페이징처리용 pageResponse 을 가져온후, 모델에 담아 리턴
+        model.addAttribute("pageResponse",bookService.getBookds_new(pageRequest));
+        return "book/books_new";
+    }
+
+    /**
+     * 출판 예정인 목록조회
+     */
+    @GetMapping("/books_toBePublished")
+    public String books_toBePublished(@Validated PageRequest pageRequest , BindingResult bindingResult
             , Model model){
         /*
         valid
@@ -91,22 +125,11 @@ public class BookController {
         core
          */
         //pageRequest를 이용해 페이징처리용 pageResponse 을 가져온후, 모델에 담아 리턴
-        model.addAttribute("pageResponse",bookService.getBooks_new_paging(pageRequest));
-        return "book/books_new";
+        model.addAttribute("pageResponse",bookService.getBooks_toBePublished(pageRequest));
+        return "book/books_toBePublished";
     }
 
-    /**
-     * 베스트셀러 조회
-     */
-    @GetMapping("/books_bs")
-    public String Books_bs(Model model) {
-        /*
-        core
-        */
-        //베스트 셀러(상위10)개의 목록을 모델에 담아 리턴
-        model.addAttribute("books",bookService.getBooks_bs());
-        return "book/books_bs";
-    }
+
 
     /**
      * 단일조회
@@ -262,7 +285,7 @@ public class BookController {
      * 상품 검색
      */
     @GetMapping("/search")
-    public String searchBook(@Validated BookSearchVO bookSearchVO,BindingResult bindingResult
+    public String searchBook(@ModelAttribute("bookSearchVO") @Validated BookSearchVO bookSearchVO,BindingResult bindingResult
             ,Model model){
         /*
         valid
@@ -276,7 +299,6 @@ public class BookController {
         */
         //완성된 검색 조건을 넘긴후 결과를 받아온다
         model.addAttribute("pageResponse",bookService.getSearchedBooks(bookSearchVO));
-        model.addAttribute("keyword",bookSearchVO.getKeyword());
         return "book/books_sc";
     }
 
@@ -285,6 +307,7 @@ public class BookController {
      */
     private ImageVO getUploadFileVO_cover(BookSaveForm form, HttpServletRequest request) {
         if(form.getUploadFile()!=null){
+            //파일의 경로를 구한뒤 업로드
             return fileIO.uploadFile(form.getUploadFile(), getFiledDir(request));
         }
         return null;
@@ -295,6 +318,7 @@ public class BookController {
     */
     private List<ImageVO> getUploadFileVO_imgs(BookSaveForm form, HttpServletRequest request) {
         if(form.getUploadFiles().size()>0){
+            //파일의 경로를 구한뒤 업로드
             return fileIO.uploadFiles(form.getUploadFiles(), getFiledDir(request));
         }
         return null;
@@ -318,14 +342,11 @@ public class BookController {
     /*
     cos를 이용해 이미지 저장 디렉토리(경로)를 얻어온다
      */
-    private static String getFiledDir(HttpServletRequest request) {
+    private String getFiledDir(HttpServletRequest request) {
         //파일 업로드 경로를 설정
         //세션으로 부터 현재 어플리케이션 컨텍스트를 얻어온다
         ServletContext context = request.getSession().getServletContext();
-        //어플리케이션 컨텍스트 루트 바로 아래 /resources/upload/images라는 경로를 얻어옴
-        String filedDir = context.getRealPath("/resources/upload/images");
-        //파일 업로드 후 uploadFilevo를 초기화
-        log.info("filePath = "+ filedDir);
-        return filedDir;
+        //어플리케이션 컨텍스트 루트 바로 아래 /resources/upload라는 경로를 얻어옴
+        return context.getRealPath("/resources/upload/images");
     }
 }

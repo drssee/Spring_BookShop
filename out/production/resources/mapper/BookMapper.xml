@@ -8,7 +8,7 @@
         select *
         from book as main
         inner join book_info as info on main.bno=info.bno
-        inner join book_images as images on info.bno=images.bno
+        inner join book_images as images on info.bno=images.bno and images.imgCategory='c'
         inner join category_book as cb on images.bno=cb.bno
     </sql>
     <insert id="insertBook" parameterType="bookVO" useGeneratedKeys="true" keyProperty="bno">
@@ -20,8 +20,8 @@
         values (#{pubDate},#{author},#{description},#{publisher})
     </insert>
     <insert id="insertBook_images" parameterType="imageVO" useGeneratedKeys="true" keyProperty="bno">
-        insert into book_images (bno,storeFileName,originalFileName,imgCategory,ext,size,fileDir)
-        values (#{bno},#{storeFileName},#{originalFileName},#{imgCategory},#{ext},#{size},#{fileDir})
+        insert into book_images (bno,storeFileName,originalFileName,imgCategory,ext,size)
+        values (#{bno},#{storeFileName},#{originalFileName},#{imgCategory},#{ext},#{size})
     </insert>
     <select id="selectBook" resultType="bookVO">
         <include refid="select_from_joinTable_bookAndCategoryName"/>
@@ -29,10 +29,22 @@
     </select>
     <select id="selectBooks" parameterType="pageRequest" resultType="bookVO">
         <include refid="select_from_joinTable_bookAndCategoryName"/>
-        where info.pubDate<![CDATA[<]]>now()
-        order by main.bno desc , main.bno desc limit #{skip} , #{size}
+        where info.pubDate<![CDATA[<=]]>now()
+        order by main.bno desc limit #{skip} , #{size}
+    </select>
+    <select id="selectBooks_bs" parameterType="pageRequest" resultType="bookVO">
+        <include refid="select_from_joinTable_bookAndCategoryName"/>
+        where info.pubDate<![CDATA[<=]]>now()
+        order by main.like_cnt desc , main.bno desc limit #{skip} , #{size}
     </select>
     <select id="selectBooks_new" parameterType="pageRequest" resultType="bookVO">
+        <include refid="select_from_joinTable_bookAndCategoryName"/>
+        where info.pubDate<![CDATA[<=]]>now() and
+        year(pubDate) = year(now())
+        and month(pubDate) = month(now())
+        order by info.pubDate desc , main.bno desc limit #{skip} , #{size}
+    </select>
+    <select id="selectBooks_toBePublished" parameterType="pageRequest" resultType="bookVO">
         <include refid="select_from_joinTable_bookAndCategoryName"/>
         where info.pubDate<![CDATA[>]]>now()
         order by info.pubDate desc , main.bno desc limit #{skip} , #{size}
@@ -41,7 +53,16 @@
         <![CDATA[
         select count(*) from book as main
         inner join book_info as info on main.bno=info.bno
-        where info.pubDate<now()
+        where info.pubDate<=now()
+        ]]>
+    </select>
+    <select id="selectBookCnt_new" resultType="int">
+        <![CDATA[
+        select count(*) from book as main
+        inner join book_info as info on main.bno=info.bno
+        where info.pubDate<=now() and
+        year(pubDate) = year(now())
+        and month(pubDate) = month(now())
         ]]>
     </select>
     <select id="selectBookCnt_after" resultType="int">
@@ -50,11 +71,6 @@
         inner join book_info as info on main.bno=info.bno
         where info.pubDate>now()
         ]]>
-    </select>
-    <select id="selectBooks_bs" parameterType="pageRequest" resultType="bookVO">
-        <include refid="select_from_joinTable_bookAndCategoryName"/>
-        where info.pubDate<![CDATA[<]]>now()
-        order by main.like_cnt desc , main.bno desc limit #{skip} , #{size}
     </select>
     <update id="updateBook" parameterType="bookVO">
         update book
@@ -111,7 +127,7 @@
                  inner join book_images as images on info.bno=images.bno
                  inner join category_book as cb on images.bno=cb.bno
         inner join category as ca on cb.category_name_id=ca.category_name_id
-        where info.pubDate<now() AND true
+        where info.pubDate<=now() AND true
         ]]>
         <include refid="searchCondition"/>
         order by main.bno desc limit #{skip} , #{size}
@@ -124,7 +140,7 @@
         inner join book_images as images on info.bno=images.bno
         inner join category_book as cb on images.bno=cb.bno
         inner join category as ca on cb.category_name_id=ca.category_name_id
-        where info.pubDate<now() AND true
+        where info.pubDate<=now() AND true
         ]]>
         <include refid="searchCondition"/>
     </select>

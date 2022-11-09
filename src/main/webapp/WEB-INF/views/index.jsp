@@ -41,7 +41,7 @@
 <!--book(새로나온책) 리스트-->
 <div class="center" style="height: 450px; margin-top: 50px; overflow: hidden;">
     <h2>새로나온책</h2>
-    <a class="right" href="<c:url value="/book/books"/>" style="margin-top:15px;">
+    <a class="right" href="<c:url value="/book/books_new"/>" style="margin-top:15px;">
         <span>더보기</span>
     </a>
     <div class="row row-cols-1 row-cols-md-5 g-4 card_custum">

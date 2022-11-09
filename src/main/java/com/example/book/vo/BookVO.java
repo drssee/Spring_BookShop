@@ -34,7 +34,6 @@ public class BookVO {
     private String imgCategory;
     private String ext;
     private int size;
-    private String fileDir;
 
     /*
     book_info

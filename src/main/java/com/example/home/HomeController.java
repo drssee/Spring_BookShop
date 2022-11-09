@@ -37,7 +37,7 @@ public class HomeController {
          */
         //베스트셀러 , 새로나온책 프리뷰를 model에 담아 리턴
         model.addAttribute("book_bs",bookService.getBooks_bs());
-        model.addAttribute("book_new",bookService.getBooks_new_paging(pageRequest));
+        model.addAttribute("book_new",bookService.getBookds_new(pageRequest));
         return "index";
     }
 

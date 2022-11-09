@@ -68,11 +68,10 @@
                     </li><!--전체메뉴1-->
                     <li class="sel"><a href="<c:url value="/book/books_bs"/>">베스트셀러</a>
                     </li>
-                    <li class="sel"><a href="<c:url value="/book/books"/>">새로나온책</a>
+                    <li class="sel"><a href="<c:url value="/book/books_new"/>">새로나온책</a>
                     </li>
-                    <li><a href="#" onclick="alert('준비중인 메뉴입니다.')">추천도서</a></li>
-                    <li><a href="#" onclick="alert('준비중인 메뉴입니다.')">음반/영화</a>
-                    </li>
+                    <li><a href="<c:url value="/book/books_toBePublished"/>">출판예정도서</a></li>
+                    <li><a href="<c:url value="/book/books"/>">도서목록</a></li>
                     <li><a href="#">고객센터</a>
                     </li>
                 </ul>

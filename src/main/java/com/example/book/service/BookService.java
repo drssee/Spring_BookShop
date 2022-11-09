@@ -16,14 +16,14 @@ public interface BookService {
     BookVO registerBook(BookVO bookVO, CategoryVO categoryVO, List<ImageVO> imageVOs);
 
     /**
+     * 상품(book)의 (단일)조회
+     */
+    BookVO getBook(Long bno);
+
+    /**
      * 상품(출판된book)의 (목록)조회
      */
     PageResponse<BookVO> getBooks(PageRequest pageRequest);
-    /**
-     * 상품(출판예정book)의 (목록)조회
-     */
-    PageResponse<BookVO> getBooks_new_paging(PageRequest pageRequest);
-
 
     /**
      * 상품(베스트셀러) 목록 조회
@@ -31,12 +31,16 @@ public interface BookService {
     List<BookVO> getBooks_bs();
     PageResponse<BookVO> getBooks_bs_paging(PageRequest pageRequest);
 
-
+    /**
+     * 상품(새로나온책) 목록 조회
+     */
+    PageResponse<BookVO> getBookds_new(PageRequest pageRequest);
 
     /**
-     * 상품(book)의 (단일)조회
+     * 상품(출판예정book)의 (목록)조회
      */
-    BookVO getBook(Long bno);
+    PageResponse<BookVO> getBooks_toBePublished(PageRequest pageRequest);
+
 
     /**
      * 상품(book)의 수정 및 업데이트
@@ -52,4 +56,5 @@ public interface BookService {
      *  삼품(이름,카테고리,이름+내용) 검색
      */
     PageResponse<BookVO> getSearchedBooks(BookSearchVO bookSearchVO);
+
 }

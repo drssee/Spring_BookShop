@@ -16,14 +16,14 @@
                         <c:choose>
                             <c:when test="${book.storeFileName!=null}">
                                 <c:choose>
-                                    <c:when test="${book.fileDir==null}">
+                                    <c:when test="${book.size==0}">
                                         <img src="${book.storeFileName}"
                                              class="card-img-top" alt="..."
                                              width="200px" height="324px">
                                     </c:when>
                                     <c:otherwise>
-                                        <img src="${book.fileDir}${book.storeFileName}"
-                                             class="card-img-top" alt="..."
+                                        <img src="${pageContext.request.contextPath}/resources/upload/images${book.storeFileName}"
+                                             class="card-img-top" alt="no-image"
                                              width="200px" height="324px">
                                     </c:otherwise>
                                 </c:choose>
