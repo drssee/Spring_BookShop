@@ -43,6 +43,12 @@ public interface BookService {
 
 
     /**
+     * 내부 이미지 조회
+     */
+    List<ImageVO> getBook_Iimages(Long bno);
+
+
+    /**
      * 상품(book)의 수정 및 업데이트
      */
     boolean updateBook(BookVO bookVO);

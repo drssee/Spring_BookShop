@@ -16,8 +16,8 @@
         values (#{title},#{price},#{stock})
     </insert>
     <insert id="insertBook_info" parameterType="bookVO" useGeneratedKeys="true" keyProperty="bno">
-        insert into book_info (pubDate,author,description,publisher)
-        values (#{pubDate},#{author},#{description},#{publisher})
+        insert into book_info (bno,pubDate,author,description,publisher)
+        values (#{bno},#{pubDate},#{author},#{description},#{publisher})
     </insert>
     <insert id="insertBook_images" parameterType="imageVO" useGeneratedKeys="true" keyProperty="bno">
         insert into book_images (bno,storeFileName,originalFileName,imgCategory,ext,size)
@@ -71,6 +71,9 @@
         inner join book_info as info on main.bno=info.bno
         where info.pubDate>now()
         ]]>
+    </select>
+    <select id="selectBookImgs" resultType="imageVO">
+        select * from book_images where bno = #{bno} and imgCategory='i'
     </select>
     <update id="updateBook" parameterType="bookVO">
         update book

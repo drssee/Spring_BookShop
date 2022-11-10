@@ -110,9 +110,25 @@ create table book_images
         primary key (bno)
 );
 
+create table review
+(
+    rno     bigint auto_increment,
+    bno     bigint      null,
+    id      varchar(30) null,
+    content text        null,
+    prno    bigint      null,
+    constraint review_pk
+        primary key (rno)
+);
+
 
 #auto-increment 1로 수정
 # ALTER TABLE book AUTO_INCREMENT=1;
 # ALTER TABLE book_images AUTO_INCREMENT=1;
 # ALTER TABLE book_info AUTO_INCREMENT=1;
 # ALTER TABLE category_book AUTO_INCREMENT=1;
+
+# alter table review
+#     add constraint review_book_null_fk
+#         foreign key (bno) references book (bno)
+#             on delete cascade;

@@ -4,6 +4,7 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.example.common.paging.PageRequest" alias="pageRequest"/>
+        <typeAlias type="com.example.common.dto.BnoDto" alias="bnoDto"/>
 
         <typeAlias type="com.example.book.vo.BookVO" alias="bookVO"/>
         <typeAlias type="com.example.book.vo.CategoryVO" alias="categoryVO"/>
@@ -13,5 +14,7 @@
         <typeAlias type="com.example.orders.vo.OrdersBookVO" alias="orders_bookVO"/>
 
         <typeAlias type="com.example.user.vo.UserVO" alias="userVO"/>
+
+        <typeAlias type="com.example.review.vo.ReviewVO" alias="reviewVO"/>
     </typeAliases>
 </configuration>

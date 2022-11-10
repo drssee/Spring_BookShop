@@ -1,9 +1,12 @@
 package com.example.common.file;
 
+import com.example.book.controller.form.BookSaveForm;
 import com.example.book.vo.ImageVO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,9 +16,6 @@ import java.util.UUID;
 
 @Component
 public class FileIO {
-//    //로컬 파일의 절대경로
-//    @Value("${local.file.dir}")
-//    private String filePath;
 
     //파일 업로드는 서버에 파일저장 + db에 uuid로 파일 이름 경로 저장
 
@@ -93,5 +93,53 @@ public class FileIO {
     private static String extracteExt(String originalFilename) {
         int pos = Objects.requireNonNull(originalFilename).lastIndexOf(".");
         return originalFilename.substring(pos + 1);
+    }
+
+    /*
+    커버이미지(단일)업로드
+     */
+    public ImageVO getUploadFileVO_cover(BookSaveForm form, HttpServletRequest request) {
+        if(form.getUploadFile()!=null){
+            //파일의 경로를 구한뒤 업로드
+            return uploadFile(form.getUploadFile(), getFiledDir(request));
+        }
+        return null;
+    }
+
+    /*
+    책이미지s(리스트)업로드
+    */
+    public List<ImageVO> getUploadFileVO_imgs(BookSaveForm form, HttpServletRequest request) {
+        if(form.getUploadFiles().size()>0){
+            //파일의 경로를 구한뒤 업로드
+            return uploadFiles(form.getUploadFiles(), getFiledDir(request));
+        }
+        return null;
+    }
+
+    /*
+    registerBook을 위한 List<ImageVO> 생성
+     */
+    public List<ImageVO> getImageVOList(BookSaveForm form, HttpServletRequest request) {
+        //uploadfileVO_cover 초기화
+        ImageVO imageVO_cover = getUploadFileVO_cover(form, request);
+        //uploadfileVO_imgs 초기화
+        List<ImageVO> imageVOs = getUploadFileVO_imgs(form, request);
+        //cover가 존재하면 imgs와 add
+        if(imageVO_cover!=null){
+            Objects.requireNonNull(imageVOs).add(imageVO_cover);
+        }
+        return imageVOs;
+    }
+
+    /*
+    cos를 이용해 이미지 저장 디렉토리(경로)를 얻어온다
+     */
+    public String getFiledDir(HttpServletRequest request) {
+        //파일 업로드 경로를 설정
+        //세션으로 부터 현재 어플리케이션 컨텍스트를 얻어온다
+        ServletContext context = request.getSession().getServletContext();
+        //어플리케이션 컨텍스트 루트 바로 아래 /resources/upload라는 경로를 얻어옴
+        return context.getRealPath("/resources/upload/images");
     }
 }

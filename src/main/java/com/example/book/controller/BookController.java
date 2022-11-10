@@ -1,15 +1,18 @@
 package com.example.book.controller;
 
-import com.example.book.controller.dto.BnoDto;
 import com.example.book.controller.form.BookEditForm;
+import com.example.book.controller.form.BookForm;
 import com.example.book.controller.form.BookSaveForm;
 import com.example.book.service.BookService;
 import com.example.book.vo.BookSearchVO;
 import com.example.book.vo.BookVO;
 import com.example.book.vo.CategoryVO;
 import com.example.book.vo.ImageVO;
+import com.example.common.dto.BnoDto;
 import com.example.common.file.FileIO;
 import com.example.common.paging.PageRequest;
+import com.example.common.paging.PageSetable;
+import com.example.common.validator.BookshopValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -22,12 +25,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Objects;
 
-import static com.example.book.validator.BookValidator.*;
+import static com.example.common.status.RequestStatus.BAD_REQUEST;
 
 
 @Controller
@@ -150,10 +153,10 @@ public class BookController {
          */
         //model로 넘겨줄 book객체를 초기화
         BookVO book = bookService.getBook(bnoDto.getBno());
-
-
+        List<ImageVO> book_images = bookService.getBook_Iimages(book.getBno());
         //해당 bno의 book을 담아 리턴
         model.addAttribute("book",book);
+        model.addAttribute("images",book_images);
         return "book/book";
     }
 
@@ -178,7 +181,7 @@ public class BookController {
         valid
          */
         //pageRequest 검증+유효한값 저장
-        PageRequest pageRequest = pageRequestResolver(request.getParameter("page"),request.getParameter("size"));
+        PageRequest pageRequest = BookshopValidator.pageRequestResolver(request.getParameter("page"),request.getParameter("size"));
         //form 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateForm(form, bindingResult, model, "book/addForm");
         if (errorUrl != null) return errorUrl;
@@ -191,7 +194,7 @@ public class BookController {
         //CategoryVO 초기화
         CategoryVO categoryVO = new CategoryVO(form.getCategoryName());
         //imageVOs 초기화
-        List<ImageVO> imageVOList = getImageVOList(form, request);
+        List<ImageVO> imageVOList = fileIO.getImageVOList(form, request);
 
         //도서 등록
         BookVO regstedBook = bookService.registerBook(bookVO,categoryVO,imageVOList);
@@ -239,7 +242,7 @@ public class BookController {
         valid
         */
         //pageRequest 검증+유효한값 저장
-        PageRequest pageRequest = pageRequestResolver(request.getParameter("page"),request.getParameter("size"));
+        PageRequest pageRequest = BookshopValidator.pageRequestResolver(request.getParameter("page"),request.getParameter("size"));
         //BookUpdateForm 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateForm(form, bindingResult, model, "book/editForm");
         if (errorUrl != null) return errorUrl;
@@ -302,51 +305,108 @@ public class BookController {
         return "book/books_sc";
     }
 
+
     /*
-    커버이미지(단일)업로드
+     * 파라미터로 넘어온 form,dto에 검증된 page,size 셋팅
      */
-    private ImageVO getUploadFileVO_cover(BookSaveForm form, HttpServletRequest request) {
-        if(form.getUploadFile()!=null){
-            //파일의 경로를 구한뒤 업로드
-            return fileIO.uploadFile(form.getUploadFile(), getFiledDir(request));
+    private void pageSet(PageSetable pageSetable, PageRequest pageRequest){
+        pageSetable.setPage(pageRequest.getPage());
+        pageSetable.setSize(pageRequest.getSize());
+    }
+
+
+    /*
+    bookcontroller에 의존적인 검증메서드 모음
+     */
+
+    /*
+     * pageRequest 검증
+     */
+    public PageRequest pageRequestResolver(BookSearchVO bookSearchVO, BindingResult bindingResult) {
+        //넘어온 pageRequest를 검증(@min,@max)해 오류가 있으면 기본값(page=1,size=9) 설정 ,
+        //오류가 없으면 그대로 반환
+        PageRequest pageRequest;
+        if(bindingResult.hasErrors()){
+            //단 페이지(pageRequest.getPage())값만 정확히 넘어온 경우,
+            //그 값은 사이즈의 기본값과 함께 사용
+            if(bindingResult.getFieldError("page")==null){
+                pageRequest = PageRequest.builder().page(bookSearchVO.getPage()).build();
+            }else{
+                pageRequest = PageRequest.builder().build();
+            }
+        } else{ //오류가 없으면 그대로 반환
+            pageRequest = PageRequest
+                    .builder()
+                    .page(bookSearchVO.getPage())
+                    .size(bookSearchVO.getSize())
+                    .build();
+        }
+        return pageRequest;
+    }
+
+    private PageRequest pageRequestResolver(PageRequest pageRequest, BindingResult bindingResult) {
+        //넘어온 pageRequest를 검증(@min,@max)해 오류가 있으면 기본값(page=1,size=9) 설정 ,
+        //오류가 없으면 그대로 반환
+        if(bindingResult.hasErrors()){
+            //단 페이지(pageRequest.getPage())값만 정확히 넘어온 경우,
+            //그 값은 사이즈의 기본값과 함께 사용
+            if(bindingResult.getFieldError("page")==null){
+                pageRequest = PageRequest.builder().page(pageRequest.getPage()).build();
+            }else{
+                pageRequest = PageRequest.builder().build();
+            }
+        }
+        return pageRequest;
+    }
+
+    /*
+     * 파라미터로 넘어온 form을 검증 후
+     * 바인딩에러가 있으면 errUrl 경로문자 리턴
+     * 에러가 없으면 null 리턴
+     */
+    private String validateForm(BookForm form, BindingResult bindingResult,
+                                      Model model, String errUrl) {
+        //입력된 form에 오류가 있을경우
+        if(bindingResult.hasErrors()){
+            log.error("form has error");
+            log.info("error={}",bindingResult.getAllErrors());
+            //bindingResult와 함께 다시 입력폼으로 이동
+            model.addAttribute("bindingResult", bindingResult);
+            return errUrl;
         }
         return null;
     }
 
     /*
-    책이미지s(리스트)업로드
-    */
-    private List<ImageVO> getUploadFileVO_imgs(BookSaveForm form, HttpServletRequest request) {
-        if(form.getUploadFiles().size()>0){
-            //파일의 경로를 구한뒤 업로드
-            return fileIO.uploadFiles(form.getUploadFiles(), getFiledDir(request));
+     * 파라미터로 넘어온 bnoDto를 검증 후
+     * 바인딩에러가 있으면 errUrl 경로문자 리턴
+     * 에러가 없으면 null 리턴
+     */
+    private String validateBnoDto(BnoDto bnoDto, BindingResult bindingResult, Model model, String errUrl,String redUrl) {
+        //파라미터로 넘어온 bnoDto에서 현재 페이징 정보(page,size)를 pageRequestResolver에 넘겨
+        // 유효한 pageRequest값을 가져온다
+        PageRequest pageRequest = pageRequestResolver(
+                PageRequest.builder().page(bnoDto.getPage()).size(bnoDto.getSize()).build(),
+                bindingResult);
+        pageSet(bnoDto,pageRequest);
+        //파라미터bno 값 범위 검증 (1~20000)
+        if(bindingResult.hasFieldErrors("bno")){
+            log.error("bno has error");
+            //잘못된 값이 바인딩되면 addFlashAttribute에 오류메시지,리다이렉트url 저장
+            // alert.jsp -> book/books?page={page}&size={size}
+            setAlertAttributes(model, redUrl);
+            return errUrl;
         }
         return null;
     }
 
     /*
-    registerBook을 위한 List<ImageVO> 생성
+     * bindingResult에 오류가 있을때 redirectAttribute에 msg와 url을 지정
      */
-    private List<ImageVO> getImageVOList(BookSaveForm form, HttpServletRequest request) {
-        //uploadfileVO_cover 초기화
-        ImageVO imageVO_cover = getUploadFileVO_cover(form, request);
-        //uploadfileVO_imgs 초기화
-        List<ImageVO> imageVOs = getUploadFileVO_imgs(form, request);
-        //cover가 존재하면 imgs와 add
-        if(imageVO_cover!=null){
-            Objects.requireNonNull(imageVOs).add(imageVO_cover);
-        }
-        return imageVOs;
-    }
-
-    /*
-    cos를 이용해 이미지 저장 디렉토리(경로)를 얻어온다
-     */
-    private String getFiledDir(HttpServletRequest request) {
-        //파일 업로드 경로를 설정
-        //세션으로 부터 현재 어플리케이션 컨텍스트를 얻어온다
-        ServletContext context = request.getSession().getServletContext();
-        //어플리케이션 컨텍스트 루트 바로 아래 /resources/upload라는 경로를 얻어옴
-        return context.getRealPath("/resources/upload/images");
+    private void setAlertAttributes(Model model, String url) {
+        model.addAttribute("msg",
+                URLEncoder.encode(BAD_REQUEST.label(), StandardCharsets.UTF_8));
+        model.addAttribute("url",
+                url);
     }
 }

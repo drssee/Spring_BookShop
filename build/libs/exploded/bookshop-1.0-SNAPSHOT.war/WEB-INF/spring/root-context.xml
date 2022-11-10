@@ -49,15 +49,17 @@
         <context:component-scan base-package="com.example.book.service"/>
         <context:component-scan base-package="com.example.orders.service"/>
         <context:component-scan base-package="com.example.user.service"/>
+        <context:component-scan base-package="com.example.review.service"/>
 
         <!--dao 인터페이스 위치 등록-->
         <mybatis:scan base-package="com.example.book.dao"/>
         <mybatis:scan base-package="com.example.orders.dao"/>
         <mybatis:scan base-package="com.example.user.dao"/>
+        <mybatis:scan base-package="com.example.review.dao"/>
 
         <!--플레이스홀더 설정 properties 스캔위치-->
         <context:property-placeholder location="classpath:config/*"/>
-        <!--properties alias-->
+        <!--플레이스홀더 설정 properties alias-->
         <util:properties id="config" location="classpath:config/config.properties"/>
         <!--fileIO 로직-->
         <context:component-scan base-package="com.example.common.file"/>

@@ -30,7 +30,7 @@
             <div class="quick_wrap2">
                 <ul class="quick">
                     <li>
-                        <a href="login.html">로그인</a>
+                        <a href="<c:url value="/user/login"/>">로그인</a>
                     </li>
                     <li>
                         <a href="register.html">회원가입</a>

@@ -12,6 +12,8 @@
     <context:component-scan base-package="com.example.book.controller"/> <!--컨트롤러 맵핑은 여기-->
     <context:component-scan base-package="com.example.orders.controller"/>
     <context:component-scan base-package="com.example.user.controller"/>
+    <context:component-scan base-package="com.example.review.controller"/>
+    <context:component-scan base-package="com.example.exception.controller"/>
     <context:component-scan base-package="com.example.common"/>
     <context:component-scan base-package="com.example.home"/>
 

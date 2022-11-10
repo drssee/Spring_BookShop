@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.review.dao.ReviewDao">
+    <select id="selectReviews" parameterType="bnoDto" resultType="reviewVO">
+        select *
+        from review
+        where bno = #{bno}
+        order by rno desc , prno desc
+        limit #{skip} , #{size}
+    </select>
+    <select id="selectReviewsCnt" resultType="int">
+        select count(*)
+        from review
+        where bno = #{bno}
+    </select>
+    <select id="selectReview" resultType="reviewVO">
+        select * from review
+        where rno = #{rno}
+    </select>
+    <insert id="insertParentReview">
+        <selectKey resultType="long" keyProperty="rno" 	order="BEFORE">
+            select MAX(rno) + 1 from review
+        </selectKey>
+        insert into review (rno,bno, id, content, prno)
+        values (#{rno}, #{bno},#{id},#{content},#{rno});
+    </insert>
+    <insert id="insertChildReview" useGeneratedKeys="true" keyProperty="rno">
+        insert into review (bno, id, content, prno)
+        values (#{bno},#{id},#{content},#{prno});
+    </insert>
+    <update id="updateReview">
+        update review
+        set content = #{content} , update_date = now()
+        where rno = #{rno};
+    </update>
+    <delete id="deleteReview">
+        delete from review
+        where rno = #{rno} or prno = #{rno}
+    </delete>
+</mapper>

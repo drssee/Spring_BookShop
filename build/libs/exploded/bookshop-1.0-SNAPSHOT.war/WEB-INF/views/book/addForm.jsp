@@ -150,7 +150,7 @@
 
         <input type="hidden" name="page" value="${pageRequest.page}">
         <input type="hidden" name="size" value="${pageRequest.size}">
-        <button type="submit"><spring:message code="add.submit"/></button>
+        <button type="submit"><spring:message code="submit"/></button>
     </form>
 </body>
 </html>

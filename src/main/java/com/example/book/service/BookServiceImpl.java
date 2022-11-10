@@ -120,6 +120,14 @@ public class BookServiceImpl implements BookService{
     }
 
     /**
+     * 내부 이미지 조회
+     */
+    @Override
+    public List<ImageVO> getBook_Iimages(Long bno) {
+        return bookDao.selectBookImgs(bno);
+    }
+
+    /**
      * 상품(book)의 수정 및 업데이트
      */
     @Override

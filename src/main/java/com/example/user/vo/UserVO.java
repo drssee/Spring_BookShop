@@ -17,4 +17,5 @@ public class UserVO {
     private String name; //유저 이름
     private int pay_amount; //현재 유저의 총 구매 금액
     private Date regDate; //등록일
+    private String uuid;
 }

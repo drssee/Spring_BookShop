@@ -5,8 +5,8 @@
 <!--book 리스트-->
 <h3 style="font-size: 24px; margin-left:170px;">검색된 도서 목록 : ${pageResponse.total}개</h3>
 <div style="height: 800px; margin-top:350px; padding-top:0;">
-    <div>
-    </div>
+<%--    <div>--%>
+<%--    </div>--%>
     <div class="row row-cols-4 row-cols-md-5 g-4 card_custum">
         <c:forEach items="${pageResponse.pageList}" var="book">
             <a href="<c:url value="/book/${book.bno}?page=${pageResponse.page}"/>">

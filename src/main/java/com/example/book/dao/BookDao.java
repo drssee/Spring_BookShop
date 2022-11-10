@@ -39,7 +39,8 @@ public interface BookDao {
     //book db (전체 개수)조회 after>now()
     int selectBookCnt_after();
 
-
+    //book_images 조회
+    List<ImageVO> selectBookImgs(Long bno);
 
     //book db 업데이트
     int updateBook(BookVO bookVO);

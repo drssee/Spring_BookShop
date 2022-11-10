@@ -13,14 +13,23 @@
     <div class="row row-cols-1 row-cols-md-5 g-4 card_custum">
         <c:forEach items="${book_bs}" var="book">
             <div class="col size">
-                <a href="<c:url value="/book/search/${book.bno}"/>">
+                <a href="<c:url value="/book/${book.bno}"/>">
                     <div class="card custom1 custom_size">
                         <!--커버 이미지가 없으면 기본 이미지 사용-->
                         <c:choose>
                             <c:when test="${book.storeFileName!=null}">
-                                <img src="${book.storeFileName}"
-                                     class="card-img-top" alt="..."
-                                     width="200px" height="324px">
+                                <c:choose>
+                                    <c:when test="${book.size==0}">
+                                        <img src="${book.storeFileName}"
+                                             class="card-img-top" alt="..."
+                                             width="200px" height="324px">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="${pageContext.request.contextPath}/resources/upload/images${book.storeFileName}"
+                                             class="card-img-top" alt="no-image"
+                                             width="200px" height="324px">
+                                    </c:otherwise>
+                                </c:choose>
                             </c:when>
                             <c:otherwise>
                                 <img src="<c:url value="/resources/images/common/no-img.gif"/>"
@@ -28,6 +37,7 @@
                                      width="200px" height="324px">
                             </c:otherwise>
                         </c:choose>
+                        <!--커버 이미지가 없으면 기본 이미지 사용 끝-->
                     </div>
                 </a>
             </div>
@@ -47,14 +57,23 @@
     <div class="row row-cols-1 row-cols-md-5 g-4 card_custum">
         <c:forEach items="${book_new.pageList}" var="book">
             <div class="col size">
-                <a href="<c:url value="/book/search/${book.bno}"/>">
+                <a href="<c:url value="/book/${book.bno}"/>">
                     <div class="card custom1 custom_size">
                         <!--커버 이미지가 없으면 기본 이미지 사용-->
                         <c:choose>
                             <c:when test="${book.storeFileName!=null}">
-                                <img src="${book.storeFileName}"
-                                     class="card-img-top" alt="..."
-                                     width="200px" height="324px">
+                                <c:choose>
+                                    <c:when test="${book.size==0}">
+                                        <img src="${book.storeFileName}"
+                                             class="card-img-top" alt="..."
+                                             width="200px" height="324px">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="${pageContext.request.contextPath}/resources/upload/images${book.storeFileName}"
+                                             class="card-img-top" alt="no-image"
+                                             width="200px" height="324px">
+                                    </c:otherwise>
+                                </c:choose>
                             </c:when>
                             <c:otherwise>
                                 <img src="<c:url value="/resources/images/common/no-img.gif"/>"
@@ -62,6 +81,7 @@
                                      width="200px" height="324px">
                             </c:otherwise>
                         </c:choose>
+                        <!--커버 이미지가 없으면 기본 이미지 사용 끝-->
                     </div>
                 </a>
             </div>
