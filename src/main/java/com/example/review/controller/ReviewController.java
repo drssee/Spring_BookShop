@@ -68,7 +68,7 @@ public class ReviewController {
 
     @PostMapping("/bookReview")
     public ResponseEntity<ReviewVO> writeReview(@Validated @RequestBody ReviewSaveForm reviewSaveForm,
-                                                              BindingResult bindingResult){
+                                                              BindingResult bindingResult,HttpServletRequest request){
         /*
         valid
         */
@@ -79,6 +79,10 @@ public class ReviewController {
             }
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, BAD_REQUEST.label());
         }
+        //로그인 유저가 맞는지 검증(세션 id 검증)
+        if(!validateLoginedUser(reviewSaveForm.getId(),request)) {
+            throw new IllegalUserException(INVALID_USER.label());
+        }
 
 
         /*
@@ -88,7 +92,7 @@ public class ReviewController {
         ReviewVO reviewVO = getReviewVO(reviewSaveForm);
 
         //리뷰작성
-        writeReview(reviewSaveForm, reviewVO);
+        writeReview(reviewSaveForm,reviewVO);
         return ResponseEntity.ok().body(reviewVO);
     }
 
@@ -105,12 +109,12 @@ public class ReviewController {
             }
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, BAD_REQUEST.label());
         }
-        //rno로 review값을 조회해 form값과 검증(bno,id 일치하는지)
+        //rno로 review값을 조회해 form값과 검증(작성한 유저인지 확인)
         if(!isEffectiveFormValue(
                 reviewService.getReview(reviewEditForm.getRno()),reviewEditForm)){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, BAD_REQUEST.label());
         }
-        //로그인 유저가 맞는지 검증
+        //로그인 유저가 맞는지 검증(세션 id 검증)
         if(!validateLoginedUser(reviewEditForm.getId(),request)) {
             throw new IllegalUserException(INVALID_USER.label());
         }
@@ -121,7 +125,7 @@ public class ReviewController {
         */
         //reviewVO 초기화
         ReviewVO reviewVO = getReviewVO(reviewEditForm);
-
+        System.out.println("reviewVO!!!!!!!!! = " + reviewVO);
         //해당 rno의 리뷰를 업데이트
         reviewService.updateReview(reviewVO);
         return ResponseEntity.ok(reviewVO);
@@ -140,12 +144,12 @@ public class ReviewController {
             }
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, BAD_REQUEST.label());
         }
-        //rno로 review값을 조회해 form값과 검증(bno,id 일치하는지)
+        //rno로 review값을 조회해 form값과 검증(작성한 유저인지 확인)
         if(!isEffectiveFormValue(
                 reviewService.getReview(reviewDeleteForm.getRno()),reviewDeleteForm)){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, BAD_REQUEST.label());
         }
-        //로그인 유저가 맞는지 검증
+        //로그인 유저가 맞는지 검증(세션 id 검증)
         if(!validateLoginedUser(reviewDeleteForm.getId(),request)) {
             throw new IllegalUserException(INVALID_USER.label());
         }
@@ -183,6 +187,7 @@ public class ReviewController {
                 .bno(reviewForm.getBno())
                 .id(reviewForm.getId())
                 .content(reviewForm.getContent())
+                .prno(reviewForm.getPrno())
                 .build();
     }
 
@@ -190,6 +195,7 @@ public class ReviewController {
      * 리뷰작성(부모댓글or자식답글)
      */
     private void writeReview(ReviewSaveForm reviewSaveForm, ReviewVO reviewVO) {
+
         //rno값이 없으면 부모 댓글
         if(reviewSaveForm.getRno()==null){
             //자신의 rno를 prno에 등록
@@ -198,7 +204,9 @@ public class ReviewController {
         //rno값이 있으면 자식 답글
         else{
             //부모의 rno를 prno에 등록
-            reviewVO.setPrno(reviewVO.getRno());
+            if(reviewVO.getPrno()==null){
+                reviewVO.setPrno(reviewVO.getRno());
+            }
             reviewService.writeChildReview(reviewVO);
         }
     }//writeReview

@@ -30,6 +30,7 @@ public interface ReviewDao {
      */
     void insertChildReview(ReviewVO reviewVO);
 
+
     /**
      * 해당 rno의 리뷰를 업데이트
      */

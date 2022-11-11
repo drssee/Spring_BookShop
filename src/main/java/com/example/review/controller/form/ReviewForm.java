@@ -5,4 +5,5 @@ public interface ReviewForm {
     Long getBno();
     String getId();
     String getContent();
+    Long getPrno();
 }

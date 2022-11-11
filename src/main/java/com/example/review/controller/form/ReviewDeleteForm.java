@@ -16,4 +16,6 @@ public class ReviewDeleteForm implements ReviewForm{
     @NotNull
     String id;//user pk
     String content;
+    @NotNull
+    Long prno;//부모rno
 }

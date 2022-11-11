@@ -19,6 +19,7 @@ public interface ReviewService {
      * 해당 bno에 리뷰를 작성(부모 댓글)
      */
     void writeParentReview(ReviewVO reviewVO);
+
     /**
      * 해당 bno에 리뷰를 작성(자식 답글)
      */

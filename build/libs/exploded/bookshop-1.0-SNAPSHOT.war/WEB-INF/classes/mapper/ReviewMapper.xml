@@ -7,7 +7,7 @@
         select *
         from review
         where bno = #{bno}
-        order by rno desc , prno desc
+        order by prno desc , rno
         limit #{skip} , #{size}
     </select>
     <select id="selectReviewsCnt" resultType="int">
@@ -26,7 +26,7 @@
         insert into review (rno,bno, id, content, prno)
         values (#{rno}, #{bno},#{id},#{content},#{rno});
     </insert>
-    <insert id="insertChildReview" useGeneratedKeys="true" keyProperty="rno">
+    <insert id="insertChildReview">
         insert into review (bno, id, content, prno)
         values (#{bno},#{id},#{content},#{prno});
     </insert>

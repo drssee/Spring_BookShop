@@ -127,7 +127,7 @@
         select *
         from book as main
                  inner join book_info as info on main.bno=info.bno
-                 inner join book_images as images on info.bno=images.bno
+                 inner join book_images as images on info.bno=images.bno and images.imgCategory='c'
                  inner join category_book as cb on images.bno=cb.bno
         inner join category as ca on cb.category_name_id=ca.category_name_id
         where info.pubDate<=now() AND true
@@ -140,7 +140,7 @@
         select count(*)
         from book as main
         inner join book_info as info on main.bno=info.bno
-        inner join book_images as images on info.bno=images.bno
+        inner join book_images as images on info.bno=images.bno and images.imgCategory='c'
         inner join category_book as cb on images.bno=cb.bno
         inner join category as ca on cb.category_name_id=ca.category_name_id
         where info.pubDate<=now() AND true

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import static com.example.common.validator.BookshopValidator.validateLogin;
 
@@ -47,13 +49,15 @@ public class UserController {
     // get /book/search <-상품검색
 
     @GetMapping("/login")
-    public String loginForm(){
+    public String loginForm(HttpServletRequest request){
+        //이전 페이지 정보를 담은 referer변수를 세션에 저장
+        request.getSession().setAttribute("referer",request.getHeader("referer"));
         return "user/login";
     }
 
     @PostMapping("/login")
     public String login(@ModelAttribute("user") @Validated UserLoginForm userLoginForm , BindingResult bindingResult,
-                        HttpServletRequest request, Model model){
+                        HttpServletRequest request, HttpServletResponse response, Model model){
         /*
         valid
         */
@@ -75,11 +79,18 @@ public class UserController {
         core
         */
         //세션에 user 정보 저장
-        request.getSession().setAttribute("user",user);
+        HttpSession session = request.getSession();
+        session.setAttribute("user",user);
+        //세션에 이전페이지 정보가 있다면 그 페이지로 이동
+        if(session.getAttribute("referer")!=null){
+            String referer = (String) session.getAttribute("referer");
+            session.removeAttribute("referer");
+            return "redirect:"+referer;
+        }
         //베스트셀러 , 새로나온책 프리뷰를 model에 담아 리턴
         model.addAttribute("book_bs",bookService.getBooks_bs());
         model.addAttribute("book_new",bookService.getBookds_new(PageRequest.builder().page(1).size(5).build()));
-        return "loginedIndex";
+        return "index";
     }
 
 

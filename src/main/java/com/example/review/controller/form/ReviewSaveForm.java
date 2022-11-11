@@ -16,4 +16,5 @@ public class ReviewSaveForm implements ReviewForm{
     String id;//user pk
     @NotBlank
     String content;
+    Long prno;//부모rno
 }

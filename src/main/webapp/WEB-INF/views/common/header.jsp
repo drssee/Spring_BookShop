@@ -38,15 +38,33 @@
     <header id="top">
         <div class="quick_wrap1">
             <div class="quick_wrap2">
-                <ul class="quick">
-                    <li>
-                        <a href="<c:url value="/user/login"/>">로그인</a>
-                    </li>
-                    <li>
-                        <a href="register.html">회원가입</a>
-                    </li>
-                </ul>
-                <!--quick-->
+
+                <c:choose>
+                    <c:when test="${sessionScope.user.id==null}">
+                        <ul class="quick">
+                            <li>
+                                <a href="<c:url value="/user/login"/>">로그인</a>
+                            </li>
+                            <li>
+                                <a href="register.html">회원가입</a>
+                            </li>
+                        </ul>
+                    </c:when>
+                    <c:otherwise>
+                        <ul class="quick">
+                            <li>
+                                <a href="<c:url value="/user/logout"/>">로그아웃</a>
+                            </li>
+                            <li>
+                                <a href="register.html">마이페이지</a>
+                            </li>
+                            <li>
+                                <a href="register.html">장바구니</a>
+                            </li>
+                        </ul>
+                    </c:otherwise>
+                </c:choose>
+
             </div>
             <!--quick wrap2-->
         </div>

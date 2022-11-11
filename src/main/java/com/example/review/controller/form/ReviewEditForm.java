@@ -18,4 +18,6 @@ public class ReviewEditForm implements ReviewForm{
     String id;//user pk
     @NotBlank
     String content;
+    @NotNull
+    Long prno;//부모rno
 }

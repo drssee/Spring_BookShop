@@ -1,7 +1,8 @@
-package com.example.review.service;
+package com.example.book.review.service;
 
 import com.example.common.dto.BnoDto;
 import com.example.common.paging.PageResponse;
+import com.example.review.service.ReviewService;
 import com.example.review.vo.ReviewVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

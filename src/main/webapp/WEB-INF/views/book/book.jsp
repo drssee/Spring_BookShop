@@ -3,12 +3,14 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="<c:url value="/resources/css/comment.css"/>">
+<style>
+    button {
+        border:none;
+        outline: none;
+    }
+</style>
 <section class="py-5" style="height: 1200px;">
-<%--    <c:forEach items="${images}" var="image">--%>
-<%--        <div class="col-md-6" style="cursor: pointer;"><img class="card-img-top mb-5 mb-md-0 iimg" src="${pageContext.request.contextPath}/resources/upload/images${image.storeFileName}" alt="..."/></div>--%>
-<%--    </c:forEach>--%>
-
     <div class="container px-4 px-lg-5 my-5">
         <div class="container" style="width: 350px;height: 480px; float:left; margin-top:100px; ">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -91,256 +93,374 @@
         </div>
     </div>
 </section>
-<!-- Comments section-->
-<section class="mb-5">
-    <div class="card bg-light">
-        <div class="card-body">
-            <!-- Comment form-->
-            <form class="mb-4"><textarea class="form-control" rows="3" placeholder="리뷰를 작성해 주세요"></textarea></form>
-            <!-- Comment with nested comments-->
 
-            <!--댓글1예제-->
-            <div id="reviewList" class="d-flex mb-4" data-bno="${book.bno} data-id="${sessionScope.user}">
-                <!-- Parent comment-->
-                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                <div class="ms-3">
-                    <div class="fw-bold">userId</div>
-                    댓글내용1
-                    <!-- Child comment 1-->
-                    <div class="d-flex mt-4">
-                        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                        <div class="ms-3">
-                            <div class="fw-bold">userId</div>
-                            대댓글
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--댓글1예제-->
+<h4>리뷰</h4>
 
-            <!--댓글2예제-->
-            <!-- Single comment-->
-            <div class="d-flex">
-                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                <div class="ms-3">
-                    <div class="fw-bold">Commenter Name</div>
-                    When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
-                </div>
-            </div>
-            <!--댓글2예제-->
-        </div>
-        <script>
-            // function count(type)  {
-            //     // 결과를 표시할 element
-            //     const resultElement = document.getElementById('useNum');
-            //     let number = resultElement.value;
-            //     //인원이 0~10명 사이에서만 신청 가능하도록 조정
-            //     if(type === 'plus') {
-            //         number = parseInt(number) + 1;
-            //         if(number > 10){number = 10; alert('10인 이상은 단체 문의 부탁드립니다.');}
-            //     }
-            //     else if(type === 'minus')  {
-            //         number = parseInt(number) - 1;
-            //         if(number < 0){number = 0;}
-            //     }
-            //     // 결과 출력
-            //     resultElement.value = number;
-            // }
-            $(document).ready(function(){
-                let data_bno = $("#reviewList").attr("data-bno");
-                let data_id = $("#reviewList").attr("data-id");
-                // 시작하면서 해당 bno의 모든 리뷰 리스트를 가져옴
-                getReviews(data_bno);
-                //리뷰쓰기버튼 클릭이벤트
-                $("#writeBtn").click(function(){
-                    let reviewVO = {id : data_id ,
-                        cno : data_bno,
-                        content : $("textarea[name=content]").val(),
-                        grade : $("input[name=grade]").val()
-                    }
-                    if($("input[name=grade]").val()===""||
-                        $("textarea[name=content]").val()==""){
-                        alert("평점과 내용을 전부 입력해주세요");
-                        return;
-                    }
-                    writeReview(reviewVO);
-                });
-                //리뷰수정버튼 클릭이벤트  //parent prev eq(0)
-                $("#reviewList").on("click",".modBtn",function(){ //아래의 클래스 modBtn클릭
-                    if($(this).attr("data-id2")!==$("#reviewList").attr("data-id")){
-                        if($("#reviewList").attr("data-id")!=='admin'){
-                            alert("자신의 리뷰만 수정할 수 있습니다");
-                            return;
-                        }
-                    }
-                    alert('상단의 입력창에서 수정해주세요')
-                    //1. writeBtn숨기고 숨겨진 #modBtn 버튼 다시 보이게
-                    $("#writeBtn").css("display","none");
-                    $("#modBtn").css("display","block");
-                    //2. 수정에 필요한 content,grade
-                    let data_cno = $("#reviewList").attr("data-cno");
-                    let data_content = $(this).parent().prev().eq(0).text();
-                    let data_grade = $(this).parent().parent().attr("data-grade");
-                    //3. 검증에 필요한 re_no
-                    let data_re_no = $(this).parent().parent().attr("data-re_no");
-                    //4. 현재 리뷰 내용 textarea에 표시 + 평점도 표시
-                    $("textarea[name=content]").val(data_content).focus();
-                    $("input[name=grade]").val(data_grade);
-                    $("#modBtn").click(function(){
-                        let reviewVO = {
-                            re_no : data_re_no,
-                            cno : data_cno,
-                            content : $("textarea[name=content]").val(),
-                            grade : $("input[name=grade]").val()
-                        }
-                        if($("input[name=grade]").val()===""||
-                            $("textarea[name=content]").val()==""){
-                            alert("평점과 내용을 전부 입력해주세요");
-                            return;
-                        }
-                        updateReview(reviewVO);
-                    })
-                })//리뷰수정버튼 클릭이벤트
-                //리뷰삭제버튼 클릭이벤트
-                $("#reviewList").on("click",".delBtn",function(){ //아래의 클래스 modBtn클릭
-                    if($(this).attr("data-id1")!==$("#reviewList").attr("data-id")){
-                        if($("#reviewList").attr("data-id")!=='admin'){
-                            alert("자신의 리뷰만 삭제할 수 있습니다");
-                            return;
-                        }
-                    }
-                    if(!confirm('정말 삭제하시겠습니까?')){
-                        return;
-                    }
-                    //1. 삭제,검증에 필요한 re_no
-                    let re_no = $(this).parent().parent().attr("data-re_no");
-                    //2. 목록 불러오기에 필요한 cno
-                    let cno = $("#reviewList").attr("data-cno");
-                    deleteReview(re_no,cno);
-                })//리뷰삭제버튼 클릭이벤트
-                $("#reviewList").on("click",".reviewPage",function(){
-                    //페이지를 cno와 같이 넘겨준다
-                    let page = $(this).text();
-                    getReviews2(data_bno,page);
-                })//리뷰 페이징
-                //별 클릭 이벤트
-                $(".review_write_star span").click(function() {
-                    $(".review_write_star span").removeClass("on");
-                    $(this).addClass("on");
-                    $(this).prevAll("span").addClass("on");
-                    $("#grade").val($(this).index()+1);
-                });
-                //prev
-                $("#reviewList").on("click", ".prev", function() {
-                    let pageStr1 = $(this).attr("data-page");
-                    let page1 = Number(pageStr1);
-                    getReviews2(data_bno,page1-1);
-                })
-                //next
-                $("#reviewList").on("click", ".next", function() {
-                    let pageStr2 = $(this).attr("data-page");
-                    let page2 = Number(pageStr2);
-                    getReviews2(data_bno,page2+1);
-                })
-            }); //document.ready
-            //////////////////////////////////////////////
+<div id="commentList" data-bno="${book.bno}" data-id="${sessionScope.user.id}">
+</div>
 
-            let getReviews = function(bno) {
-                $.ajax({
-                    url: '/bookshop/review/bookReviews/'+bno,
-                    type: 'GET',
-                    headers: {"content-type":"application/json"},
-
-                    success : function(result){
-                        alert(result);
-                    }
-                    ,
-                    error: function(request, status, error) {
-                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                    }
-                });//ajax
-            }//getReviews
-
-            let writeReview = function(reviewVO) {
-                isAjaxRun2=true;
-                $.ajax({
-                    url: '/project/review',
-                    type: 'POST',
-                    headers: {"content-type":"application/json"},
-                    data: JSON.stringify(reviewVO),
-                    success : function(result) {
-                        alert("리뷰 등록 성공");
-                        getReviews(reviewVO.cno);
-                    },
-                    error: function() {
-                        alert("error");
-                    }
-                })//ajax
-            }//writeReivew
-            let updateReview = function(reviewVO) {
-                $.ajax({
-                    url: '/project/review/'+reviewVO.re_no,
-                    type: 'PUT',
-                    headers: {"content-type":"application/json"},
-                    data: JSON.stringify(reviewVO),
-                    success : function(result) {
-                        alert("리뷰 수정 성공");
-                        $("textarea[name=content]").val('');
-                        $("input[name=grade]").val('');
-                        $("#writeBtn").css("display","block");
-                        $("#modBtn").css("display","none");
-                        getReviews(reviewVO.cno);
-                    },
-                    error: function() {
-                        alert("error");
-                    }
-                })//ajax
-            }//updateReview
-            let deleteReview = function(re_no,cno) {
-                $.ajax({
-                    url: '/project/review/'+re_no,
-                    type: 'DELETE',
-                    headers: {"content-type":"application/json"},
-                    success : function(result) {
-                        alert("삭제 성공");
-                        getReviews(cno);
-                    },
-                    error: function() {
-                        alert("error");
-                    }
-                })//ajax
-            }//deleteReview
-            //배열로 들어온 (js 객체를 html 문자로) 바꿔주는 함수
-            let toHtml = function(pageResponse) {
-                let reviews = pageResponse.pageList;
-                let prev = pageResponse.showPrev;
-                let next = pageResponse.showNext;
-                let tmp = "<ul>";
-                reviews.forEach(function(review) {
-                    tmp += '<li data-cno='+review.cno +' data-grade='+review.grade+' data-re_no='+review.re_no+'>'
-                    tmp += '<p class="review_list_id"><img src="<c:url value="/resources/images/user_default.png"/>" alt="사용자프로필" width="35" /><span class="id">'+review.id+'</span></p>'
-                    tmp += '<div><p class="review_list_grade"><span class="grade"><img src="<c:url value="/resources/images/star1.png"/>" alt="star">' + review.grade +' / </span></p>'
-                    tmp += '<p class="review_list_date"><span class="date">'+review.regDate+'</span></p></div>'
-                    tmp += '<p class="review_list_content"><span class="content">'+review.content+'</span></p>'
-                    tmp += '<p class="btn_wrap"><button class = "delBtn" data-id1='+review.id+'>삭제</button>'
-                    tmp += '<button class = "modBtn" data-id2='+review.id+'>수정</button>'
-                    tmp += '</p></li>'
-                })//foreach
-                tmp += '</ul>';
-                if (prev) {
-                    tmp += '<span style="cursor: pointer" class="prev" data-page='+pageResponse.page+'>[PREV]</span>';
-                }
-                for(var i = pageResponse.start; i<=pageResponse.end ; i++){
-                    tmp += '<div class="reviewPage" style="display:inline-block; cursor: pointer; margin:3px;">'+i+'</div>';
-                }
-                if (next) {
-                    tmp += '<span style="cursor: pointer" class="next" data-page='+pageResponse.page+'>[NEXT]</span>';
-                }
-                return tmp;
-            }
-        </script>
+<div id="reply-writebox">
+    <div class="commenter commenter-writebox">${sessionScope.user.id==null?'비로그인 유저':sessionScope.user.id}</div>
+    <div class="reply-writebox-content">
+        <textarea name="write-comment" class="write-comment" id="write-comment" cols="30" rows="3" placeholder="댓글을 남겨보세요"></textarea>
     </div>
-</section>
+    <div id="reply-writebox-bottom">
+        <div class="register-box">
+            <button class="btn btn-write-reply" id="btn-write-reply">등록</button>
+            <button class="btn btn-cancel-reply">취소</button>
+        </div>
+    </div>
+</div>
 
+<div id="modalWin" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>
+        <h2> | 댓글 수정</h2>
+        <div id="modify-writebox">
+            <div class="commenter commenter-writebox" id="commenter-writebox"></div>
+            <div class="modify-writebox-content">
+                <textarea name="modify-comment" id="modify-comment" cols="30" rows="5" placeholder="댓글을 남겨보세요"></textarea>
+            </div>
+            <div id="modify-writebox-bottom">
+                <div class="register-box">
+                    <button class="btn" id="btn-write-modify">등록</button>
+                </div>
+            </div>
+        </div>
+        </p>
+    </div>
+</div>
+
+<script>
+    let commentList = $("#commentList");
+    let data_bno = commentList.attr("data-bno");
+    //세션에 로그인된 유저 아이디
+    let data_id = commentList.attr("data-id");
+
+    $(document).ready(function(){
+        getReviews(data_bno);
+
+        //답글 쓰기 클릭시 답글 작성 폼 보이기 + //답글 작성
+        commentList.on("click",".btn-write",function(){
+            let bno = $(this).attr("data-bno");
+            let rno = $(this).attr("data-rno");
+            let prno = $(this).attr("data-prno");
+
+            let repForm = $("#reply-writebox");
+            repForm.appendTo($(this).parent());
+            repForm.css("display", "block");
+            // repForm.attr("data-bno", bno);
+            repForm.attr("data-rno",  rno);
+            repForm.attr("data-prno",  prno);
+        });
+
+        //답글창 닫기
+        $(".btn-cancel-reply").click(function(e){
+            $("#write-comment").text('');
+            $("#reply-writebox").css("display", "none");
+        });
+
+        //답글 작성 버튼
+        $(".btn-write-reply").click(function(){
+
+            let repForm = $("#reply-writebox");
+
+            if(data_id===''){
+                alert('먼저 로그인을 하셔야 합니다');
+                return;
+            }
+            let data_content = $(".write-comment").val();
+            if(data_content.length<=0) {
+                alert('내용을 작성해 주세요');
+                return;
+            }
+            let reviewVO = {
+                rno: repForm.attr("data-rno"),
+                bno: data_bno,
+                id: data_id,
+                content: data_content,
+                prno: repForm.attr("data-prno")
+            }
+            writeReview(reviewVO);
+        });
+
+        //메인 댓글창 등록
+        commentList.on("click",".btn-write-comment",function() {
+            if(data_id===''){
+                alert('먼저 로그인을 하셔야 합니다');
+                return;
+            }
+            let data_content = $(".comment-write").val();
+            if(data_content.length<=0) {
+                alert('내용을 작성해 주세요');
+                return;
+            }
+            let reviewVO = {
+                bno: data_bno,
+                id: data_id,
+                content: data_content,
+            }
+            writeReview(reviewVO);
+        });
+
+        //수정 모달창 열기
+        /*
+        val()=input,textarea에 사용
+        text(),html()=그외
+         */
+        commentList.on("click",".btn-modify", function(){
+            //수정은 로그인한 유저 + 작성자만 가능 해야함
+            if(data_id===''){
+                alert('먼저 로그인을 하셔야 합니다');
+                return;
+            }
+            //부모중 태그가 li인 첫번째 부모 1개만 찾아서 반환
+            let li = $(this).closest("li");
+            let commenter = $(".commenter", li).text();
+            let comment = $(".comment-content", li).text();
+            if(data_id!==commenter) {
+                alert('본인의 리뷰만 수정 가능합니다');
+                return;
+            }
+
+            let bno = $(this).attr("data-bno");
+            let rno = $(this).attr("data-rno");
+            let prno = $(this).attr("data-prno");
+            let btn_write_modify = $("#btn-write-modify");
+
+            $("#modalWin .commenter").text(commenter);
+            $("#modalWin textarea").val(comment);
+            btn_write_modify.attr("data-rno" , rno);
+            btn_write_modify.attr("data-prno" , prno);
+
+            // 팝업창을 열고 내용을 보여준다.
+            $("#modalWin").css("display","block");
+        });
+
+        //수정 모달창 닫기
+        $(".close").click(function(){
+            $("#commenter-writebox").text('');
+            $("#modify-comment").val('');
+            $("#modalWin").css("display","none");
+        });
+
+        //수정 버튼 클릭
+        $("#btn-write-modify").click(function(){
+            let data_content = $("#modify-comment").val();
+            //내용이 비어있으면 안됨
+            if(data_content.length<=0) {
+                alert('내용을 작성해 주세요');
+                return;
+            }
+            // 1. 변경된 내용을 서버로 전송
+            let reviewVO = {
+                rno: $(this).attr("data-rno"),
+                bno: data_bno,
+                //text->val
+                id: $("#commenter-writebox").text(),
+                content: data_content,
+                prno: $(this).attr("data-prno")
+            }
+            updateReview(reviewVO);
+            // 2. 모달 창을 닫는다.
+            $(".close").trigger("click");
+        });
+
+        //삭제 버튼 클릭
+        $("#commentList").on("click",".btn-delete", function(){
+            //수정은 로그인한 유저 + 작성자만 가능 해야함
+            if(data_id===''){
+                alert('먼저 로그인을 하셔야 합니다');
+                return;
+            }
+            //부모중 태그가 li인 첫번째 부모 1개만 찾아서 반환
+            let li = $(this).closest("li");
+            let commenter = $(".commenter", li).text();
+            if(data_id!==commenter) {
+                alert('본인의 리뷰만 삭제 가능합니다');
+                return;
+            }
+            if(!confirm('정말 삭제 하시겠습니까?')) {
+                return;
+            }
+
+            let reviewVO = {
+                rno: $(this).attr("data-rno"),
+                bno: data_bno,
+                id: commenter,
+                prno: $(this).attr("data-prno")
+            }
+            deleteReview(reviewVO);
+        });
+    }); //document.ready
+
+    let getReviews = function(bno) {
+        $.ajax({
+            url: '/bookshop/review/bookReviews/'+bno,
+            type: 'GET',
+            headers: {"content-type":"application/json"},
+
+            success : function(result){
+                $("#commentList").html(toReviewList(result));
+            },
+            error: function() {
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                alert("리뷰 조회에 실패했습니다");
+            }
+        });//ajax
+    }//getReviews
+
+    let writeReview = function(reviewVO) {
+        $.ajax({
+            url: '/bookshop/review/bookReview',
+            type: 'POST',
+            headers: {"content-type":"application/json"},
+            data: JSON.stringify(reviewVO),
+
+            success : function(result) {
+                alert("리뷰 등록 성공");
+                getReviews(reviewVO.bno);
+                location.reload();
+            },
+            error: function(request, status, error) {
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                alert("리뷰 등록에 실패했습니다")
+            }
+        })//ajax
+    }//writeReivew
+
+    let updateReview = function(reviewVO) {
+        $.ajax({
+            url: '/bookshop/review/bookReview/'+reviewVO.rno,
+            type: 'PUT',
+            headers: {"content-type":"application/json"},
+            data: JSON.stringify(reviewVO),
+
+            success : function(result) {
+                alert("리뷰 수정 성공");
+                getReviews(reviewVO.bno);
+            },
+            error: function(request, status, error) {
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                alert("리뷰 수정에 실패했습니다")
+            }
+        })//ajax
+    }//updateReview
+
+    let deleteReview = function(reviewVO) {
+        $.ajax({
+            url: '/bookshop/review/bookReview/'+reviewVO.rno,
+            type: 'DELETE',
+            headers: {"content-type":"application/json"},
+            data: JSON.stringify(reviewVO),
+
+            success : function(result) {
+                alert("삭제 성공");
+                getReviews(reviewVO.bno);
+            },
+            error: function(request, status, error) {
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                alert("리뷰 삭제에 실패했습니다")
+            }
+        })//ajax
+    }//deleteReview
+
+    //배열로 들어온 (js 객체를 html 문자로) 바꿔주는 함수
+    let toReviewList = function(pageResponse) {
+        let reviews = pageResponse.pageList;
+        let prev = pageResponse.showPrev;
+        let next = pageResponse.showNext;
+        let tmp = '<ul>';
+        reviews.forEach(function(review) {
+            let reviewDate;
+            if(review.update_date!=null){
+                reviewDate = review.update_date;
+            } else if(review.update_date==null){
+                reviewDate = review.reg_date;
+            }
+
+            if(review.rno!==review.prno) {
+                tmp += '<li class="comment-item" style="text-indent:20px; background-color: #ffffff;" data-bno=${book.bno} data-id=${sessionScope.user.id}>'
+                tmp += '<span style="position: relative; top:18px;">'
+                tmp += '<i style="margin-left:25px;">'+'ㄴ'+'</i>'
+                tmp += '</span>'
+            } else if (review.rno === review.prno) {
+                tmp += '<li class="comment-item" data-bno=${book.bno} data-id=${sessionScope.user.id}>'
+                tmp += '<span class="comment-img">'
+                tmp += '<i class="fa fa-user-circle" aria-hidden="true"></i>'
+                tmp += '</span>'
+            }
+            tmp += '<div class="comment-area">'
+            if(review.rno!==review.prno){
+                tmp += '<div class="commenter"">'+review.id+'</div>'
+            } else if (review.rno === review.prno) {
+                tmp += '<div class="commenter">'+review.id+'</div>'
+            }
+            tmp += '<div class="comment-content">'+review.content+'</div>'
+            tmp += '<div class="comment-bottom">'
+            tmp += '<span class="up_date">'+dateToString(reviewDate)+'</span>'
+            if(review.rno===review.prno){
+                tmp += '<button class="btn-write" data-bno='+review.bno+' data-rno='+review.rno+' data-prno='+review.prno+'>답글쓰기</button>'
+            }
+            tmp += '<button class="btn-modify"  data-bno='+review.bno+' data-rno='+review.rno+' data-prno='+review.prno+'>수정</button>'
+            tmp += '<button class="btn-delete"  data-bno='+review.bno+' data-rno='+review.rno+' data-prno='+review.prno+'>삭제</button>'
+            tmp += '</div>'
+            tmp += '</div>'
+            tmp += '</li>'
+        })//foreach
+        tmp += '</ul>'
+
+        tmp += '<div id="comment-writebox">'
+        tmp += '<div class="commenter commenter-writebox">${sessionScope.user.id==null?'비로그인 유저':sessionScope.user.id}</div>'
+        tmp += '<div class="comment-writebox-content">'
+        tmp += '<textarea name="" class="comment-write" id="comment-write" cols="30" rows="3" placeholder="댓글을 남겨보세요"></textarea>'
+        tmp += '</div>'
+        tmp += '<div id="comment-writebox-bottom">'
+        tmp += '<div class="register-box">'
+        tmp += '<button class="btn btn-write-comment" id="btn-write-comment">등록</button>'
+        tmp += '</div>'
+        tmp += '</div>'
+        tmp += '</div>'
+
+        <%--tmp += '<div class="paging-container">'--%>
+        <%--if (prev) {--%>
+
+        <%--    tmp += "<a class='page' href='<c:url value="/review/bookReviews/"/>'+${book.bno}+'?page="+(pageResponse.page-1)+">&lt;</a>";--%>
+        <%--}--%>
+        <%--for(var i = pageResponse.start; i<=pageResponse.end ; i++){--%>
+        <%--    if(i===pageResponse.page){--%>
+        <%--        tmp += "<a class='page paging-active' href="<c:url value="/review/bookReviews/"/>${book.bno}>"+i+"</a>";--%>
+        <%--    } else {--%>
+        <%--        tmp += "<a class='page' href='<c:url value="/review/bookReviews/"/>'+${book.bno}+''>"+i+"</a>";--%>
+        <%--    }--%>
+        <%--}--%>
+        <%--if (next) {--%>
+        <%--    tmp += "<a class='page' href='<c:url value="/review/bookReviews/"/>'+${book.bno}+'?page="+(pageResponse.page+1)+">&gt;</a>";--%>
+        <%--}--%>
+        <%--tmp += '</div>'--%>
+
+        return tmp;
+    }
+
+    let addZero = function(value){
+        return value > 9 ? value : "0"+value;
+    }
+
+    let dateToString = function(reviewDate) {
+        let date = new Date(reviewDate);
+
+        let yyyy = date.getFullYear();
+        let mm = addZero(date.getMonth() + 1);
+        let dd = addZero(date.getDate());
+
+        let HH = addZero(date.getHours());
+        let MM = addZero(date.getMinutes());
+        let ss = addZero(date.getSeconds());
+
+        return yyyy+"."+mm+"."+dd+ " " + HH + ":" + MM + ":" + ss;
+    }
+</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

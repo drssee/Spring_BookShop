@@ -14,7 +14,7 @@
     <title>김남현</title>
     <script src="<c:url value="/resources/js/common/jquery-3.6.0.min.js"/>"></script>
     <script src="<c:url value="/resources/js/common/jquery-ui-1.10.4.custom.min.js"/>"></script>
-    <script src="<c:url value="/resources/js/header/header.js"/>"></script>
+    <script src="<c:url value="/resources/js/header/header_nobanner.js"/>"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="<c:url value="/resources/css/common/reset.css"/>">
@@ -28,15 +28,31 @@
     <header id="top">
         <div class="quick_wrap1">
             <div class="quick_wrap2">
-                <ul class="quick">
-                    <li>
-                        <a href="<c:url value="/user/login"/>">로그인</a>
-                    </li>
-                    <li>
-                        <a href="register.html">회원가입</a>
-                    </li>
-                </ul>
-                <!--quick-->
+                <c:choose>
+                    <c:when test="${sessionScope.user.id==null}">
+                        <ul class="quick">
+                            <li>
+                                <a href="<c:url value="/user/login"/>">로그인</a>
+                            </li>
+                            <li>
+                                <a href="register.html">회원가입</a>
+                            </li>
+                        </ul>
+                    </c:when>
+                    <c:otherwise>
+                        <ul class="quick">
+                            <li>
+                                <a href="<c:url value="/user/logout"/>">로그아웃</a>
+                            </li>
+                            <li>
+                                <a href="register.html">마이페이지</a>
+                            </li>
+                            <li>
+                                <a href="register.html">장바구니</a>
+                            </li>
+                        </ul>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <!--quick wrap2-->
         </div>

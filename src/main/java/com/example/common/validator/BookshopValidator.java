@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
-import static com.example.common.util.UtilMethod.getId;
+import static com.example.common.util.UtilMethod.getUser;
 
 @Slf4j
 public class BookshopValidator {
@@ -58,11 +58,11 @@ public class BookshopValidator {
      */
     public static boolean validateLoginedUser(String id,HttpServletRequest request){
         //파라미터 id와 세션에 존재하는 id가 일치하는지
-        return getId(request) !=null && id.equals(getId(request));
+        return getUser(request) !=null && id.equals(getUser(request).getId());
     }
 
     /*
-     * 입력폼의 bno,id값 검증
+     * 입력폼의 bno,id값 검증(작성한 유저인지 확인)
      */
     public static boolean isEffectiveFormValue(ReviewVO reviewVO, ReviewForm reviewForm){
         //rno로 얻어온 reviewVO와 입력폼으로 얻어온 reviewForm값이 동일한지 검증
