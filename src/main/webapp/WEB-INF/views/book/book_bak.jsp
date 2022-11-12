@@ -133,22 +133,22 @@
 <%--            <!--댓글2예제-->--%>
         </div>
         <script>
-            // function count(type)  {
-            //     // 결과를 표시할 element
-            //     const resultElement = document.getElementById('useNum');
-            //     let number = resultElement.value;
-            //     //인원이 0~10명 사이에서만 신청 가능하도록 조정
-            //     if(type === 'plus') {
-            //         number = parseInt(number) + 1;
-            //         if(number > 10){number = 10; alert('10인 이상은 단체 문의 부탁드립니다.');}
-            //     }
-            //     else if(type === 'minus')  {
-            //         number = parseInt(number) - 1;
-            //         if(number < 0){number = 0;}
-            //     }
-            //     // 결과 출력
-            //     resultElement.value = number;
-            // }
+            function count(type)  {
+                // 결과를 표시할 element
+                const resultElement = document.getElementById('useNum');
+                let number = resultElement.value;
+                //인원이 0~10명 사이에서만 신청 가능하도록 조정
+                if(type === 'plus') {
+                    number = parseInt(number) + 1;
+                    if(number > 10){number = 10; alert('10인 이상은 단체 문의 부탁드립니다.');}
+                }
+                else if(type === 'minus')  {
+                    number = parseInt(number) - 1;
+                    if(number < 0){number = 0;}
+                }
+                // 결과 출력
+                resultElement.value = number;
+            }
             $(document).ready(function(){
                 let data_bno = $("#reviewList").attr("data-bno");
                 let data_id = $("#reviewList").attr("data-id");

@@ -121,6 +121,23 @@ create table review
         primary key (rno)
 );
 
+create table cart
+(
+    cno      bigint auto_increment,
+    id       varchar(30) not null,
+    bno      bigint      not null,
+    quantity int         not null,
+    constraint cart_pk
+        primary key (cno),
+    constraint cart_book_null_fk
+        foreign key (bno) references book (bno)
+            on delete cascade,
+    constraint cart_user_null_fk
+        foreign key (id) references user (id)
+            on delete cascade
+);
+
+
 
 #auto-increment 1로 수정
 # ALTER TABLE book AUTO_INCREMENT=1;

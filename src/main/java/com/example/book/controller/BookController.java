@@ -13,16 +13,20 @@ import com.example.common.file.FileIO;
 import com.example.common.paging.PageRequest;
 import com.example.common.paging.PageSetable;
 import com.example.common.validator.BookshopValidator;
+import com.example.exception.IllegalUserException;
+import com.example.user.service.UserService;
+import com.example.user.vo.UserLikeVO;
+import com.example.user.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,23 +44,48 @@ import static com.example.common.status.RequestStatus.BAD_REQUEST;
 public class BookController {
 
     private final BookService bookService;
+    private final UserService userService;
     private final FileIO fileIO;
 
     ///////////////////////////////////////////코어로직 실패하면 예외 던지기 500에러
 
     // *BookController api*
 
+    /*
+    조회
+     */
     // get /book/books <-전체(출판된) 목록조회
     // get /book/bs <-베스트셀러 목록조회
     // get /book/books_new <-새로나온책 목록조회
     // get /book/books_toBePublished <-출판예정 목록조회
     // get /book/{bno} <-단일조회
+
+    /*
+    등록
+     */
     // get /book/add <-단일등록폼
     // post /book/add <-단일등록
+
+    /*
+    수정
+     */
     // get /book/{bno}/edit <-단일수정폼
     // post /book/{bno}/edit <-단일수정
+
+    /*
+    삭제
+     */
     // post /book/{bno}/delete <-단일삭제
+
+    /*
+    검색
+     */
     // get /book/search <-상품검색
+
+    /*
+    rest api
+     */
+    // get /book/like/{bno} <-좋아요 기능
 
 
     /**
@@ -305,6 +334,43 @@ public class BookController {
         return "book/books_sc";
     }
 
+    /**
+     * 좋아요 기능
+     */
+    @GetMapping("/like/{bno}")
+    @ResponseBody
+    public ResponseEntity<Long> bookLike(@PathVariable Long bno, HttpServletRequest request){
+        /*
+        valid
+        */
+        //세션id 체크
+        if(!BookshopValidator.validateLoginedUser(request)){
+            throw new IllegalUserException("먼저 로그인을 해주세요.");
+        }
+        //userVO 초기화 , userLikeVO 초기화
+        UserVO userVO = (UserVO) request.getSession().getAttribute("user");
+        UserLikeVO userLikeVO = UserLikeVO
+                .builder()
+                .id(userVO.getId())
+                .bno(bno)
+                .build();
+        //해당 bno에 이미 좋아요를 눌렀으면
+        if(userService.checkLikeCnt(userLikeVO)!=0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"이미 추천을 한 도서입니다.");
+        }
+
+
+        /*
+        core
+        */
+        //해당 bno의 도서를 조회해 like_cnt(좋아요) +1
+        BookVO bookVO = bookService.getBook(bno);
+        bookVO.setLike_cnt(bookVO.getLike_cnt()+1);
+        bookService.updateBook(bookVO);
+        //유저의 좋아요 히스토리 저장
+        userService.saveLikeCnt(userLikeVO);
+        return ResponseEntity.ok(bookVO.getLike_cnt());
+    }
 
     /*
      * 파라미터로 넘어온 form,dto에 검증된 page,size 셋팅

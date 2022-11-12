@@ -13,6 +13,7 @@
     <context:component-scan base-package="com.example.orders.controller"/>
     <context:component-scan base-package="com.example.user.controller"/>
     <context:component-scan base-package="com.example.review.controller"/>
+    <context:component-scan base-package="com.example.cart.controller"/>
     <context:component-scan base-package="com.example.exception.controller"/>
     <context:component-scan base-package="com.example.common"/>
     <context:component-scan base-package="com.example.home"/>

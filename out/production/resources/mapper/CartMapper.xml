@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cart.dao.CartDao">
+    <insert id="insertCart" useGeneratedKeys="true" keyProperty="cno">
+        insert into cart (id,bno,quantity)
+        values (#{id},#{bno},#{quantity})
+    </insert>
+    <select id="selectCart" resultType="cartVO">
+        select * from cart
+        where id = #{id} and bno = #{bno}
+    </select>
+    <select id="selectCartById" resultType="cartVO">
+        select * from cart
+        where id = #{id}
+        order by cno desc;
+    </select>
+    <select id="selectCntById" resultType="int">
+        select count(*) from cart
+        where id = #{id}
+    </select>
+</mapper>

@@ -99,11 +99,17 @@ textarea {
 #btn-write-comment, #btn-write-reply {
     color : #009f47;
     background-color: #e0f8eb;
+    position: relative;
+    bottom: 5px;
+    left: 10px;
 }
 
 #btn-cancel-reply {
     background-color: #eff0f2;
     margin-right : 10px;
+    position: relative;
+    bottom: 5px;
+    left: 10px;
 }
 
 #btn-write-modify {

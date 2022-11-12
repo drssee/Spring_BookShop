@@ -15,6 +15,8 @@
         <div class="container" style="width: 350px;height: 480px; float:left; margin-top:100px; ">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" style="cursor: pointer;">
+
+                    <!--image-->
                     <c:choose>
                         <c:when test="${images.size()>0}">
                             <c:forEach items="${images}" var="image" varStatus="index">
@@ -48,6 +50,8 @@
                             </c:choose>
                         </c:otherwise>
                     </c:choose>
+                    <!--image-->
+
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -60,6 +64,7 @@
             </div>
         </div>
         <script>
+            //클릭->전체이미지
             $(".iimg").click(function(){
                 let img = $(this).attr("src");
                 window.location=img;
@@ -68,33 +73,202 @@
             <div class="col-md-6" style="float:right; margin-top:100px; margin-left:12px;">
                 <h1 class="display-5 fw-bolder">${book.title}</h1>
                 <div class="fs-5 mb-5" style="margin-top:20px;">
-<%--                    <span class="text-decoration-line-through">$45.00</span>--%>
                     <span>${book.price}원</span>
                 </div>
                 <p class="lead" style="margin-top:30px;">${book.author}</p>
                 <p class="lead" style="margin-top:20px;">${book.publisher}</p>
                 <p class="lead" style="margin-top:20px; margin-bottom: 20px;">${book.description}</p>
-<%--                <p class="lead" style="margin-top:10px;">${book.pubDate}</p>--%>
                 <div class="d-flex">
-                    <input name="quantity" class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <input type='button' onclick='count("minus")' value='-'/>
+                    <input id="quantity" name="quantity" class="form-control text-center me-3" type="text" value="1" style="max-width: 3rem" readonly/>
+                    <input type='button' onclick='count("plus")' value='+' style="margin-right:10px; position:relative; right:15px;"/>
                     <input type="hidden" name="bno" value="${book.bno}">
-                    <input type="hidden" name="page" value="${bnoDto.page}"> <!--page,size 문제있을 수 있음-->
+                    <input type="hidden" name="page" value="${bnoDto.page}">
                     <input type="hidden" name="size" value="${bnoDto.size}">
-                    <button style="margin-right: 10px;" class="btn btn-outline-dark flex-shrink-0" type="button">
-                        <i class="bi-cart-fill me-1"></i>
-                        장바구니 담기
+                    <button id="btn-like" style="margin-right: 10px;" class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <i class="bi-cart-fill me-1">좋아요!</i>
+                        <span id="like_cnt">${book.like_cnt}개</span>
+                    </button>
+                    <script>
+                        /**
+                         * 좋아요 카운트 js
+                         */
+                        //좋아요 카운트+1개
+                        $("#btn-like").click(function(){
+                            //로그인 확인
+                            if(${sessionScope.user.id==null}){
+                                alert("먼저 로그인을 해주세요");
+                                return;
+                            }
+                            if(!confirm('<c:out value="${book.title}"/>(을)를 추천 하시겠습니까?')){
+                                return;
+                            }
+                            let bno = <c:out value="${book.bno}"/>
+                            userLike(bno);
+                        });
+
+                        let userLike = function(bno){
+                            //좋아요 중복 클릭 확인 + 좋아요 카운트+1
+                            $.ajax({
+                                url: '/bookshop/book/like/'+bno,
+                                type: 'GET',
+                                headers: {"content-type":"application/json"},
+
+                                success : function(result){
+                                    alert('해당 도서를 추천했습니다.');
+                                    $("#like_cnt").html(result+'개');
+                                },
+                                error: function(request, status, error) {
+                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                    alert("이미 추천한 도서입니다.");
+                                }
+                            });//ajax
+                        };//validUserLike
+                    </script>
+                    <button style="margin-right: 10px;" id="btn-cart" class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <i class="bi-cart-fill me-1">장바구니 담기</i>
                     </button>
                     <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                        <i class="bi-cart-fill me-1"></i>
-                        구매
+                        <i class="bi-cart-fill me-1">구매</i>
                     </button>
+                    <script>
+                        /**
+                         * 장바구니 , 구매 js
+                         */
+                        let id = '<c:out value="${sessionScope.user.id}"/>';
+                        let bno = '<c:out value="${book.bno}"/>';
+                        let stock = '<c:out value="${book.stock}"/>';
+                        let bookName = '<c:out value="${book.title}"/>';
+
+                        //카트담기 버튼 클릭
+                        $("#btn-cart").click(function(){
+                            //수량은 가변적, 클릭당시 값을 가져와야함
+                            let quantity = document.getElementById('quantity').value;
+                            //로그인 체크
+                            if(!checkLogin(id)){
+                                return;
+                            }
+                            //재고 체크
+                            if(quantity>stock){
+                                let outOfStock = quantity-stock;
+                                alert('재고가 '+outOfStock+'개 부족합니다');
+                                return;
+                            }
+                            //확인
+                            if(!confirm(bookName+' '+quantity+'개(을)를 장바구니에 담으시겠습니까?')) {
+                                return;
+                            }
+
+                            //cartForm 초기화
+                            let cartForm = {
+                                id: id,
+                                bno: bno,
+                                quantity: quantity
+                            }
+                            //cart 상품 중복체크 + cart 저장
+                            saveCart(cartForm);
+                        });
+
+                        //장바구니에 같은 상품이 있는지 중복 체크
+                        let saveCart = function(cartForm){
+                            $.ajax({
+                                url: '/bookshop/cart/check/'+cartForm.bno,
+                                type: 'GET',
+                                headers: {"content-type":"application/json"},
+
+                                success : function(result){
+                                    if(result){
+                                        //중복이 없을경우, 유저의 카트아이템 갯수 체크
+                                        checkCartSize(cartForm);
+                                    } else{
+                                        alert(bookName+'(은)는 이미 장바구니에 존재합니다.');
+                                    }
+                                },
+                                error: function(request, status, error) {
+                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                    alert('장바구니 추가에 실패했습니다.');
+                                }
+                            });//ajax
+                        }//checkCart
+
+                        //유저의 카트아이템 갯수 체크
+                        let checkCartSize = function(cartForm){
+                            $.ajax({
+                                url: '/bookshop/cart/size/'+cartForm.id,
+                                type: 'GET',
+                                headers: {"content-type":"application/json"},
+
+                                success : function(result){
+                                    if(result>=10){
+                                        //카트 아이템 갯수 체크
+                                        alert('장바구니엔 최대 10개의 상품까지 담을 수 있습니다.');
+                                    } else{
+                                        //장바구니에 담기
+                                        insertIntoCart(cartForm);
+                                    }
+                                },
+                                error: function(request, status, error) {
+                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                    alert('장바구니 추가에 실패했습니다.');
+                                }
+                            });//ajax
+                        }//checkCart
+
+                        //장바구니에 담기
+                        let insertIntoCart = function(cartForm){
+                            $.ajax({
+                                url: '/bookshop/cart/save',
+                                type: 'POST',
+                                headers: {"content-type":"application/json"},
+                                data: JSON.stringify(cartForm),
+
+                                success : function(result){
+                                    alert('장바구니 페이지로 이동합니다');
+                                    // location.href="";
+                                },
+                                error: function(request, status, error) {
+                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                    alert("장바구니 추가에 실패했습니다.");
+                                }
+                            });//ajax
+                        }//saveInCart
+
+                        //로그인 체크
+                        function checkLogin(id){
+                            if(id===''){
+                                alert('먼저 로그인 해주세요');
+                                return false;
+                            }
+                            return true;
+                        }
+
+                        //장바구니 물품 수량 카운트 체크
+                        function count(type)  {
+                            // 결과를 표시할 element
+                            const resultElement = document.getElementById('quantity');
+                            let number = resultElement.value;
+                            //장바구니에 1 ~ 10개만 담기게
+                            if(type === 'plus') {
+                                number = parseInt(number) + 1;
+                                if(number > 10){
+                                    number = 10; alert('최대 수량은 10개 입니다.');
+                                }
+                            }
+                            else if(type === 'minus')  {
+                                number = parseInt(number) - 1;
+                                if(number < 1){
+                                    number = 1;
+                                }
+                            }
+                            // 결과 출력
+                            resultElement.value = number;
+                        }//count
+                    </script>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<h4>리뷰</h4>
 
 <div id="commentList" data-bno="${book.bno}" data-id="${sessionScope.user.id}">
 </div>
@@ -102,12 +276,12 @@
 <div id="reply-writebox">
     <div class="commenter commenter-writebox">${sessionScope.user.id==null?'비로그인 유저':sessionScope.user.id}</div>
     <div class="reply-writebox-content">
-        <textarea name="write-comment" class="write-comment" id="write-comment" cols="30" rows="3" placeholder="댓글을 남겨보세요"></textarea>
+        <textarea name="write-comment" class="write-comment" id="write-comment" cols="30" rows="3" placeholder="한줄평을 남겨보세요"></textarea>
     </div>
     <div id="reply-writebox-bottom">
         <div class="register-box">
             <button class="btn btn-write-reply" id="btn-write-reply">등록</button>
-            <button class="btn btn-cancel-reply">취소</button>
+            <button class="btn btn-cancel-reply" style="position:relative;bottom:5px;left:10px;">취소</button>
         </div>
     </div>
 </div>
@@ -134,6 +308,9 @@
 </div>
 
 <script>
+    /**
+     * 리뷰 js
+     */
     let commentList = $("#commentList");
     let data_bno = commentList.attr("data-bno");
     //세션에 로그인된 유저 아이디
@@ -269,7 +446,7 @@
         });
 
         //삭제 버튼 클릭
-        $("#commentList").on("click",".btn-delete", function(){
+        commentList.on("click",".btn-delete", function(){
             //수정은 로그인한 유저 + 작성자만 가능 해야함
             if(data_id===''){
                 alert('먼저 로그인을 하셔야 합니다');
@@ -294,18 +471,24 @@
             }
             deleteReview(reviewVO);
         });
+
+        //페이징처리
+        commentList.on("click",".pageBtn", function(){
+            getReviews($(this).attr("data-bno"),$(this).attr("data-page"),$(this).attr("data-size"));
+        });
+
     }); //document.ready
 
-    let getReviews = function(bno) {
+    let getReviews = function(bno,page,size) {
         $.ajax({
-            url: '/bookshop/review/bookReviews/'+bno,
+            url: '/bookshop/review/bookReviews/'+bno+'?page='+page+"&size="+size,
             type: 'GET',
             headers: {"content-type":"application/json"},
 
             success : function(result){
                 $("#commentList").html(toReviewList(result));
             },
-            error: function() {
+            error: function(request, status, error) {
                 console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                 alert("리뷰 조회에 실패했습니다");
             }
@@ -372,7 +555,8 @@
         let reviews = pageResponse.pageList;
         let prev = pageResponse.showPrev;
         let next = pageResponse.showNext;
-        let tmp = '<ul>';
+        let tmp = '<h4 style="margin-bottom:20px;">한줄평</h4>';
+            tmp += '<ul>';
         reviews.forEach(function(review) {
             let reviewDate;
             if(review.update_date!=null){
@@ -424,26 +608,29 @@
         tmp += '</div>'
         tmp += '</div>'
 
-        <%--tmp += '<div class="paging-container">'--%>
-        <%--if (prev) {--%>
-
-        <%--    tmp += "<a class='page' href='<c:url value="/review/bookReviews/"/>'+${book.bno}+'?page="+(pageResponse.page-1)+">&lt;</a>";--%>
-        <%--}--%>
-        <%--for(var i = pageResponse.start; i<=pageResponse.end ; i++){--%>
-        <%--    if(i===pageResponse.page){--%>
-        <%--        tmp += "<a class='page paging-active' href="<c:url value="/review/bookReviews/"/>${book.bno}>"+i+"</a>";--%>
-        <%--    } else {--%>
-        <%--        tmp += "<a class='page' href='<c:url value="/review/bookReviews/"/>'+${book.bno}+''>"+i+"</a>";--%>
-        <%--    }--%>
-        <%--}--%>
-        <%--if (next) {--%>
-        <%--    tmp += "<a class='page' href='<c:url value="/review/bookReviews/"/>'+${book.bno}+'?page="+(pageResponse.page+1)+">&gt;</a>";--%>
-        <%--}--%>
-        <%--tmp += '</div>'--%>
+        tmp += '<div class="paging-container">'
+        let prevPage = pageResponse.page-1;
+        let nextPage = pageResponse.page+1;
+        if (prev) {
+            tmp += '<button class="page pageBtn" data-bno="${book.bno}" data-page='+prevPage+'>&lt;</button>';
+        }
+        for(var i = pageResponse.start; i<=pageResponse.end ; i++){
+            if(i===pageResponse.page){
+                tmp += '<button class="page paging-active pageBtn" data-bno="${book.bno}" data-page='+i+'>'+i+'</button>';
+            } else {
+                tmp += '<button class="page pageBtn" data-bno="${book.bno}" data-page='+i+'>'+i+'</button>';
+            }
+        }
+        if (next) {
+            tmp += '<button class="page pageBtn" data-bno="${book.bno}" data-page='+nextPage+'>&gt;</button>';
+        }
+        tmp += '</div>'
 
         return tmp;
     }
 
+
+    //날짜 처리를 위한 함수들
     let addZero = function(value){
         return value > 9 ? value : "0"+value;
     }

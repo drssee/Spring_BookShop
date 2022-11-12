@@ -16,7 +16,7 @@ import static com.example.common.util.UtilMethod.getUser;
 public class BookshopValidator {
 
     /*
-        Bookshop에서 사용하는 검증 메서드 모음
+    Bookshop에서 사용하는 검증 메서드 모음
      */
 
     /*
@@ -56,6 +56,11 @@ public class BookshopValidator {
     /*
      * 로그인 유저 검증
      */
+    public static boolean validateLoginedUser(HttpServletRequest request){
+        //세션에 id가 존재하는지
+        return getUser(request)!=null && getUser(request).getId()!=null;
+    }
+
     public static boolean validateLoginedUser(String id,HttpServletRequest request){
         //파라미터 id와 세션에 존재하는 id가 일치하는지
         return getUser(request) !=null && id.equals(getUser(request).getId());

@@ -3,6 +3,7 @@ package com.example.review.controller;
 import com.example.common.dto.BnoDto;
 import com.example.common.paging.PageRequest;
 import com.example.common.paging.PageResponse;
+import com.example.common.validator.BookshopValidator;
 import com.example.exception.IllegalUserException;
 import com.example.review.controller.form.ReviewDeleteForm;
 import com.example.review.controller.form.ReviewEditForm;
@@ -42,12 +43,14 @@ public class ReviewController {
     // delete /review/bookReview/{rno} <-리뷰 삭제
 
     @GetMapping("/bookReviews/{bno}")
-    public ResponseEntity<PageResponse<ReviewVO>> getReviews(@PathVariable Long bno){
+    public ResponseEntity<PageResponse<ReviewVO>> getReviews(@PathVariable Long bno, HttpServletRequest request){
         /*
         valid
         */
         //bnoDto = bno+pageRequest 초기화
-        BnoDto bnoDto = getBnoDto(bno);
+        PageRequest pageRequest = BookshopValidator.pageRequestResolver(
+                request.getParameter("page"),request.getParameter("size"));
+        BnoDto bnoDto = getBnoDto(bno,pageRequest);
         //bno 유효성 검증
         if(bnoDto.getBno()<1){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, BAD_REQUEST.label());
@@ -168,8 +171,7 @@ public class ReviewController {
     /**
      * bno->bnoDto
      */
-    private BnoDto getBnoDto(Long bno) {
-        PageRequest pageRequest = PageRequest.builder().build();
+    private BnoDto getBnoDto(Long bno,PageRequest pageRequest) {
         return BnoDto.builder()
                 .bno(bno)
                 .page(pageRequest.getPage())

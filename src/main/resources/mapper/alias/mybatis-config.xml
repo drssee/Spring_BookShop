@@ -14,6 +14,9 @@
         <typeAlias type="com.example.orders.vo.OrdersBookVO" alias="orders_bookVO"/>
 
         <typeAlias type="com.example.user.vo.UserVO" alias="userVO"/>
+        <typeAlias type="com.example.user.vo.UserLikeVO" alias="userLikeVO"/>
+
+        <typeAlias type="com.example.cart.vo.CartVO" alias="cartVO"/>
 
         <typeAlias type="com.example.review.vo.ReviewVO" alias="reviewVO"/>
     </typeAliases>

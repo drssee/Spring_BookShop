@@ -77,7 +77,7 @@
     </select>
     <update id="updateBook" parameterType="bookVO">
         update book
-        set price =  #{price} ,stock = #{stock} , update_date = now()
+        set price =  #{price} ,stock = #{stock} , like_cnt = #{like_cnt} ,update_date = now()
         where bno = #{bno}
     </update>
     <delete id="deleteBook">
