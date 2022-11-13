@@ -1,16 +1,17 @@
 package com.example.orders.service;
 
-import com.example.book.dao.BookDao;
-import com.example.book.vo.BookVO;
-import com.example.common.status.OrderStatus;
+import com.example.cart.dao.CartDao;
 import com.example.orders.dao.OrdersDao;
 import com.example.orders.vo.OrdersBookVO;
 import com.example.orders.vo.OrdersVO;
-import com.example.user.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+import static com.example.common.status.OrderStatus.PAYMENT_COMPLETE;
 
 @Service
 @Transactional
@@ -19,42 +20,24 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrdersServiceImpl implements OrdersService {
 
     private final OrdersDao ordersDao;
-    private final BookDao bookDao;
+    private final CartDao cartDao;
 
     /**
      * 상품(book)의 구매
      */
     @Override
-    public void buyBook(UserVO userVO, BookVO bookVO, OrdersBookVO ordersBookVO) {
-        /*
-        회원정책(회원등급(VIP) 쿠폰여부), 배송아이디(delivery_id) 넣어줘야함
-         */
+    public void buyBookFromCart(OrdersVO ordersVO, List<OrdersBookVO> ordersBookVOList) {
+        /*deliveryId*/
 
-        //책을 구매하려면
-        //1.userVo로 ordersVo와를 초기화 해야함
-        OrdersVO ordersVO = OrdersVO
-                .builder()
-                .id(userVO.getId())
-                .delivery_id(1L) // <--임시값 초기화
-                .order_status(OrderStatus.ORDER_COMPLETE.label())
-                .build();
-
-        //2.orders 테이블에 저장
+        //order_status 수정
+        ordersVO.setOrder_status(PAYMENT_COMPLETE.label());
+        //장바구니 목록 삭제
+        cartDao.deleteCart(ordersVO.getId());
+        //db에 주문 저장
         ordersDao.insertOrders(ordersVO);
-
-        //3.ordersVO를 이용해 orders_bookVO의 초기화를 완료 해야함
-        //orders_bookVO 초기화 완료
-        ordersBookVO.setOrder_id(ordersVO.getOrder_id());
-        ordersBookVO.setBno(bookVO.getBno());
-        //orders_book 테이블에 저장
-        ordersDao.insert_orders_book(ordersBookVO);
-
-        //4.주문수량만큼 상품의 재고가 줄어들어야함
-        //해당 bookVO를 가져온다
-        BookVO getBookVO = bookDao.selectBook(bookVO.getBno());
-        //해당 bookVO의 재고 - 주문 재고
-        getBookVO.setStock(getBookVO.getStock()-ordersBookVO.getOrder_quantity());
-        //해당 bookVO업데이트
-        bookDao.updateBook(getBookVO);
+        ordersBookVOList.forEach(ordersBookVO -> {
+            ordersBookVO.setOrder_id(ordersVO.getOrder_id());
+            ordersDao.insert_orders_book(ordersBookVO);
+        });
     }
 }

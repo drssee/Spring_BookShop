@@ -28,6 +28,7 @@
     <header id="top">
         <div class="quick_wrap1">
             <div class="quick_wrap2">
+                <!--로그인,비로그인시 다른 메뉴 출력-->
                 <c:choose>
                     <c:when test="${sessionScope.user.id==null}">
                         <ul class="quick">
@@ -53,6 +54,7 @@
                         </ul>
                     </c:otherwise>
                 </c:choose>
+                <!--로그인,비로그인시 다른 메뉴 출력-->
             </div>
             <!--quick wrap2-->
         </div>
@@ -106,6 +108,7 @@
 </div><!--main1_wrap-->
 <script>
     $(document).ready(function() {
+        //서버에 저장된 카테고리 리스트를 가져온다
         getCategorys();
         //카테고리
         $("#menu1_wrap").hide();
@@ -114,6 +117,7 @@
         });
     });
 
+    //서버에 저장된 카테고리 리스트를 가져온다
     let getCategorys = function(){
         $.ajax({
             url: '/bookshop/categorys',
@@ -129,6 +133,7 @@
     }
 
     //배열로 들어온 (js 객체를 html 문자로) 바꿔주는 함수
+    //전체 카테고리 리스트 순회하며 , 카테고리탭에 저장 + 해당 카테고리 검색 링크 생성
     let toHtml = function(categorys) {
         let tmp = '<ul>'
         for(let i = 0; i<categorys.length; i++){

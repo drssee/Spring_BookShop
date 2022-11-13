@@ -7,7 +7,7 @@ public interface OrdersDao {
     /**
      * 오더 등록
      */
-    int insertOrders(OrdersVO ordersVO);
+    Long insertOrders(OrdersVO ordersVO);
 
     /**
      * 오더 (단일)조회

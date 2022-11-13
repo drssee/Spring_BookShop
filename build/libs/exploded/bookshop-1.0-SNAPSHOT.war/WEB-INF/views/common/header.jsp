@@ -38,7 +38,7 @@
     <header id="top">
         <div class="quick_wrap1">
             <div class="quick_wrap2">
-
+                <!--로그인,비로그인시 다른 메뉴 출력-->
                 <c:choose>
                     <c:when test="${sessionScope.user.id==null}">
                         <ul class="quick">
@@ -64,7 +64,7 @@
                         </ul>
                     </c:otherwise>
                 </c:choose>
-
+                <!--로그인,비로그인시 다른 메뉴 출력-->
             </div>
             <!--quick wrap2-->
         </div>
@@ -79,6 +79,7 @@
                 <input type="text" name="u_search" placeholder="제목을 입력해주세요" style="font-size: 12px">
                 <img src="<c:url value="/resources/images/common/ico-search.png"/>" alt="돋보기" width="18" height="18" class="search_btn">
                 <script>
+                    //검색버튼 클릭
                     $(".search_btn").click(function(){
                         let search_condition = $("input[name=u_search]").val();
                         window.location="/bookshop/book/search?keyword="+search_condition+"&option=T"; //검색 버튼 이동
@@ -118,6 +119,7 @@
 </div><!--main1_wrap-->
 <script>
     $(document).ready(function() {
+        //서버에 저장된 카테고리 리스트를 가져온다
         getCategorys();
         //카테고리
         $("#menu1_wrap").hide();
@@ -126,6 +128,7 @@
         });
     });
 
+    //서버에 저장된 카테고리 리스트를 가져온다
     let getCategorys = function(){
         $.ajax({
             url: '/bookshop/categorys',
@@ -143,6 +146,7 @@
     //배열로 들어온 (js 객체를 html 문자로) 바꿔주는 함수
     let toHtml = function(categorys) {
         let tmp = '<ul>'
+        //전체 카테고리 리스트 순회하며 , 카테고리탭에 저장 + 해당 카테고리 검색 링크 생성
         for(let i = 0; i<categorys.length; i++){
             let category = categorys[i];
             if(category==null||category===''||category==='undefined'){

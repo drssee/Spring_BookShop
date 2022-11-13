@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+#result .container_wrap{
+    /*max-width: 1200px;*/
+    padding: 20px;
+    margin: 0 auto;
+    position: relative;
+    left:20%;
+}
+
+#result section{
+    width: 100%;height: auto;
+    max-width: 1200px;
+    margin: 50px auto;
+    position: relative;
+    clear: both;
+}
+
+.result_ok{ text-align: center;
+
+}
+.result_ok h1{font-size: 2.5em; margin-bottom: 30px;}
+
+.btn_result input{ width: 200px;height: 50px; margin: 50px 5px;
+    border-radius: 10px; background-color: gray;
+    color: #fff; font-size: 1.2em; cursor: pointer;
+    transition: all 0.3s;
+}
+.btn_result input:hover {
+    background-color: black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}

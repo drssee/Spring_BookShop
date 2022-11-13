@@ -1,8 +1,8 @@
 @charset "utf-8";
 
 html,body{
+    width: 1920px;
     height:100%;
-
     /*background: url(../../images/common/white-abstract-background_23-2148810113.webp) no-repeat left 250px;*/
     background: url(../../images/common/abstract-background-with-soft-gradient-color-and-dynamic-shadow-on-background-background-for-wallpaper-eps-10-free-vector.jpg) no-repeat left 650px;
     /*background-size: 1920px 1100px;*/

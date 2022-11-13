@@ -36,22 +36,13 @@ public class CartController {
     private final CartService cartService;
     private final BookService bookService;
 
-    // put /review/bookReview/{rno} <-리뷰 수정
-    // delete /review/bookReview/{rno} <-리뷰 삭제
-
-
-
-
     // *CartController api*
 
-    // get /cart/carts <-장바구니 조회(목록)
-
-    /*
-    rest api
-     */
+    // get /cart/carts <-카트 조회(목록)
     // get /cart/check/{bno} <-카트 중복 체크
     // get /cart/size/{id} <-카트 갯수 체크
-    // post /cart/save <-카트에 저장
+    // post /cart/save <-카트 저장
+    // delete /cart/{cno} <-카트 삭제
 
     /**
      * 장바구니 조회(목록)
@@ -61,24 +52,26 @@ public class CartController {
         /*
         valid
         */
-//        //로그인 체크
+        //로그인 체크
 //        if(!validateLoginedUser(request)){
 //            throw new IllegalUserException(INVALID_USER.label());
 //        }
+
         /*
         core
         */
-        //모델에 cars(cartlist)를 담아 반환
-//        model.addAttribute("carts",cartService.getCartsById(getUser(request).getId()));
-        //개발용 임시코드
+        //모델에 cartBookDto리스트를 담아 반환
         List<CartBookDto> cartBookDtoList = new ArrayList<>();
-
+        //카트 아이템 리스트 조회후
+        //테스트용
+//        List<CartVO> cartList = cartService.getCartsById(getUser(request).getId());
         List<CartVO> cartList = cartService.getCartsById("user1");
+        //각 카트 아이템의 상품pk(bno)로 bookVO를 가져와
+        //cartBookDto를 생성,초기화 후 리스트에 담아 모델에 전달
         for (CartVO cartVO : cartList) {
             BookVO bookVO = bookService.getBook(cartVO.getBno());
             cartBookDtoList.add(new CartBookDto(bookVO,cartVO));
         }
-
         model.addAttribute("cartBooks",cartBookDtoList);
         return "cart/carts";
     }
@@ -179,5 +172,30 @@ public class CartController {
         //saveCart
         cartService.saveCart(cartVO);
         return ResponseEntity.ok(cartVO);
+    }
+
+    /**
+     * 카트 아이템 삭제
+     */
+    @DeleteMapping("/{cno}")
+    @ResponseBody
+    public ResponseEntity<Boolean> deleteCartItem(@PathVariable Long cno, HttpServletRequest request){
+        /*
+        valid
+        */
+        //로그인 체크
+        if(!validateLoginedUser(request)){
+            throw new IllegalUserException(INVALID_USER.label());
+        }
+        //cno 체크
+        if(cno<0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,BAD_REQUEST.label());
+        }
+
+        /*
+        core
+        */
+        //카트 아이템 삭제(cno) 성공true 실패 false
+        return ResponseEntity.ok(cartService.removeCartItem(cno)==1);
     }
 }

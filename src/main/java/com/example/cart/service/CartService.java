@@ -25,4 +25,9 @@ public interface CartService {
      * 카트 갯수 조회(id)
      */
     int getCartCntById(String id);
+
+    /**
+     * 카트 아이템 삭제(cno)
+     */
+    int removeCartItem(Long cno);
 }

@@ -10,49 +10,54 @@
         outline: none;
     }
 </style>
+<!--book section-->
 <section class="py-5" style="height: 1200px;">
     <div class="container px-4 px-lg-5 my-5">
         <div class="container" style="width: 350px;height: 480px; float:left; margin-top:100px; ">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" style="cursor: pointer;">
-
-                    <!--image-->
+                    <!--내부 이미지가 있는경우 내부 이미지리스트 출력-->
+                    <!--내부 이미지가 없는경우 커버 이미지 출력-->
                     <c:choose>
                         <c:when test="${images.size()>0}">
                             <c:forEach items="${images}" var="image" varStatus="index">
                                 <c:if test="${index.first}">
                                     <div class="carousel-item active">
-                                        <img width="350" height="480" src="${pageContext.request.contextPath}/resources/upload/images${image.storeFileName}" class="d-block w-100 iimg" alt="...">
+                                        <img width="350" height="480" src="${pageContext.request.contextPath}/resources/upload/images${image.storeFileName}" class="d-block w-100 full-image-size" alt="...">
                                     </div>
                                 </c:if>
                                 <c:if test="${!index.first}">
                                     <div class="carousel-item">
-                                        <img width="350" height="480" src="${pageContext.request.contextPath}/resources/upload/images${image.storeFileName}" class="d-block w-100 iimg" alt="...">
+                                        <img width="350" height="480" src="${pageContext.request.contextPath}/resources/upload/images${image.storeFileName}" class="d-block w-100 full-image-size" alt="...">
                                     </div>
                                 </c:if>
                             </c:forEach>
                         </c:when>
+
                         <c:otherwise>
                             <c:choose>
                                 <c:when test="${book.storeFileName!=null}">
                                     <c:choose>
                                         <c:when test="${book.size==0}">
-                                            <img width="350" height="480" src="${book.storeFileName}" class="d-block w-100 iimg" alt="...">
+                                            <img width="350" height="480" src="${book.storeFileName}" class="d-block w-100 full-image-size" alt="...">
                                         </c:when>
                                         <c:otherwise>
-                                            <img width="350" height="480" src="${pageContext.request.contextPath}/resources/upload/images${book.storeFileName}" class="d-block w-100 iimg" alt="...">
+                                            <img width="350" height="480" src="${pageContext.request.contextPath}/resources/upload/images${book.storeFileName}" class="d-block w-100 full-image-size" alt="...">
                                         </c:otherwise>
                                     </c:choose>
                                 </c:when>
                                 <c:otherwise>
-                                    <img width="259" height="195" src="data:image/png;base64,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" class="d-block w-100 iimg" alt="no-img">
+                                    <img width="259" height="195" src="data:image/png;base64,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" class="d-block w-100 full-image-size" alt="no-img">
                                 </c:otherwise>
                             </c:choose>
                         </c:otherwise>
                     </c:choose>
-                    <!--image-->
-
+                    <!--내부 이미지가 있는경우 내부 이미지리스트 출력-->
+                    <!--내부 이미지가 없는경우 커버 이미지 출력-->
                 </div>
+                <!--carousel-inner-->
+
+                <!--캐러셀 prev,next btn-->
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
@@ -61,15 +66,19 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
+                <!--캐러셀 prev,next btn-->
             </div>
+            <!--carouselExampleControls-->
         </div>
+        <!--inner container-->
         <script>
-            //클릭->전체이미지
-            $(".iimg").click(function(){
+            //이미지클릭->전체이미지
+            $(".full-image-size").click(function(){
                 let img = $(this).attr("src");
                 window.location=img;
             })
         </script>
+            <!--상품 상세 정보-->
             <div class="col-md-6" style="float:right; margin-top:100px; margin-left:12px;">
                 <h1 class="display-5 fw-bolder">${book.title}</h1>
                 <div class="fs-5 mb-5" style="margin-top:20px;">
@@ -224,7 +233,7 @@
 
                                 success : function(result){
                                     alert('장바구니 페이지로 이동합니다');
-                                    // location.href="";
+                                    location.href="/bookshop/cart/carts";
                                 },
                                 error: function(request, status, error) {
                                     console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -264,15 +273,16 @@
                             resultElement.value = number;
                         }//count
                     </script>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                </div><!--div.d-flex-->
+            </div><!--상품 상세 정보-->
+    </div><!--outer container-->
+</section><!--book section-->
 
+<!--js를 이용해 commentlist를 출력하는 div부분-->
 <div id="commentList" data-bno="${book.bno}" data-id="${sessionScope.user.id}">
 </div>
 
+<!--답글 작성 box-->
 <div id="reply-writebox">
     <div class="commenter commenter-writebox">${sessionScope.user.id==null?'비로그인 유저':sessionScope.user.id}</div>
     <div class="reply-writebox-content">
@@ -285,7 +295,9 @@
         </div>
     </div>
 </div>
+<!--답글 작성 box-->
 
+<!--수정 modal box-->
 <div id="modalWin" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
@@ -306,6 +318,7 @@
         </p>
     </div>
 </div>
+<!--수정 modal box-->
 
 <script>
     /**
@@ -557,6 +570,7 @@
         let next = pageResponse.showNext;
         let tmp = '<h4 style="margin-bottom:20px;">한줄평</h4>';
             tmp += '<ul>';
+        //리뷰 리스트를 순회하며 각각 출력
         reviews.forEach(function(review) {
             let reviewDate;
             if(review.update_date!=null){
@@ -565,17 +579,23 @@
                 reviewDate = review.reg_date;
             }
 
+            //rno!=prno 자식 답글일 경우(내부 css 변경)
             if(review.rno!==review.prno) {
                 tmp += '<li class="comment-item" style="text-indent:20px; background-color: #ffffff;" data-bno=${book.bno} data-id=${sessionScope.user.id}>'
                 tmp += '<span style="position: relative; top:18px;">'
                 tmp += '<i style="margin-left:25px;">'+'ㄴ'+'</i>'
                 tmp += '</span>'
-            } else if (review.rno === review.prno) {
+            }
+
+            //rno==prno 부모 댓글일 경우(그대로 출력)
+            else if (review.rno === review.prno) {
                 tmp += '<li class="comment-item" data-bno=${book.bno} data-id=${sessionScope.user.id}>'
                 tmp += '<span class="comment-img">'
                 tmp += '<i class="fa fa-user-circle" aria-hidden="true"></i>'
                 tmp += '</span>'
             }
+
+            //리뷰 출력 부분
             tmp += '<div class="comment-area">'
             if(review.rno!==review.prno){
                 tmp += '<div class="commenter"">'+review.id+'</div>'
@@ -596,6 +616,7 @@
         })//foreach
         tmp += '</ul>'
 
+        //댓글 작성 box
         tmp += '<div id="comment-writebox">'
         tmp += '<div class="commenter commenter-writebox">${sessionScope.user.id==null?'비로그인 유저':sessionScope.user.id}</div>'
         tmp += '<div class="comment-writebox-content">'
@@ -608,6 +629,7 @@
         tmp += '</div>'
         tmp += '</div>'
 
+        //페이징 처리 부분
         tmp += '<div class="paging-container">'
         let prevPage = pageResponse.page-1;
         let nextPage = pageResponse.page+1;

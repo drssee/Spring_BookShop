@@ -58,4 +58,12 @@ public class CartServiceImpl implements CartService{
     public int getCartCntById(String id) {
         return cartDao.selectCntById(id);
     }
+
+    /**
+     * 카트 아이템 삭제(cno)
+     */
+    @Override
+    public int removeCartItem(Long cno) {
+        return cartDao.deleteCartItem(cno);
+    }
 }

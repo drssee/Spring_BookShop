@@ -25,4 +25,14 @@ public interface CartDao {
      * 전체 카트 갯수(id)
      */
     int selectCntById(String id);
+
+    /**
+     * 카트 아이템 삭제(cno)
+     */
+    int deleteCartItem(Long cno);
+
+    /**
+     * 카트 아이템 삭제(id)
+     */
+    void deleteCart(String id);
 }

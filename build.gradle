@@ -8,6 +8,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {url 'https://jitpack.io'}
 }
 
 ext {
@@ -113,6 +114,11 @@ dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
     // https://mvnrepository.com/artifact/com.jfinal/cos
     implementation group: 'com.jfinal', name: 'cos', version: '2020.4'
+    /**
+     * iamport
+     */
+    // https://mvnrepository.com/artifact/com.github.iamport/iamport-rest-client-java
+    implementation group: 'com.github.iamport', name: 'iamport-rest-client-java', version: '0.2.0'
     /**
      * assertj
      */

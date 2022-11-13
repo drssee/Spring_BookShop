@@ -20,4 +20,12 @@
         select count(*) from cart
         where id = #{id}
     </select>
+    <delete id="deleteCartItem">
+        delete from cart
+        where cno = #{cno}
+    </delete>
+    <delete id="deleteCart">
+        delete from cart
+        where id = #{id}
+    </delete>
 </mapper>
