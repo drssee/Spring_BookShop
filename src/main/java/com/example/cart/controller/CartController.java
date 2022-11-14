@@ -66,8 +66,8 @@ public class CartController {
         //테스트용
 //        List<CartVO> cartList = cartService.getCartsById(getUser(request).getId());
         List<CartVO> cartList = cartService.getCartsById("user1");
-        //각 카트 아이템의 상품pk(bno)로 bookVO를 가져와
-        //cartBookDto를 생성,초기화 후 리스트에 담아 모델에 전달
+
+        //각 카트 아이템의 상품pk(bno)로 bookVO를 가져와, cartBookDto를 생성,초기화 후 리스트에 담아 모델에 전달
         for (CartVO cartVO : cartList) {
             BookVO bookVO = bookService.getBook(cartVO.getBno());
             cartBookDtoList.add(new CartBookDto(bookVO,cartVO));

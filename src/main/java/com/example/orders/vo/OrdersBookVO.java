@@ -1,5 +1,6 @@
 package com.example.orders.vo;
 
+import com.example.book.vo.BookVO;
 import com.example.orders.controller.form.OrdersBookForm;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +16,7 @@ public class OrdersBookVO {
     private Long bno; //book pk
     private int order_price; //주문가격
     private int order_quantity; //주문수량
+    private BookVO bookVO;
 
     public OrdersBookVO(OrdersBookForm ordersBookForm){
         this.bno=ordersBookForm.getBno();

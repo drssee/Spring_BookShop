@@ -12,10 +12,13 @@
         insert into orders_book (order_id,bno,order_price,order_quantity)
         values (#{order_id},#{bno},#{order_price},#{order_quantity})
     </insert>
-<!--    <select id="selectOrdersBook" resultType="orders_bookVO">-->
-<!--        select * from orders_book where order_book_id = #{order_book_id}-->
-<!--    </select>-->
     <select id="selectOrders" resultType="ordersVO">
-        select * from orders where order_id = #{order_id}
+        select * from orders where id = #{id}
     </select>
+    <select id="selectOrdersBook" resultType="orders_bookVO">
+        select * from orders_book where order_id = #{order_id}
+    </select>
+    <delete id="deleteOrders">
+        delete from orders where order_id = #{order_id}
+    </delete>
 </mapper>

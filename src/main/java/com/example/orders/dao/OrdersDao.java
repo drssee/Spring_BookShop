@@ -3,6 +3,8 @@ package com.example.orders.dao;
 import com.example.orders.vo.OrdersBookVO;
 import com.example.orders.vo.OrdersVO;
 
+import java.util.List;
+
 public interface OrdersDao {
     /**
      * 오더 등록
@@ -10,9 +12,9 @@ public interface OrdersDao {
     Long insertOrders(OrdersVO ordersVO);
 
     /**
-     * 오더 (단일)조회
+     * 오더 조회
      */
-    OrdersVO selectOrders(Long order_id);
+    List<OrdersVO> selectOrders(String id);
 
     /**
      * 오더_상품 등록
@@ -20,7 +22,12 @@ public interface OrdersDao {
     int insert_orders_book(OrdersBookVO ordersBookVO);
 
     /**
-     * 오더_상품 (단일)조회
+     * 오더_상품 조회
      */
-    OrdersBookVO selectOrdersBook(Long order_book_id);
+    List<OrdersBookVO> selectOrdersBook(Long order_id);
+
+    /**
+     * 오더 취소
+     */
+    int deleteOrders(Long order_id);
 }

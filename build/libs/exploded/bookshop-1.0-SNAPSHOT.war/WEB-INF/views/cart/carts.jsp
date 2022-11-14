@@ -24,6 +24,12 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
+                            <script>
+                                <c:if test="${cartBooks.size()==0}">
+                                    alert('장바구니가 비어있습니다.');
+                                    window.location="/bookshop";
+                                </c:if>
+                            </script>
                             <!--foreach-->
                             <c:forEach items="${cartBooks}" var="cartBook" varStatus="status">
                                 <!--전체상품div-->
@@ -203,10 +209,10 @@
                             <h3>Summary</h3>
                             <div class="summary-item"><span class="text">주문상품 가격</span><span id="sub-price" class="price">0</span>원</div>
                             <!--준비중인 기능입니다-->
-                            <div class="summary-item"><span class="text">할인</span><span class="price">0</span>원</div>
-                            <div class="summary-item"><span class="text">배송료</span><span class="price">0</span>원</div>
+                            <div class="summary-item"><span class="text">할인</span><span class="price">0</span></div>
+                            <div class="summary-item"><span class="text">배송료</span><span class="price">0</span></div>
                             <!--준비중인 기능입니다-->
-                            <div class="summary-item"><span class="text">총계</span><span id="total-price" class="price">0</span>원</div>
+                            <div class="summary-item"><span class="text">총계</span><span id="total-price" class="price">0</span></div>
                             <button type="button" id="btn-payment" class="btn btn-primary btn-lg btn-block">구매</button>
                         </div>
                         <script>

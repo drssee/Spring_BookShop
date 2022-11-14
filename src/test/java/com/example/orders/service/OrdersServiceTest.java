@@ -4,7 +4,6 @@ import com.example.book.dao.BookDao;
 import com.example.orders.dao.OrdersDao;
 import com.example.orders.vo.OrdersBookVO;
 import com.example.orders.vo.OrdersVO;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,6 +17,8 @@ import java.util.Date;
 import java.util.List;
 
 import static com.example.common.status.OrderStatus.PAYMENT_COMPLETE;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -54,6 +55,15 @@ class OrdersServiceTest {
         List<OrdersBookVO> ordersBookVOList = new ArrayList<>();
         ordersBookVOList.add(ordersBookVO);
         //ordersService 호출
-        Assertions.assertDoesNotThrow(()->ordersService.buyBookFromCart(ordersVO,ordersBookVOList));
+        assertDoesNotThrow(()->ordersService.buyBookFromCart(ordersVO,ordersBookVOList));
+    }
+
+    @Test
+    @DisplayName("주문 취소")
+    public void cancelTest(){
+        //임의의 order_id 초기화
+        Long order_id = 130L;
+        //삭제결과는 1줄
+        assertEquals(1,ordersService.cancelOrders(order_id));
     }
 }

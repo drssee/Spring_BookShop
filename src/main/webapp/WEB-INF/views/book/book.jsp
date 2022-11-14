@@ -137,7 +137,7 @@
                     <button style="margin-right: 10px;" id="btn-cart" class="btn btn-outline-dark flex-shrink-0" type="button">
                         <i class="bi-cart-fill me-1">장바구니 담기</i>
                     </button>
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <button id="btn-buy" class="btn btn-outline-dark flex-shrink-0" type="button">
                         <i class="bi-cart-fill me-1">구매</i>
                     </button>
                     <script>
