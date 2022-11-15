@@ -1,6 +1,11 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <%--<%@ include file="/WEB-INF/views/common/header.jsp" %>--%>
 <%@ include file="/WEB-INF/views/common/header_nobanner.jsp" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
+
+<!-- 아임포트 -->
+<script src ="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="<c:url value="/resources/css/comment.css"/>">
@@ -74,8 +79,7 @@
         <script>
             //이미지클릭->전체이미지
             $(".full-image-size").click(function(){
-                let img = $(this).attr("src");
-                window.location=img;
+                window.location=$(this).attr("src");
             })
         </script>
             <!--상품 상세 정보-->
@@ -141,13 +145,132 @@
                         <i class="bi-cart-fill me-1">구매</i>
                     </button>
                     <script>
-                        /**
-                         * 장바구니 , 구매 js
-                         */
-                        let id = '<c:out value="${sessionScope.user.id}"/>';
+
+                        let buyerName = '<c:out value="${sessionScope.user.id}"/>';
+                        let buyerEmail = '<c:out value="${sessionScope.user.email}"/>';
+                        let buyerTel = '<c:out value="${sessionScope.user.phone}"/>';
                         let bno = '<c:out value="${book.bno}"/>';
                         let stock = '<c:out value="${book.stock}"/>';
                         let bookName = '<c:out value="${book.title}"/>';
+                        let price = '<c:out value="${book.price}"/>';
+
+
+                        $(document).ready(function(){
+
+                            let IMP = window.IMP; //import payment == imp
+                            // let code = 'imp41427810'; //가맹점 식별코드
+                            let code = '<spring:message code="imp"/>'; //가맹점 식별코드
+                            //구매 버튼 클릭
+                            $("#btn-buy").click(function (){
+                                if(buyerName===''){
+                                    alert('잘못된 접근입니다');
+                                    return;
+                                }
+                                //구매버튼 클릭시의 value
+                                let quantity = document.getElementById('quantity').value;
+                                //재고 체크
+                                if(quantity>stock){
+                                    let outOfStock = quantity-stock;
+                                    alert('재고가 '+outOfStock+'개 부족합니다');
+                                    return;
+                                }
+                                //확인
+                                if(!confirm(bookName+' '+quantity+'개(을)를 구매하시겠습니까?')) {
+                                    return;
+                                }
+
+                                let pay_amount = quantity*Number(price);
+                                IMP.init(code);
+                                //결제 요청
+                                IMP.request_pay({ //파라미터
+                                    pg: 'html5_inicis',
+                                    pay_method: 'card',
+                                    merchant_uid : 'merchant_' + new Date().getTime(),
+                                    name: '프로젝트결제', //결제창에서 보여질 이름
+                                    amount: pay_amount, //실제 결제되는 가격
+                                    buyer_name: buyerName,
+                                    buyer_tel: buyerTel,
+                                    buyer_email: buyerEmail,
+                                    // buyer_addr: '',
+                                    // buyer_postcode: '',
+                                }, function(rsp) {
+                                    console.log(rsp);
+                                    // 결제검증
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/bookshop/orders/verifyIamport/"+rsp.imp_uid
+                                    }).done(function (data) {
+                                        console.log(data);
+                                        // 위의 rsp.paid_amount 와 data.response.amount를 비교한후 로직 실행 (import 서버검증)
+                                        if (rsp.paid_amount === data.response.amount) {
+                                            //검증 성공시
+                                            console.log("결제 및 결제검증완료");
+                                            //result의 멤버 객체배열인 ordersBookForms 초기화
+                                            let ordersBookForms = [];
+                                            ordersBookForms.push({
+                                                bno: '<c:out value="${book.bno}"/>',
+                                                order_price: '<c:out value="${book.price}"/>',
+                                                order_quantity: quantity
+                                            });
+
+                                            //서버에 보낼 결제 정보 객체 result 초기화
+                                            let result = {
+                                                id: buyerName,
+                                                order_date : new Date(), //결제날짜
+                                                total_price : rsp.paid_amount, //결제금액
+                                                merchant_uid : rsp.merchant_uid, //주문번호
+                                                imp_uid : rsp.imp_uid, //결제번호
+                                                ordersBookForms : ordersBookForms,
+                                                fromCart: false
+                                            }
+                                            console.log(result);
+
+                                            $.ajax({
+                                                url: '/bookshop/orders/payment',
+                                                type: 'POST',
+                                                headers: {"content-type":"application/json"},
+                                                data: JSON.stringify(result),
+
+                                                success : function(result) {
+                                                    alert("결제에 성공 했습니다.");
+                                                    location.href='/bookshop/orders/result'; //결제완료 페이지로 이동
+                                                },
+                                                error: function(request, status, error) {
+                                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                                    alert("결제에 실패 했습니다. 진행중인 결제를 취소합니다.");
+                                                    //결제 취소기능
+                                                    cancelPayment(rsp.imp_uid);
+                                                }
+                                            });//ajax
+                                        } //if outer
+
+                                        else { //검증 실패시
+                                            alert("결제에 실패하였습니다. "+rsp.error_msg);
+                                        }
+                                    });//done
+                                });//function
+                            });//btn-payment.click
+                        });//document.ready
+
+                        let cancelPayment = function(imp_uid){
+                            $.ajax({
+                                type: "POST",
+                                url: "/bookshop/orders/deleteIamport/"+imp_uid
+                            }).done(function (data) {
+                                if(data){
+                                    alert('결제 취소 성공');
+                                    location.reload();
+                                } else{
+                                    alert('결제 취소 실패');
+                                }
+                            });//function
+                        }
+                    </script>
+                    <script>
+                        /**
+                         * 장바구니 js
+                         */
+                        let id = '<c:out value="${sessionScope.user.id}"/>';
 
                         //카트담기 버튼 클릭
                         $("#btn-cart").click(function(){
@@ -654,7 +777,7 @@
 
     //날짜 처리를 위한 함수들
     let addZero = function(value){
-        return value > 9 ? value : "0"+value;
+        return value > 9 ? value : "0"+value;ㅈ
     }
 
     let dateToString = function(reviewDate) {

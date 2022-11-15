@@ -137,6 +137,33 @@ create table cart
             on delete cascade
 );
 
+create table user_addr
+(
+    id      varchar(30)  null,
+    zipcode varchar(50)  null,
+    addr    varchar(200) null,
+    constraint user_addr_user_null_fk
+        foreign key (id) references user (id)
+            on delete cascade
+);
+
+create table qna
+(
+    qno         bigint auto_increment,
+    id          varchar(30)            not null,
+    title       varchar(50)            not null,
+    content     text                   null,
+    reg_date    datetime default now() null,
+    update_date datetime               null,
+    constraint qna_pk
+        primary key (qno),
+    constraint qna_user_null_fk
+        foreign key (id) references user (id)
+            on delete cascade
+);
+
+
+
 
 
 #auto-increment 1로 수정

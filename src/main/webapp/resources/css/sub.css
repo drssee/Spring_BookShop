@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+main{margin-bottom: 100px;}
+
+.sub_h2_tit {text-align: center; font-size: 30px; font-weight: 900;}
+
+#list_search_btn{
+    outline: none;
+    border:none;
+    height: 30px;
+}
+#list_search_btn:hover{
+    border:1px solid black;
+}
+
+.container_wrap{width: 100%; max-width: 1200px; height: auto; margin: 0 auto; }
+
+#board_wrap{margin-top: 50px;}
+#board_wrap a{
+    color:#333333;
+}
+#board_wrap table{width: 100%; border-collapse: collapse; border-spacing: 0 5px; background-color: #fff;
+    border-top: 2px solid #aaa;border-bottom: 1px solid #aaa;
+    text-align: center;
+}
+#board_wrap tr{background-color: #fff; border-bottom: 1px solid #ececec;}
+#board_wrap th, #board_wrap tr:hover{background-color: #fafafa;}
+
+#board_wrap td, #board_wrap th{height: 80px; font-size: 16px; line-height: 80px;}
+.bo_num{width: 80px;text-align: center; color: #999;}
+.bo_tit{font-weight: bold;}
+.bo_tit a{width: 100%; display: block;}
+.bo_date{color: #999;}
+
+.qna_write{
+    margin: 20px 0;
+    text-align: right;
+}
+.qna_write a{
+    width: 100px;
+    height: 50px;
+    padding: 2px 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    color: #666;
+}
+.qna_write a:hover{
+    color: #333;
+    border: 1px solid #666;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.nav{
+    /*margin-left:700px;*/
+    clear: both;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.nav ul{
+    margin:0 auto;
+}
+.nav li{display: inline-block;
+
+}
+.nav li a{width: 40px;height: 40px; display: block;
+    border-radius: 100%; border: 1px solid #ddd; background-color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 500;
+}
+.nav .nav_prev a, .nav .nav_next a{ background-color: lightgray;text-indent: -9999px; margin: 0 10px;}
+.nav_prev a{background: url(../../resources/images/common/btn_prev.gif) no-repeat center; }
+.nav_next a{background: url(../../resources/images/common/btn_next.gif) no-repeat center; }
+/*.nav li a:active, .nav li a.sel{color: #fff;background-color: #8f1cfe; cursor: auto}*/
+.nav li a:active, .nav li a.sel{color: #fff;background-color: gray; cursor: auto}
+/*.nav li a:active:hover, .nav li a.sel:hover{color: #fff;background-color: #8f1cfe; cursor: auto}*/
+.nav li a:active:hover, .nav li a.sel:hover{color: #fff;background-color: black; cursor: auto}
+.nav li a:hover{background-color: #f1f1f1;}

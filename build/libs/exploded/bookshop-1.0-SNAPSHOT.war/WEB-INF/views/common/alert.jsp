@@ -26,7 +26,6 @@
         //alert()에 msg 출력후 url로 리다이렉트
         if(msg.length>0) {
             alert(msg);
-            alert(url);
         }
         location.href = url;
     </script>

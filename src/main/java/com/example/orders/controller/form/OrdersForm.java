@@ -34,4 +34,5 @@ public class OrdersForm {
     private String imp_uid;//결제id
     @NotNull
     private List<OrdersBookForm> ordersBookForms;
+    private boolean fromCart;
 }

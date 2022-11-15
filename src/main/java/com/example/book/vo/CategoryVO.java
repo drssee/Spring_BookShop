@@ -2,7 +2,7 @@ package com.example.book.vo;
 
 import lombok.Data;
 
-import static com.example.common.data.CategoryData.categoryNames;
+import static com.example.common.CategoryData.categoryNames;
 
 @Data
 public class CategoryVO {

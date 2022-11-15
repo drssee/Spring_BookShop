@@ -6,14 +6,24 @@
     <select id="selectOne" resultType="userVO">
         select * from user where id = #{id}
     </select>
-
     <select id="selectCntLike" resultType="int">
         select count(*) from user_like
         where id = #{id} and bno = #{bno}
     </select>
-
     <insert id="insertUserLike">
         insert into user_like (id,bno)
         values (#{id},#{bno})
     </insert>
+    <insert id="insertUser">
+        insert into user (id,pwd,name,uuid,phone,email)
+        values (#{id},#{pwd},#{name},#{uuid},#{phone},#{email})
+    </insert>
+    <insert id="insertUserAddr">
+        insert into user_addr
+        values (#{id},#{zipcode},#{addr})
+    </insert>
+    <select id="selectOneByUUID" resultType="userVO">
+        select * from user
+        where uuid = #{uuid}
+    </select>
 </mapper>

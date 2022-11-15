@@ -18,7 +18,6 @@ import java.util.List;
 
 import static com.example.common.status.OrderStatus.PAYMENT_COMPLETE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -55,7 +54,7 @@ class OrdersServiceTest {
         List<OrdersBookVO> ordersBookVOList = new ArrayList<>();
         ordersBookVOList.add(ordersBookVO);
         //ordersService 호출
-        assertDoesNotThrow(()->ordersService.buyBookFromCart(ordersVO,ordersBookVOList));
+        assertDoesNotThrow(()->ordersService.buyBook(ordersVO,ordersBookVOList,true));
     }
 
     @Test
@@ -64,6 +63,6 @@ class OrdersServiceTest {
         //임의의 order_id 초기화
         Long order_id = 130L;
         //삭제결과는 1줄
-        assertEquals(1,ordersService.cancelOrders(order_id));
+        ordersService.cancelOrders(order_id);
     }
 }

@@ -24,7 +24,7 @@ import java.util.List;
 
 import static com.example.common.status.RequestStatus.BAD_REQUEST;
 import static com.example.common.status.RequestStatus.INVALID_USER;
-import static com.example.common.util.UtilMethod.getUser;
+import static com.example.common.UtilMethod.getUser;
 import static com.example.common.validator.BookshopValidator.validateLoginedUser;
 
 @Controller
@@ -53,9 +53,9 @@ public class CartController {
         valid
         */
         //로그인 체크
-//        if(!validateLoginedUser(request)){
-//            throw new IllegalUserException(INVALID_USER.label());
-//        }
+        if(!validateLoginedUser(request)){
+            throw new IllegalUserException(INVALID_USER.label());
+        }
 
         /*
         core
@@ -63,9 +63,7 @@ public class CartController {
         //모델에 cartBookDto리스트를 담아 반환
         List<CartBookDto> cartBookDtoList = new ArrayList<>();
         //카트 아이템 리스트 조회후
-        //테스트용
-//        List<CartVO> cartList = cartService.getCartsById(getUser(request).getId());
-        List<CartVO> cartList = cartService.getCartsById("user1");
+        List<CartVO> cartList = cartService.getCartsById(getUser(request).getId());
 
         //각 카트 아이템의 상품pk(bno)로 bookVO를 가져와, cartBookDto를 생성,초기화 후 리스트에 담아 모델에 전달
         for (CartVO cartVO : cartList) {

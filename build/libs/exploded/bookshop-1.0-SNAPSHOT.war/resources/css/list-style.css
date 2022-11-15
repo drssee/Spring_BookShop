@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/* list-style */
+tbody>tr>td>a {
+    color: black;
+}
+tbody>tr>td>a:hover,tbody>tr>td>a:focus {
+    color: #337ab7;
+    text-decoration: none;
+}
+i.fa-comment {
+    padding-left: 10px;
+    padding-right: 5px;
+}

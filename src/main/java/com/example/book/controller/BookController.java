@@ -35,6 +35,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static com.example.common.status.RequestStatus.BAD_REQUEST;
+import static com.example.common.validator.BookshopValidator.pageRequestResolver;
 
 
 @Controller
@@ -210,7 +211,7 @@ public class BookController {
         valid
          */
         //pageRequest 검증+유효한값 저장
-        PageRequest pageRequest = BookshopValidator.pageRequestResolver(request.getParameter("page"),request.getParameter("size"));
+        PageRequest pageRequest = pageRequestResolver(request.getParameter("page"),request.getParameter("size"));
         //form 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateForm(form, bindingResult, model, "book/addForm");
         if (errorUrl != null) return errorUrl;
@@ -271,7 +272,7 @@ public class BookController {
         valid
         */
         //pageRequest 검증+유효한값 저장
-        PageRequest pageRequest = BookshopValidator.pageRequestResolver(request.getParameter("page"),request.getParameter("size"));
+        PageRequest pageRequest = pageRequestResolver(request.getParameter("page"),request.getParameter("size"));
         //BookUpdateForm 검증후 바인딩 에러가 있을시 errorUrl을 리턴
         String errorUrl = validateForm(form, bindingResult, model, "book/editForm");
         if (errorUrl != null) return errorUrl;
@@ -384,46 +385,6 @@ public class BookController {
     /*
     bookcontroller에 의존적인 검증메서드 모음
      */
-
-    /*
-     * pageRequest 검증
-     */
-    public PageRequest pageRequestResolver(BookSearchVO bookSearchVO, BindingResult bindingResult) {
-        //넘어온 pageRequest를 검증(@min,@max)해 오류가 있으면 기본값(page=1,size=9) 설정 ,
-        //오류가 없으면 그대로 반환
-        PageRequest pageRequest;
-        if(bindingResult.hasErrors()){
-            //단 페이지(pageRequest.getPage())값만 정확히 넘어온 경우,
-            //그 값은 사이즈의 기본값과 함께 사용
-            if(bindingResult.getFieldError("page")==null){
-                pageRequest = PageRequest.builder().page(bookSearchVO.getPage()).build();
-            }else{
-                pageRequest = PageRequest.builder().build();
-            }
-        } else{ //오류가 없으면 그대로 반환
-            pageRequest = PageRequest
-                    .builder()
-                    .page(bookSearchVO.getPage())
-                    .size(bookSearchVO.getSize())
-                    .build();
-        }
-        return pageRequest;
-    }
-
-    private PageRequest pageRequestResolver(PageRequest pageRequest, BindingResult bindingResult) {
-        //넘어온 pageRequest를 검증(@min,@max)해 오류가 있으면 기본값(page=1,size=9) 설정 ,
-        //오류가 없으면 그대로 반환
-        if(bindingResult.hasErrors()){
-            //단 페이지(pageRequest.getPage())값만 정확히 넘어온 경우,
-            //그 값은 사이즈의 기본값과 함께 사용
-            if(bindingResult.getFieldError("page")==null){
-                pageRequest = PageRequest.builder().page(pageRequest.getPage()).build();
-            }else{
-                pageRequest = PageRequest.builder().build();
-            }
-        }
-        return pageRequest;
-    }
 
     /*
      * 파라미터로 넘어온 form을 검증 후

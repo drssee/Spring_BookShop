@@ -43,9 +43,11 @@ a:hover{
     display: flex; align-items: center; justify-content: center;
     font-weight: 500;
 }
-.nav .nav_prev a, .nav .nav_next a{ background-color: #f2e2f0;text-indent: -9999px; margin: 0 10px;}
+.nav .nav_prev a, .nav .nav_next a{ background-color: lightgray;text-indent: -9999px; margin: 0 10px;}
 .nav_prev a{background: url(../../resources/images/common/btn_prev.gif) no-repeat center; }
 .nav_next a{background: url(../../resources/images/common/btn_next.gif) no-repeat center; }
-.nav li a:active, .nav li a.sel{color: #fff;background-color: #8f1cfe; cursor: auto}
-.nav li a:active:hover, .nav li a.sel:hover{color: #fff;background-color: #8f1cfe; cursor: auto}
+/*.nav li a:active, .nav li a.sel{color: #fff;background-color: #8f1cfe; cursor: auto}*/
+.nav li a:active, .nav li a.sel{color: #fff;background-color: gray; cursor: auto}
+/*.nav li a:active:hover, .nav li a.sel:hover{color: #fff;background-color: #8f1cfe; cursor: auto}*/
+.nav li a:active:hover, .nav li a.sel:hover{color: #fff;background-color: black; cursor: auto}
 .nav li a:hover{background-color: #f1f1f1;}

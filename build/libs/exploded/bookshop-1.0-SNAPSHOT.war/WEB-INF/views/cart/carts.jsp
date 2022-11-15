@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--<%@ include file="/WEB-INF/views/common/header.jsp" %>--%>
 <%@ include file="/WEB-INF/views/common/header_nobanner_nobg.jsp" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
@@ -216,18 +217,15 @@
                             <button type="button" id="btn-payment" class="btn btn-primary btn-lg btn-block">구매</button>
                         </div>
                         <script>
-                            <%--let buyerName = '<c:out value="${sessionScope.user.id}"/>';--%>
-
-                            //테스트용 코드
-                            let buyerName = 'user1';
-                            let buyerEmail = 'user1@user1.com';
-                            let buyerTel = '010-111-2222';
+                            let buyerName = '<c:out value="${sessionScope.user.id}"/>';
+                            let buyerEmail = '<c:out value="${sessionScope.user.email}"/>';
+                            let buyerTel = '<c:out value="${sessionScope.user.phone}"/>';
 
 
                             $(document).ready(function(){
 
                                 let IMP = window.IMP; //import payment == imp
-                                let code = 'imp41427810'; //가맹점 식별코드
+                                let code = '<spring:message code="imp"/>'; //가맹점 식별코드
                                 //구매 버튼 클릭
                                 $("#btn-payment").click(function (){
                                     if(buyerName===''){
@@ -235,13 +233,7 @@
                                         return;
                                     }
 
-                                    //구매버튼 클릭당시의 장바구니 수량 가격을 저장
-
-                                    // let pay_amount = Number($("#total-price").text());
-
-                                    //테스트용 코드
-                                    let pay_amount = Number(100);
-
+                                    let pay_amount = Number($("#total-price").text());
                                     IMP.init(code);
                                     //결제 요청
                                     IMP.request_pay({ //파라미터
@@ -289,6 +281,7 @@
                                                     merchant_uid : rsp.merchant_uid, //주문번호
                                                     imp_uid : rsp.imp_uid, //결제번호
                                                     ordersBookForms : ordersBookForms,
+                                                    fromCart: true
                                                 }
                                                 console.log(result);
 
@@ -304,12 +297,12 @@
                                                     },
                                                     error: function(request, status, error) {
                                                         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                                                        alert("결제에 실패 했습니다.")
-                                                        //결제 취소시키는 기능 넣어야함
+                                                        alert("결제에 실패 했습니다. 진행중인 결제를 취소합니다.");
+                                                        //결제 취소기능
+                                                        cancelPayment(rsp.imp_uid);
                                                     }
                                                 });//ajax
                                             } //if outer
-
                                             else { //검증 실패시
                                                 alert("결제에 실패하였습니다. "+rsp.error_msg);
                                             }
@@ -317,6 +310,20 @@
                                     });//function
                                 });//btn-payment.click
                             });//document.ready
+
+                            let cancelPayment = function(imp_uid){
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/bookshop/orders/deleteIamport/"+imp_uid
+                                }).done(function (data) {
+                                    if(data){
+                                        alert('결제 취소 성공');
+                                        location.reload();
+                                    } else{
+                                        alert('결제 취소 실패');
+                                    }
+                                });//function
+                            }
                         </script>
                     </div>
                 </div>

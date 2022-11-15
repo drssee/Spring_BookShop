@@ -1,5 +1,6 @@
 package com.example.user.service;
 
+import com.example.user.vo.UserAddrVO;
 import com.example.user.vo.UserLikeVO;
 import com.example.user.vo.UserVO;
 
@@ -20,4 +21,9 @@ public interface UserService {
      * 유저의 좋아요 히스토리 db에 저장
      */
     int saveLikeCnt(UserLikeVO userLikeVO);
+
+    /**
+     * 유저 db에 저장
+     */
+    void saveUser(UserVO userVO, UserAddrVO userAddrVO);
 }

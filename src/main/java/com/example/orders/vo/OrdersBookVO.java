@@ -14,9 +14,10 @@ import lombok.NoArgsConstructor;
 public class OrdersBookVO {
     private Long order_id; //orders pk
     private Long bno; //book pk
+    private BookVO bookVO; //bno해당 bookVO
     private int order_price; //주문가격
     private int order_quantity; //주문수량
-    private BookVO bookVO;
+
 
     public OrdersBookVO(OrdersBookForm ordersBookForm){
         this.bno=ordersBookForm.getBno();

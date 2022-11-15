@@ -9,7 +9,8 @@
     </div>
     <div class="row row-cols-4 row-cols-md-5 g-4 card_custum">
         <c:forEach items="${pageResponse.pageList}" var="book">
-            <a href="<c:url value="/book/${book.bno}?page=${pageResponse.page}"/>">
+<%--            <a href="<c:url value="/book/${book.bno}?page=${pageResponse.page}"/>" onclick="alert('출판예정 도서입니다.'); return false">--%>
+            <a href="<c:url value="/bookshop"/>" onclick="alert('출판예정 도서입니다.'); return false">
                 <div class="col size">
                     <div class="card h-100 custom1">
                         <!--커버 이미지가 없으면 기본 이미지 사용-->
@@ -38,7 +39,7 @@
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 12px; font-weight: bold"><strong>제목</strong> : ${book.title}</h5>
                             <p class="card-text"><strong>저자</strong> : ${book.author}</p>
-                            <p class="card-text"><strong>출판일</strong> : ${book.pubDate.toString().substring(0,10)}</p>
+                            <p class="card-text"><strong>출판일</strong> : ${book.pubDate.toLocaleString().substring(0,11)}</p>
                             <p class="card-text"><strong>출판사</strong> : ${book.publisher}</p>
                         </div>
                     </div>

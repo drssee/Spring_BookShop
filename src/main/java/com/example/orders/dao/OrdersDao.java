@@ -17,6 +17,11 @@ public interface OrdersDao {
     List<OrdersVO> selectOrders(String id);
 
     /**
+     * 오더 조회(order_id)
+     */
+    OrdersVO selectOrdersByOrder_id(Long order_id);
+
+    /**
      * 오더_상품 등록
      */
     int insert_orders_book(OrdersBookVO ordersBookVO);

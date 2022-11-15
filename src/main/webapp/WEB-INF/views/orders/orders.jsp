@@ -81,11 +81,7 @@
                                 </div><!--전체상품div-->
                             <script>
                                 let id = '<c:out value="${sessionScope.user.id}"/>';
-                                <%--let buyerName = '<c:out value="${sessionScope.user.id}"/>';--%>
-
-                                //테스트용 코드
-                                let buyerName = 'user1';
-
+                                let buyerName = '<c:out value="${sessionScope.user.id}"/>';
                                 $(document).ready(function (){
                                     //삭제 버튼 클릭
                                     $(".btn-delOrder").click(function (){
@@ -96,10 +92,17 @@
                                         if(!confirm('정말 취소 하실건가요?')){
                                             return;
                                         }
-                                        //valid
 
+                                        //iamport 삭제 api 호출
                                         let imp_uid = $(this).attr("data-imp_uid");
                                         let order_id = $(this).attr("data-order_id");
+
+                                        //결제번호 조회 실패시
+                                        if(imp_uid===''){
+                                            alert('잘못된 접근입니다');
+                                            return;
+                                        }
+
                                         $.ajax({
                                             type: "POST",
                                             url: "/bookshop/orders/deleteIamport/"+imp_uid+"?order_id="+order_id

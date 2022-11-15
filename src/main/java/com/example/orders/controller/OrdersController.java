@@ -1,6 +1,7 @@
 package com.example.orders.controller;
 
 import com.example.book.service.BookService;
+import com.example.common.status.OrderStatus;
 import com.example.exception.IllegalUserException;
 import com.example.orders.controller.dto.OrdersBookDto;
 import com.example.orders.controller.form.OrdersForm;
@@ -30,8 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static com.example.common.UtilMethod.getUser;
 import static com.example.common.status.RequestStatus.INVALID_USER;
-import static com.example.common.util.UtilMethod.getUser;
 import static com.example.common.validator.BookshopValidator.validateLoginedUser;
 
 @Controller
@@ -54,7 +55,7 @@ public class OrdersController {
 
     // post /orders/payment <-주문결제, 저장
     // post /orders/verifyIamport/{imp_uid} <-iamport 검증 api
-
+    // post /orders/deleteIamport/{imp_uid} <-iamport 환불 api
     // get /orders/result <-주문결과 페이지
     // get /orders/list <-주문목록 페이지
 
@@ -69,17 +70,14 @@ public class OrdersController {
         if(bindingResult.hasErrors()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-//        //로그인 체크
-//        if(!validateLoginedUser(ordersForm.getId(),request)){
-//            throw new IllegalUserException("요청id와, 로그인id가 일치하지 않습니다.");
-//        }
+        //로그인 체크
+        if(!validateLoginedUser(ordersForm.getId(),request)){
+            throw new IllegalUserException("요청id와, 로그인id가 일치하지 않습니다.");
+        }
 
         /*
         core
         */
-        //카트에서 온 경우는 재고 변경 x
-        //상품상세에서 온 경우는 재고 변경 o
-
         //OrdersVO초기화
         OrdersVO ordersVO = new OrdersVO(ordersForm);
         //OrdersBookVOList 초기화
@@ -89,7 +87,7 @@ public class OrdersController {
             ordersBookVOList.add(ordersBookVO);
         });
         //상품 구매
-        ordersService.buyBookFromCart(ordersVO,ordersBookVOList);
+        ordersService.buyBook(ordersVO,ordersBookVOList,ordersForm.isFromCart());
         return ResponseEntity.ok("payment success");
     }
 
@@ -114,16 +112,32 @@ public class OrdersController {
     @PostMapping("/deleteIamport/{imp_uid}")
     @ResponseBody
     public ResponseEntity<Boolean> deleteOrders(@PathVariable String imp_uid, @Param("order_id") Long order_id){
-        //결제번호(imp_uid)를 패스변수로 가져와 canceldata를 초기화
-        CancelData cancelData = new CancelData(imp_uid,true);
+
+        //imp_uid 검증
+        if(imp_uid==null||"".equals(imp_uid)){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "결제번호 검증실패");
+        }
+        //order_id 값이 넘어왔을때
+        if(order_id!=null){
+            //orderStatus 검증, 주문완료 상태가 아니면 불일치
+            if(!OrderStatus.PAYMENT_COMPLETE.label()
+                    .equals(ordersService.getOrders(order_id).getOrder_status())){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"주문상태 불일치");
+            }
+            //orders,orders_book db에서 제거
+            ordersService.cancelOrders(order_id);
+        }
+
+        //iamport 환불기능
         try {
-            //iamport 환불기능
+            //결제번호(imp_uid)를 패스변수로 가져와 canceldata를 초기화
+            CancelData cancelData = new CancelData(imp_uid,true);
+            //iamport 환불메서드
             api.cancelPaymentByImpUid(cancelData);
         } catch (IamportResponseException | IOException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"결제 취소에 실패했습니다.");
         }
-        //orders,orders_book db 제거
-        ordersService.cancelOrders(order_id);
+
         return ResponseEntity.ok(true);
     }
 

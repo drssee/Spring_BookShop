@@ -1,16 +1,18 @@
 package com.example.common.validator;
 
+import com.example.book.vo.BookSearchVO;
 import com.example.common.paging.PageRequest;
 import com.example.review.controller.form.ReviewForm;
 import com.example.review.vo.ReviewVO;
 import com.example.user.controller.form.UserLoginForm;
 import com.example.user.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindingResult;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
-import static com.example.common.util.UtilMethod.getUser;
+import static com.example.common.UtilMethod.getUser;
 
 @Slf4j
 public class BookshopValidator {
@@ -18,6 +20,46 @@ public class BookshopValidator {
     /*
     Bookshop에서 사용하는 검증 메서드 모음
      */
+
+    /*
+     * pageRequest 검증
+     */
+    public static PageRequest pageRequestResolver(BookSearchVO bookSearchVO, BindingResult bindingResult) {
+        //넘어온 pageRequest를 검증(@min,@max)해 오류가 있으면 기본값(page=1,size=9) 설정 ,
+        //오류가 없으면 그대로 반환
+        PageRequest pageRequest;
+        if(bindingResult.hasErrors()){
+            //단 페이지(pageRequest.getPage())값만 정확히 넘어온 경우,
+            //그 값은 사이즈의 기본값과 함께 사용
+            if(bindingResult.getFieldError("page")==null){
+                pageRequest = PageRequest.builder().page(bookSearchVO.getPage()).build();
+            }else{
+                pageRequest = PageRequest.builder().build();
+            }
+        } else{ //오류가 없으면 그대로 반환
+            pageRequest = PageRequest
+                    .builder()
+                    .page(bookSearchVO.getPage())
+                    .size(bookSearchVO.getSize())
+                    .build();
+        }
+        return pageRequest;
+    }
+
+    public static PageRequest pageRequestResolver(PageRequest pageRequest, BindingResult bindingResult) {
+        //넘어온 pageRequest를 검증(@min,@max)해 오류가 있으면 기본값(page=1,size=9) 설정 ,
+        //오류가 없으면 그대로 반환
+        if(bindingResult.hasErrors()){
+            //단 페이지(pageRequest.getPage())값만 정확히 넘어온 경우,
+            //그 값은 사이즈의 기본값과 함께 사용
+            if(bindingResult.getFieldError("page")==null){
+                pageRequest = PageRequest.builder().page(pageRequest.getPage()).build();
+            }else{
+                pageRequest = PageRequest.builder().build();
+            }
+        }
+        return pageRequest;
+    }
 
     /*
      * Param으로 들어온 pageRequest resolver
@@ -64,6 +106,11 @@ public class BookshopValidator {
     public static boolean validateLoginedUser(String id,HttpServletRequest request){
         //파라미터 id와 세션에 존재하는 id가 일치하는지
         return getUser(request) !=null && id.equals(getUser(request).getId());
+    }
+
+    public static boolean validateLoginedUserOrAdmin(String id,HttpServletRequest request){
+        //관리자일 경우 검증 통과
+        return validateLoginedUser(id,request)||"admin".equals(id);
     }
 
     /*

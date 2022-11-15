@@ -1,7 +1,7 @@
 package com.example.home;
 
 import com.example.book.service.BookService;
-import com.example.common.data.CategoryData;
+import com.example.common.CategoryData;
 import com.example.common.paging.PageRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

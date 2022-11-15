@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.qna.dao.QnaDao">
+    <select id="selectQnas" resultType="qnaVO">
+        select * from qna
+        order by qno desc
+    </select>
+    <select id="selectCnt" resultType="int">
+        select count(*) from qna;
+    </select>
+    <insert id="insertQna" useGeneratedKeys="true" keyProperty="qno">
+        insert into qna (id, title, content)
+        values (#{id},#{title},#{content})
+    </insert>
+</mapper>

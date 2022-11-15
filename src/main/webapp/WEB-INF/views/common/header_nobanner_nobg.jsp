@@ -11,7 +11,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>김남현</title>
+    <title>Begoja</title>
     <script src="<c:url value="/resources/js/common/jquery-3.6.0.min.js"/>"></script>
 <%--    <script src="<c:url value="/resources/js/common/jquery-ui-1.10.4.custom.min.js"/>"></script>--%>
     <script src="<c:url value="/resources/js/header/header_nobanner.js"/>"></script>
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/common/reset.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/header/header_nobanner_nobg.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/footer/footer.css"/>">
-    <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/images/common/faviconV2.ico"/>"/>
+    <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/images/common/favicon_begoja.ico"/>"/>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                                 <a href="<c:url value="/user/login"/>">로그인</a>
                             </li>
                             <li>
-                                <a href="register.html">회원가입</a>
+                                <a href="<c:url value="/user/join"/>">회원가입</a>
                             </li>
                         </ul>
                     </c:when>
@@ -46,10 +46,10 @@
                                 <a href="<c:url value="/user/logout"/>">로그아웃</a>
                             </li>
                             <li>
-                                <a href="register.html">마이페이지</a>
+                                <a href="<c:url value="/user/myPage"/>">마이페이지</a>
                             </li>
                             <li>
-                                <a href="register.html">장바구니</a>
+                                <a href="<c:url value="/cart/carts"/>">장바구니</a>
                             </li>
                         </ul>
                     </c:otherwise>
@@ -62,7 +62,7 @@
         <div id="main_navi_wrap">
             <h1>
                 <a href="<c:url value="/"/>">
-                    <img src="<c:url value="/resources/images/common/main_logo.png"/>" alt="하나투어메인로고" width="165" height="52">
+                    <img src="<c:url value="/resources/images/common/begoja.png"/>" alt="하나투어메인로고" width="220" height="75" style="position:absolute; left:270px; bottom:5px;">
                 </a>
             </h1>
             <p class="search">

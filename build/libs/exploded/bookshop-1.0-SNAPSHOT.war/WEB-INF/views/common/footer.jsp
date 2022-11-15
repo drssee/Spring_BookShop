@@ -26,23 +26,39 @@
             </ul>
         </address>
         <p>
-            COPYRIGHT©HANATOUR SERVICE INC.ALL RIGHTS RESERVED
+            COPYRIGHT©BEGOJA SPRING PROJECT
         </p>
     </footer>
     <!--bottom-->
 </div>
 <!--bottom_wrap-->
 <div id="btn_top">
-    <figure>
+    <figure class="to_service_center">
         <p><img src="<c:url value="/resources/images/common/ico-chatting.png"/>" alt="#" width="45" height="45"></p>
         <figcaption>
-            채팅상담
+            고객센터
         </figcaption>
     </figure>
-    <div>
+    <div class="to_top">
         <p><span class="triangle"></span>top</p>
     </div>
 </div>
+<script>
+    //우측탑메뉴
+    $(window).scroll(function(){
+        if($(this).scrollTop()>700){
+            $("#btn_top").fadeIn(500);
+        }
+        else {
+            $("#btn_top").fadeOut(300);
+        }
+        $(".to_service_center").click(function (){
+           window.location="/bookshop";
+        });
+        $(".to_top").click(function (){
+            $('html,body').stop().animate({scrollTop:0},300);
+        });
+    });
+</script>
 </body>
-
 </html>
