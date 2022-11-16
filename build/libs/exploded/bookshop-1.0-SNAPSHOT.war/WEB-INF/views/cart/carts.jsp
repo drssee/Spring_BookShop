@@ -28,7 +28,7 @@
                             <script>
                                 <c:if test="${cartBooks.size()==0}">
                                     alert('장바구니가 비어있습니다.');
-                                    window.location="/bookshop";
+                                    window.location="/bookshop/user/myPage";
                                 </c:if>
                             </script>
                             <!--foreach-->

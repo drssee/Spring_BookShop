@@ -777,7 +777,7 @@
 
     //날짜 처리를 위한 함수들
     let addZero = function(value){
-        return value > 9 ? value : "0"+value;
+        return value > 9 ? value : "0"+value;ㅈ
     }
 
     let dateToString = function(reviewDate) {

@@ -18,6 +18,8 @@
 
         <typeAlias type="com.example.cart.vo.CartVO" alias="cartVO"/>
 
+        <typeAlias type="com.example.qna.vo.QnaVO" alias="qnaVO"/>
+
         <typeAlias type="com.example.review.vo.ReviewVO" alias="reviewVO"/>
     </typeAliases>
 </configuration>

@@ -61,9 +61,6 @@ public class BookshopValidator {
         return pageRequest;
     }
 
-    /*
-     * Param으로 들어온 pageRequest resolver
-     */
     public static PageRequest pageRequestResolver(String paramPage,String paramSize) {
         PageRequest pageRequest = PageRequest.builder().build();
 
@@ -110,7 +107,7 @@ public class BookshopValidator {
 
     public static boolean validateLoginedUserOrAdmin(String id,HttpServletRequest request){
         //관리자일 경우 검증 통과
-        return validateLoginedUser(id,request)||"admin".equals(id);
+        return validateLoginedUser(id,request)||"admin".equals(getUser(request).getId());
     }
 
     /*

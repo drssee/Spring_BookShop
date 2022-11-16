@@ -54,4 +54,15 @@ public class UserServiceImpl implements UserService {
         userDao.insertUser(userVO);
         userDao.insertUserAddr(userAddrVO);
     }
+
+    /**
+     * 유저 업데이트
+     */
+    @Override
+    public void updateUser(UserVO userVO, UserAddrVO userAddrVO) {
+        //userVO 업데이트
+        userDao.updateUser(userVO);
+        //userAddrVO 업데이트
+        userDao.updateUserAddr(userAddrVO);
+    }
 }

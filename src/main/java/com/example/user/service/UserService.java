@@ -26,4 +26,9 @@ public interface UserService {
      * 유저 db에 저장
      */
     void saveUser(UserVO userVO, UserAddrVO userAddrVO);
+
+    /**
+     * 유저 업데이트
+     */
+    void updateUser(UserVO userVO, UserAddrVO userAddrVO);
 }

@@ -18,6 +18,7 @@ public class QnaVO {
     private Date reg_date;
     private Date update_date;
     private int cnt;
+    private Long pqno; //부모 qno
 
     public QnaVO(QnaSaveForm qnaSaveForm){
         this.id=qnaSaveForm.getId();

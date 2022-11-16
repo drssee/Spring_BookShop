@@ -26,7 +26,7 @@ public class RememberUserInterceptor implements HandlerInterceptor {
         //로그인기억 쿠키가 존재하면 , 쿠키의 값으로 유저를 조회해 세션에 저장
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
-            if(cookie.getName().equals("remember_user")){
+            if(cookie.getName().equals("remember_user")&&session.getAttribute("user")==null){
                 session.setAttribute("user", userDao.selectOneByUUID(cookie.getValue()));
                 //저장된user검증
                 UserVO userVO = (UserVO) session.getAttribute("user");

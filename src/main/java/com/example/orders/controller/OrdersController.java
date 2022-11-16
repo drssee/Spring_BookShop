@@ -59,6 +59,9 @@ public class OrdersController {
     // get /orders/result <-주문결과 페이지
     // get /orders/list <-주문목록 페이지
 
+    /**
+     * 주문결제
+     */
     @PostMapping("/payment")
     @ResponseBody
     public ResponseEntity<String> payment(@Validated @RequestBody OrdersForm ordersForm

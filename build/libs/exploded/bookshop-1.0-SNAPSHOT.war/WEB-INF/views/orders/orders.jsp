@@ -27,7 +27,7 @@
                             <script>
                                 <c:if test="${ordersBooks.size()==0}">
                                 alert('주문목록이 존재하지 않습니다.');
-                                window.location="/bookshop";
+                                window.location="/bookshop/user/myPage";
                                 </c:if>
                             </script>
                             <!--foreach-->

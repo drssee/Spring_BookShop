@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserLoginForm {
+public class UserLoginForm implements UserForm {
 
     @NotBlank(message = "아이디를 입력해주세요.")
     @Size(min=4,max=15,message = "아이디는 4~15글자 사이여야 합니다.")

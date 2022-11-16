@@ -1,5 +1,6 @@
 package com.example.user.vo;
 
+import com.example.user.controller.form.UserEditForm;
 import com.example.user.controller.form.UserSaveForm;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,5 +29,13 @@ public class UserVO {
         this.name=userSaveForm.getName();
         this.phone=phone;
         this.email=userSaveForm.getEmail();
+    }
+
+    public UserVO(UserEditForm userEditForm, String phone) {
+        this.id=userEditForm.getId();
+        this.pwd=userEditForm.getPwd();
+        this.name=userEditForm.getName();
+        this.phone=phone;
+        this.email=userEditForm.getEmail();
     }
 }

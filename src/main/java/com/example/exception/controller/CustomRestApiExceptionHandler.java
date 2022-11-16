@@ -20,12 +20,12 @@ public class CustomRestApiExceptionHandler extends ResponseEntityExceptionHandle
         return new ErrorResponse("BAD_REQUEST",e.getMessage());
     }
 
-    //권한 없는 유저가 요청(400)
+    //권한 없는 유저가 요청(401)
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> illegalUserExHandle(IllegalUserException e) {
         log.error("[exceptionHandle] ex", e);
         ErrorResponse errorResponse = new ErrorResponse("USER-EX", e.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
     }
 
     //500

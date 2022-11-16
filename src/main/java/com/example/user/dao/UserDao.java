@@ -11,7 +11,6 @@ public interface UserDao {
      */
     UserVO selectOne(String id);
 
-
     /**
      * 유저의 좋아요 목록 체크
      */
@@ -36,5 +35,15 @@ public interface UserDao {
      * uuid로 userVO 조회
      */
     UserVO selectOneByUUID(String uuid);
+
+    /**
+     * 유저 업데이트(user)
+     */
+    int updateUser(UserVO userVO);
+
+    /**
+     * 유저 업데이트(user_addr)
+     */
+    int updateUserAddr(UserAddrVO userAddrVO);
 
 }

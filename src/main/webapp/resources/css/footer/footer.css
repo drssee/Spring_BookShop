@@ -9,7 +9,8 @@
 }
 #bottom{
     width:1190px;
-    margin:0 auto;
+    /*margin:0 auto;*/
+    margin-left:800px;
 }
 #bottom ul li{
     display:inline;

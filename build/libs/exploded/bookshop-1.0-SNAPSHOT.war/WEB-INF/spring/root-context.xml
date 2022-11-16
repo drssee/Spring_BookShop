@@ -51,6 +51,7 @@
         <context:component-scan base-package="com.example.user.service"/>
         <context:component-scan base-package="com.example.review.service"/>
         <context:component-scan base-package="com.example.cart.service"/>
+        <context:component-scan base-package="com.example.qna.service"/>
 
         <!--dao 인터페이스 위치 등록-->
         <mybatis:scan base-package="com.example.book.dao"/>
@@ -58,6 +59,7 @@
         <mybatis:scan base-package="com.example.user.dao"/>
         <mybatis:scan base-package="com.example.review.dao"/>
         <mybatis:scan base-package="com.example.cart.dao"/>
+        <mybatis:scan base-package="com.example.qna.dao"/>
 
         <!--플레이스홀더 설정 properties 스캔위치-->
         <context:property-placeholder location="classpath:config/*"/>
@@ -65,6 +67,4 @@
         <util:properties id="config" location="classpath:config/config.properties"/>
         <!--fileIO 로직-->
         <context:component-scan base-package="com.example.common.file"/>
-        <!--temp-->
-        <context:component-scan base-package="com.example.temp"/>
 </beans>

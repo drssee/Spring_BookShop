@@ -2,6 +2,8 @@ package com.example.user.controller;
 
 import com.example.book.service.BookService;
 import com.example.common.paging.PageRequest;
+import com.example.exception.IllegalUserException;
+import com.example.user.controller.form.UserEditForm;
 import com.example.user.controller.form.UserLoginForm;
 import com.example.user.controller.form.UserSaveForm;
 import com.example.user.service.UserService;
@@ -24,7 +26,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import static com.example.common.status.RequestStatus.BAD_REQUEST;
+import static com.example.common.status.RequestStatus.INVALID_USER;
 import static com.example.common.validator.BookshopValidator.validateLogin;
+import static com.example.common.validator.BookshopValidator.validateLoginedUser;
 
 @Controller
 @RequestMapping("/user")
@@ -43,6 +48,9 @@ public class UserController {
     //get /user/check/{id} <-아이디체크
     //get /user/join <-회원가입폼
     //post /user/join <-회원가입
+    //get /user/myPage <-마이페이지
+    //get /user/update/{id} <-업데이트폼
+    //post /user/update <-업데이트
 
 
     /**
@@ -69,6 +77,7 @@ public class UserController {
             model.addAttribute("bindingResult",bindingResult);
             return "user/login";
         }
+
         //userVO!=null && userVO.pwd==param.pwd  비밀번호검증
         UserVO user = userService.getUser(userLoginForm.getId());
         if(!validateLogin(user,userLoginForm)) {
@@ -164,6 +173,11 @@ public class UserController {
         /*
         valid
         */
+        //아이디 중복 체크
+        if(userService.getUser(userSaveForm.getId())!=null){
+            throw new IllegalStateException(BAD_REQUEST.label());
+        }
+
         //usersaveform 검증
         if(bindingResult.hasErrors()){
             if("".equals(userSaveForm.getPhone1())||"".equals(userSaveForm.getPhone2())||"".equals(userSaveForm.getPhone3())){
@@ -192,4 +206,91 @@ public class UserController {
         return "redirect:/";
     }
 
+    /**
+     * 마이페이지
+     */
+    @GetMapping("/myPage")
+    public String mypage(HttpServletRequest request){
+        /*
+        valid
+        */
+        //로그인 체크
+        if(!validateLoginedUser(request)){
+            throw new IllegalUserException(INVALID_USER.label());
+        }
+
+
+        /*
+        core
+        */
+        return "user/myPage";
+    }
+
+    /**
+     * 업데이트폼
+     */
+    @GetMapping("/update/{id}")
+    public String updateForm(@PathVariable String id, HttpServletRequest request,Model model){
+        /*
+        valid
+        */
+        //id 체크
+        if(id==null||"".equals(id)||userService.getUser(id)==null){
+            throw new IllegalUserException(INVALID_USER.label());
+        }
+
+        //로그인 체크
+        if(!validateLoginedUser(id,request)){
+            throw new IllegalUserException("비로그인 유저입니다.");
+        }
+
+        /*
+        core
+        */
+        //모델에 유저정보 담기
+        model.addAttribute("user",userService.getUser(id));
+        //업데이트폼 이동
+        return "user/update";
+    }
+
+    /**
+     * 업데이트
+     */
+    @PostMapping("/update")
+    public String update(@Validated @ModelAttribute("user") UserEditForm userEditForm,
+                         BindingResult bindingResult, HttpServletRequest request, Model model){
+        /*
+        valid
+        */
+        //로그인체크
+        if(!validateLoginedUser(userEditForm.getId(),request)){
+            throw new IllegalUserException(INVALID_USER.label());
+        }
+
+        //입력폼체크(메서드로 리팩토링 해야함)
+        if(bindingResult.hasErrors()){
+            if("".equals(userEditForm.getPhone1())||"".equals(userEditForm.getPhone2())||"".equals(userEditForm.getPhone3())){
+                bindingResult.addError(new FieldError("user","phone","전화번호를 확인해주세요."));
+            }
+            if("".equals(userEditForm.getZipcode())||
+                    "".equals(userEditForm.getAddr1())||"".equals(userEditForm.getAddr2())||"".equals(userEditForm.getAddr3())){
+                bindingResult.addError(new FieldError("user","addr","주소를 확인해주세요."));
+            }
+            model.addAttribute("bindingResult",bindingResult);
+            return "user/update";
+        }
+
+        /*
+        core
+        */
+        //유저정보 업데이트
+        //phone,addr 초기화
+        String phone = userEditForm.getPhone1()+"-"+userEditForm.getPhone2()+"-"+userEditForm.getPhone3();
+        String addr = userEditForm.getAddr1()+" "+userEditForm.getAddr2()+" "+userEditForm.getAddr3();
+        //userVO,userAddrVO 초기화 후 업데이트
+        UserVO userVO = new UserVO(userEditForm,phone);
+        UserAddrVO userAddrVO = new UserAddrVO(userEditForm,addr);
+        userService.updateUser(userVO,userAddrVO);
+        return "redirect:/user/myPage";
+    }
 }

@@ -20,7 +20,7 @@
                 </script>
                 <div class="personal_info">
                     <p>
-                        <label for="u_id">아이디<span> (영문소문자/숫자, 4~16자)</span></label>
+                        <label for="u_id">아이디<span></span></label>
                         <input type="text" id="u_id" name="id" value="${bindingResult.getFieldValue("id")}">
                         <input type="button" id="u_id_check" name="id_check" value="중복 확인" onclick="checkID()">
                         <!--바인딩에러가 있을경우-->
@@ -32,7 +32,7 @@
                         </spring:hasBindErrors>
                     </p>
                     <p>
-                        <label for="u_pw1">비밀번호<span>(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8~25자)</span></label>
+                        <label for="u_pw1">비밀번호<span></span></label>
                         <input type="password" id="u_pw1" name="pwd" value="${bindingResult.getFieldValue("pwd")}">
                         <!--바인딩에러가 있을경우-->
                         <spring:hasBindErrors name="user">
@@ -156,6 +156,14 @@
     </main>
 </div>
 <script>
+    //비밀번호,비밀번호확인 체크
+    $("#btn-join").click(function (){
+        if($("#u_pw1").val()!=$("#u_pw2").val){
+            alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+            return false;
+        }
+    });
+
     //유효성 검사에 사용될 변수들
     let id = document.getElementById("u_id");
     let pw1 = document.getElementById("u_pw1");

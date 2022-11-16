@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserSaveForm {
+public class UserSaveForm implements UserForm  {
 
     @NotBlank(message = "아이디를 입력해주세요.")
     @Size(min=4,max=15,message = "아이디는 4~15글자 사이여야 합니다.")
@@ -26,10 +26,13 @@ public class UserSaveForm {
     private String name; //유저 이름
     private int pay_amount; //현재 유저의 총 구매 금액
     @NotBlank
+    @Size(min=3,max=3)
     private String phone1; //전화번호
     @NotBlank
+    @Size(min=3,max=4)
     private String phone2;
     @NotBlank
+    @Size(min=3,max=4)
     private String phone3;
     @NotBlank(message = "이메일을 입력해주세요.")
     private String email; //이메일

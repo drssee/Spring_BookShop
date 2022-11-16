@@ -8,6 +8,8 @@ main{margin-bottom: 100px;}
     outline: none;
     border:none;
     height: 30px;
+    position: relative;
+    bottom: 20px;
 }
 #list_search_btn:hover{
     border:1px solid black;

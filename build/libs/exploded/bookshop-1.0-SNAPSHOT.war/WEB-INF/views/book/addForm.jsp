@@ -24,6 +24,11 @@
     -->
 
     <form action="<c:url value="/book/add"/>" method="post" enctype="multipart/form-data">
+        <script>
+            <spring:hasBindErrors name="book">
+                alert('입력값을 확인해주세요');
+            </spring:hasBindErrors>
+        </script>
         <!--타이틀-->
         <label for="title">
             <input type="text" id="title" name="title" value="${bindingResult.getFieldValue("title")}" placeholder="<spring:message code="placeholder.book.title"/>">
