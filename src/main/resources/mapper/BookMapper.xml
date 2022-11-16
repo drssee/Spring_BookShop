@@ -15,11 +15,11 @@
         insert into book (title, price,stock)
         values (#{title},#{price},#{stock})
     </insert>
-    <insert id="insertBook_info" parameterType="bookVO" useGeneratedKeys="true" keyProperty="bno">
+    <insert id="insertBook_info" parameterType="bookVO">
         insert into book_info (bno,pubDate,author,description,publisher)
         values (#{bno},#{pubDate},#{author},#{description},#{publisher})
     </insert>
-    <insert id="insertBook_images" parameterType="imageVO" useGeneratedKeys="true" keyProperty="bno">
+    <insert id="insertBook_images" parameterType="imageVO">
         insert into book_images (bno,storeFileName,originalFileName,imgCategory,ext,size)
         values (#{bno},#{storeFileName},#{originalFileName},#{imgCategory},#{ext},#{size})
     </insert>
@@ -77,11 +77,21 @@
     </select>
     <update id="updateBook" parameterType="bookVO">
         update book
-        set price =  #{price} ,stock = #{stock} , like_cnt = #{like_cnt} ,update_date = now()
+        set title=#{title},price=#{price},stock=#{stock},like_cnt=#{like_cnt}
+          ,update_date=now()
+        where bno = #{bno}
+    </update>
+    <update id="updateBook_info" parameterType="bookVO">
+        update book_info
+        set pubDate=#{pubDate},author=#{author},description=#{description},publisher=#{publisher}
         where bno = #{bno}
     </update>
     <delete id="deleteBook">
         delete from book
+        where bno = #{bno}
+    </delete>
+    <delete id="deleteBook_images">
+        delete from book_images
         where bno = #{bno}
     </delete>
     <!--book-->

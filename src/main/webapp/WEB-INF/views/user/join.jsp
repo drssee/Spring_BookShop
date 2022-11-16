@@ -156,9 +156,9 @@
     </main>
 </div>
 <script>
-    //비밀번호,비밀번호확인 체크
+    //회원가입 클릭시
     $("#btn-join").click(function (){
-        if($("#u_pw1").val()!=$("#u_pw2").val){
+        if($("#u_pw1").val()!=$("#u_pw2").val()){
             alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
             return false;
         }

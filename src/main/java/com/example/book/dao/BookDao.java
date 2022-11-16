@@ -44,9 +44,11 @@ public interface BookDao {
 
     //book db 업데이트
     int updateBook(BookVO bookVO);
+    int updateBook_info(BookVO bookVO);
 
     //book db 삭제
     int deleteBook(Long bno);
+    int deleteBook_images(Long bno);
 
 
     /**

@@ -19,7 +19,8 @@ public class ImageVO {
     private long size; //파일용량
     private Date regDate; //등록일
 
-    public ImageVO(String originalFileName, String storedFileName, String imgCategory, String ext, long size) {
+    public ImageVO(Long bno,String originalFileName, String storedFileName, String imgCategory, String ext, long size) {
+        this.bno=bno;
         this.originalFileName=originalFileName;
         this.storeFileName=storedFileName;
         this.imgCategory=imgCategory;

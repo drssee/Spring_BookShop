@@ -50,6 +50,16 @@
                             </li>
                         </ul>
                     </c:when>
+                    <c:when test="${sessionScope.user.id=='admin'}">
+                        <ul class="quick">
+                            <li>
+                                <a href="<c:url value="/user/logout"/>">로그아웃</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value="/user/admin/page"/>">관리자메뉴</a>
+                            </li>
+                        </ul>
+                    </c:when>
                     <c:otherwise>
                         <ul class="quick">
                             <li>

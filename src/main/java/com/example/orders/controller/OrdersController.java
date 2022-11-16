@@ -33,7 +33,8 @@ import java.util.Locale;
 
 import static com.example.common.UtilMethod.getUser;
 import static com.example.common.status.RequestStatus.INVALID_USER;
-import static com.example.common.validator.BookshopValidator.validateLoginedUser;
+import static com.example.common.status.RequestStatus.UNAUTHORIZED;
+import static com.example.common.validator.BookshopValidator.*;
 
 @Controller
 @RequestMapping("/orders")
@@ -58,6 +59,7 @@ public class OrdersController {
     // post /orders/deleteIamport/{imp_uid} <-iamport 환불 api
     // get /orders/result <-주문결과 페이지
     // get /orders/list <-주문목록 페이지
+    // get /orders/list/{id} <-주문목록 페이지(관리자 조회)
 
     /**
      * 주문결제
@@ -170,6 +172,36 @@ public class OrdersController {
         */
         //ordersBooks 초기화
         List<OrdersBookDto> ordersBookDtos = ordersService.getOrdersBookDtos(getUser(request).getId());
+        //ordersBookVOList에서 bno꺼내서 bookVO 초기화
+        ordersBookDtos.forEach(ordersBookDto -> {
+            ordersBookDto.getOrdersBookVOList().forEach(ordersBookVO -> {
+                ordersBookVO.setBookVO(bookService.getBook(ordersBookVO.getBno()));
+            });//내부 foreach
+        });//외부 foreach
+
+        //초기화한 ordersBooks 모델에 저장
+        model.addAttribute("ordersBooks",ordersBookDtos);
+        return "orders/orders";
+    }
+
+    /**
+     * 주문목록 페이지
+     */
+    @GetMapping("/list/{id}")
+    public String list(@PathVariable String id, HttpServletRequest request, Model model){
+        /*
+        valid
+        */
+        //관리자 체크
+        if(validateAdmin(request)){
+            throw new IllegalUserException(UNAUTHORIZED.label());
+        }
+
+        /*
+        core
+        */
+        //ordersBooks 초기화
+        List<OrdersBookDto> ordersBookDtos = ordersService.getOrdersBookDtos(id);
         //ordersBookVOList에서 bno꺼내서 bookVO 초기화
         ordersBookDtos.forEach(ordersBookDto -> {
             ordersBookDto.getOrdersBookVOList().forEach(ordersBookVO -> {

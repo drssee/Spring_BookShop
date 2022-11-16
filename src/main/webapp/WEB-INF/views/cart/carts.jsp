@@ -232,7 +232,7 @@
                                         alert('잘못된 접근입니다');
                                         return;
                                     }
-
+                                    alert('테스트 결제 시스템과 연동하여 실제로 결제되지 않습니다.(00시에 결제가 자동 취소됩니다.)');
                                     let pay_amount = Number($("#total-price").text());
                                     IMP.init(code);
                                     //결제 요청

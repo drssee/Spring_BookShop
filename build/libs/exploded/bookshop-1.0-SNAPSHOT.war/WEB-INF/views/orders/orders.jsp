@@ -25,9 +25,14 @@
                     <div class="col-md-12 col-lg-8">
                         <div class="items">
                             <script>
+                                let sessionId = '<c:out value="${sessionScope.user.id}"/>';
                                 <c:if test="${ordersBooks.size()==0}">
-                                alert('주문목록이 존재하지 않습니다.');
-                                window.location="/bookshop/user/myPage";
+                                    alert('주문목록이 존재하지 않습니다.');
+                                    if('admin'===sessionId){
+                                        window.location="/bookshop/user/admin/page";
+                                    } else{
+                                        window.location="/bookshop/user/myPage";
+                                    }
                                 </c:if>
                             </script>
                             <!--foreach-->

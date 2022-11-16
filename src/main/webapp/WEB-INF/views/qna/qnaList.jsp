@@ -67,12 +67,12 @@
             <td class="bo_num"><c:out value="${qna.qno}"/></td>
             <c:if test="${qna.qno.equals(qna.pqno)}">
               <td class="bo_tit">
-                <a style="margin-left:-100px;" class="qna_detail" data-writer="${qna.id}" data-pqno="${qna.pqno}" href="<c:url value='/qna/${qna.qno}'/>?page=${pageResponse.page}"><img src="<c:url value="/resources/images/common/lock.png"/>" alt="자물쇠" width="20" height="20" style="margin-right:10px;"><c:out value="${qna.title}"/></a>
+                <a style="text-align: left; text-indent: 100px;" class="qna_detail" data-writer="${qna.id}" data-pqno="${qna.pqno}" href="<c:url value='/qna/${qna.qno}'/>?page=${pageResponse.page}"><img src="<c:url value="/resources/images/common/lock.png"/>" alt="자물쇠" width="20" height="20" style="margin-right:10px;"><c:out value="${qna.title}"/></a>
               </td>
             </c:if>
             <c:if test="${!qna.qno.equals(qna.pqno)}">
               <td class="bo_tit">
-                <a style="margin-left:-50px;" class="qna_detail" data-writer="${qna.id}" data-pqno="${qna.pqno}" href="<c:url value='/qna/${qna.qno}'/>?page=${pageResponse.page}"><span>ㄴ</span><img src="<c:url value="/resources/images/common/lock.png"/>" alt="자물쇠" width="20" height="20" style="margin-right:10px;"><c:out value="${qna.title}"/></a>
+                <a style="text-align: left; text-indent: 150px;" class="qna_detail" data-writer="${qna.id}" data-pqno="${qna.pqno}" href="<c:url value='/qna/${qna.qno}'/>?page=${pageResponse.page}"><span>ㄴ</span><img src="<c:url value="/resources/images/common/lock.png"/>" alt="자물쇠" width="20" height="20" style="margin-right:10px;"><c:out value="${qna.title}"/></a>
               </td>
             </c:if>
             <td class="bo_writer"><c:out value="${qna.id}"/></td>

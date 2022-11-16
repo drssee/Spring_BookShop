@@ -1,16 +1,273 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kimnamhyun
-  Date: 2022/11/07
-  Time: 4:17 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-${bnoDto}bnoDto로 페이징
-</body>
-</html>
+
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ include file="/WEB-INF/views/common/header_nobanner_nobg.jsp" %>
+    <!--
+    입력폼에 오류가 있어 다시 입력폼으로 돌아올 경우
+    1.bindingResult에 저장된 fieldValue를 다시 보여주고
+        validation 어노테이션에 설정한 메시지를 보여준다
+    2.price,stock의 값이 숫자가 아닐경우
+        typeMismatch를 체크해 다른 메시지를 보여줌
+    -->
+<link rel="stylesheet" href="<c:url value="/resources/css/addForm.css"/>">
+<div id="wrap">
+    <div id="main">
+        <div id="join_wrap">
+            <div id="sub_banner">
+                <p><strong>물품 수정</strong></p>
+            </div>
+            <form id="join_form" action="<c:url value="/book/edit"/>" method="post" enctype="multipart/form-data">
+                <script>
+                    <spring:hasBindErrors name="book">
+                        alert('입력값을 확인해주세요');
+                    </spring:hasBindErrors>
+                </script>
+                <div class="personal_info">
+                    <p>
+                        <!--타이틀-->
+                        타이틀
+                        <label for="title">
+                            <!--에러가 없을경우-->
+                            <c:if test="${bindingResult==null}">
+                                <input type="text" id="title" name="title" value="${book.title}"
+                                       placeholder="<spring:message code="placeholder.book.title"/>">
+                            </c:if>
+                            <!--에러가 있을경우-->
+                            <c:if test="${bindingResult!=null}">
+                                <input type="text" id="title" name="title" value="${bindingResult.getFieldValue("title")}"
+                                       placeholder="<spring:message code="placeholder.book.title"/>">
+                            </c:if>
+                        </label>
+                        <!--바인딩에러가 있을경우-->
+                        <spring:hasBindErrors name="book">
+                        <!--해당 필드 오류가 있을때 오류 메시지 출력-->
+                        <c:if test="${errors.hasFieldErrors('title')}">
+                            <div class="binding-error">${errors.getFieldError("title").defaultMessage}</div>
+                        </c:if>
+                        </spring:hasBindErrors>
+                        <!--타이틀-->
+                    </p>
+                    <p style="width:30%;">
+                        <!--출판일-->
+                        출판일
+                        <label for="pubDate">
+                            <!--에러가 없을경우-->
+                            <c:if test="${bindingResult==null}">
+                                <input type="date" id="pubDate" name="pubDate" value="${book.pubDate}"
+                                       placeholder="<spring:message code="placeholder.book.pubDate"/>">
+                            </c:if>
+                            <!--에러가 있을경우-->
+                            <c:if test="${bindingResult!=null}">
+                                <input type="date" id="pubDate" name="pubDate" value="${bindingResult.getFieldValue("pubDate")}"
+                                       placeholder="<spring:message code="placeholder.book.pubDate"/>">
+                            </c:if>
+
+                        </label>
+                        <spring:hasBindErrors name="book">
+                            <!--pubDate에 바인딩 오류가 있을때-->
+                            <c:if test="${errors.hasFieldErrors('pubDate')}">
+                                <div class="binding-error">
+                                    <!--타입미스매치(IllegalArgumentException) 발생시 다른 오류메시지 생성-->
+                                    <!--validation이 작동하면 기본 메시지로-->
+                                    <c:choose>
+                                        <c:when test="${errors.getFieldError('pubDate').
+                                                                    defaultMessage.contains('java.lang.IllegalArgumentException')}">
+                                            <spring:message code="DateFormat"/>
+                                        </c:when>
+                                        <c:otherwise>
+                                            ${errors.getFieldError("pubDate").defaultMessage}
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                            </c:if>
+                        </spring:hasBindErrors>
+                        <!--출판일-->
+                    </p>
+                    <p>
+                        저자
+                        <!--저자-->
+                        <label for="author">
+                            <!--에러가 없을경우-->
+                            <c:if test="${bindingResult==null}">
+                                <input type="text" id="author" name="author" value="${book.author}"
+                                       placeholder="<spring:message code="placeholder.book.author"/>">
+                            </c:if>
+                            <!--에러가 있을경우-->
+                            <c:if test="${bindingResult!=null}">
+                                <input type="text" id="author" name="author" value="${bindingResult.getFieldValue("author")}"
+                                       placeholder="<spring:message code="placeholder.book.author"/>">
+                            </c:if>
+
+                        </label>
+                        <spring:hasBindErrors name="book">
+                        <c:if test="${errors.hasFieldErrors('author')}">
+                            <div class="binding-error">${errors.getFieldError("author").defaultMessage}</div>
+                        </c:if>
+                        </spring:hasBindErrors>
+                        <!--저자-->
+                    </p>
+                    <p>
+                        가격
+                        <!--가격-->
+                        <label for="price">
+                            <!--에러가 없을경우-->
+                            <c:if test="${bindingResult==null}">
+                                <input type="text" id="price" name="price" value="${book.price}"
+                                       placeholder="<spring:message code="placeholder.book.price"/>">
+                            </c:if>
+                            <!--에러가 있을경우-->
+                            <c:if test="${bindingResult!=null}">
+                                <input type="text" id="price" name="price" value="${bindingResult.getFieldValue("price")}"
+                                       placeholder="<spring:message code="placeholder.book.price"/>">
+                            </c:if>
+
+                        </label>
+                        <spring:hasBindErrors name="book">
+                        <!--price에 바인딩 오류가 있을때-->
+                        <c:if test="${errors.hasFieldErrors('price')}">
+                            <div class="binding-error">
+                            <!--타입미스매치(numberformatException) 발생시 다른 오류메시지 생성-->
+                            <!--validation이 작동하면 기본 메시지로-->
+                                <c:choose>
+                                    <c:when test="${errors.getFieldError('price').
+                                    defaultMessage.contains('java.lang.NumberFormatException')}">
+                                        <spring:message code="NumberFormat"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${errors.getFieldError("price").defaultMessage}
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </c:if>
+                        </spring:hasBindErrors>
+                        <!--가격-->
+                    </p>
+                    <p>
+                        재고
+                        <!--재고-->
+                        <label for="stock">
+                            <!--에러가 없을경우-->
+                            <c:if test="${bindingResult==null}">
+                                <input type="text" id="stock" name="stock" value="${book.stock}"
+                                       placeholder="<spring:message code="placeholder.book.stock"/>">
+                            </c:if>
+                            <!--에러가 있을경우-->
+                            <c:if test="${bindingResult!=null}">
+                                <input type="text" id="stock" name="stock" value="${bindingResult.getFieldValue("stock")}"
+                                       placeholder="<spring:message code="placeholder.book.stock"/>">
+                            </c:if>
+
+                        </label>
+                        <spring:hasBindErrors name="book">
+                        <!--stock에 바인딩 오류가 있을때-->
+                        <c:if test="${errors.hasFieldErrors('stock')}">
+                            <div class="binding-error">
+                                <!--타입미스매치(numberformatException) 발생시 다른 오류메시지 생성-->
+                                <!--validation이 작동하면 기본 메시지로-->
+                                <c:choose>
+                                    <c:when test="${errors.getFieldError('stock').
+                                    defaultMessage.contains('java.lang.NumberFormatException')}">
+                                        <spring:message code="NumberFormat"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${errors.getFieldError("stock").defaultMessage}
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </c:if>
+                        </spring:hasBindErrors>
+                        <!--재고-->
+                    </p>
+                    <p>
+                        출판사
+                        <!--출판사-->
+                        <label for="publisher">
+                            <!--에러가 없을경우-->
+                            <c:if test="${bindingResult==null}">
+                                <input type="text" id="publisher" name="publisher" value="${book.publisher}"
+                                       placeholder="<spring:message code="placeholder.book.publisher"/>">
+                            </c:if>
+                            <!--에러가 있을경우-->
+                            <c:if test="${bindingResult!=null}">
+                                <input type="text" id="publisher" name="publisher" value="${bindingResult.getFieldValue("publisher")}"
+                                       placeholder="<spring:message code="placeholder.book.publisher"/>">
+                            </c:if>
+
+                        </label>
+                        <spring:hasBindErrors name="book">
+                        <c:if test="${errors.hasFieldErrors('publisher')}">
+                            <div class="binding-error">${errors.getFieldError("publisher").defaultMessage}</div>
+                        </c:if>
+                        </spring:hasBindErrors>
+                        <!--출판사-->
+                    </p>
+
+                        <!--이미지 업로드-->
+                        <label for="uploadFile">
+                            <input  style="cursor: pointer; border: none; outline: none;" type="file"
+                                    id="uploadFile" name="uploadFile" value="${bindingResult.getFieldValue("uploadFile")}"
+                                    placeholder="<spring:message code="placeholder.book.uploadFile"/>">
+                            이미지업로드 커버
+                        </label>
+                        <spring:hasBindErrors name="book">
+                            <c:if test="${errors.hasFieldErrors('uploadFile')}">
+                                <div class="binding-error">${errors.getFieldError("uploadFile").defaultMessage}</div>
+                            </c:if>
+                        </spring:hasBindErrors>
+
+                        <label for="uploadFiles" style="margin-top:10px; cursor: pointer; border: none; outline: none;">
+                            <input  style="margin-top:10px; cursor: pointer; border: none; outline: none;"
+                                    type="file" multiple="multiple" id="uploadFiles" name="uploadFiles"
+                                    value="${bindingResult.getFieldValue("uploadFiles")}"
+                                    placeholder="<spring:message code="placeholder.book.uploadFiles"/>">
+                            이미지업로드 상품상세
+                        </label>
+                        <spring:hasBindErrors name="book">
+                            <c:if test="${errors.hasFieldErrors('uploadFiles')}">
+                                <div class="binding-error">${errors.getFieldError("uploadFiles").defaultMessage}</div>
+                            </c:if>
+                        </spring:hasBindErrors>
+                </div>
+
+                <p style="margin-top:20px;">
+                    <!--상세설명-->
+                    <label for="description"><!--수정해야함, textarea로-->
+                        <!--에러가 없을경우-->
+                        <c:if test="${bindingResult==null}">
+                        <textarea rows="4" cols="50"
+                                  id="description" name="description"
+                                  style="resize: none;"
+                                  placeholder="<spring:message code="placeholder.book.description"/>">${book.description}</textarea>
+                        </c:if>
+                        <!--에러가 있을경우-->
+                        <c:if test="${bindingResult!=null}">
+                        <textarea rows="4" cols="50"
+                                  id="description" name="description"
+                                  style="resize: none;"
+                                  placeholder="<spring:message code="placeholder.book.description"/>">${bindingResult.getFieldValue("description")}</textarea>
+                        </c:if>
+
+                    </label>
+                    <spring:hasBindErrors name="book">
+                    <c:if test="${errors.hasFieldErrors('description')}">
+                    <div class="binding-error">${errors.getFieldError("description").defaultMessage}</div>
+                    </c:if>
+                    </spring:hasBindErrors>
+                    <!--상세설명-->
+                </p>
+                <c:if test="${bindingResult==null}">
+                    <input type="hidden" name="bno" value="${book.bno}">
+                </c:if>
+                <c:if test="${bindingResult!=null}">
+                    <input type="hidden" name="bno" value="${bindingResult.getFieldValue("bno")}">
+                </c:if>
+                <div id="login_btn">
+                    <button type="submit">수정</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>

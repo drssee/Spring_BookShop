@@ -1,6 +1,6 @@
 package com.example.common.file;
 
-import com.example.book.controller.form.BookSaveForm;
+import com.example.book.controller.form.BookForm;
 import com.example.book.vo.ImageVO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +22,7 @@ public class FileIO {
     /**
      * 파일 업로드 후 vo를 리턴
      */
-    public ImageVO uploadFile(MultipartFile multipartFile, String fileDir) {
+    public ImageVO uploadFile(Long bno, MultipartFile multipartFile, String fileDir) {
         //업로드할 파일이 비어있으면 return null
         if(multipartFile.isEmpty()){
             return null;
@@ -45,20 +45,19 @@ public class FileIO {
         } catch (IOException e) {
             throw new RuntimeException("파일 업로드 실패");
         }
-        ImageVO imageVO = new ImageVO(originalFileName,storedFileName,imgCategory,ext,size);
         //사용자업로드 파일이름,서버업로드 파일이름 저장한 vo 리턴
-        return new ImageVO(originalFileName,storedFileName,imgCategory,ext,size);
+        return new ImageVO(bno,originalFileName,storedFileName,imgCategory,ext,size);
     }
 
     /**
      * 파일목록 업로드
      */
-    public List<ImageVO> uploadFiles(List<MultipartFile> multipartFiles, String fileDir) {
+    public List<ImageVO> uploadFiles(Long bno,List<MultipartFile> multipartFiles, String fileDir) {
         //업로드한 파일 목록을 저장할 리스트 생성
         List<ImageVO> uploadFilesList = new ArrayList<>();
         //넘어온 multipartfiles를 순회하며 각각 upload 실행후 list에 저장
         for (MultipartFile multipartFile : multipartFiles) {
-            ImageVO bookimgVO = uploadFile(multipartFile, fileDir);
+            ImageVO bookimgVO = uploadFile(bno,multipartFile, fileDir);
             //이미지 카테고리 cover=c,book_imgs=i
             if(bookimgVO!=null){
                 bookimgVO.setImgCategory("i");
@@ -98,10 +97,10 @@ public class FileIO {
     /*
     커버이미지(단일)업로드
      */
-    public ImageVO getUploadFileVO_cover(BookSaveForm form, HttpServletRequest request) {
+    public ImageVO getUploadFileVO_cover(BookForm form, HttpServletRequest request) {
         if(form.getUploadFile()!=null){
             //파일의 경로를 구한뒤 업로드
-            return uploadFile(form.getUploadFile(), getFiledDir(request));
+            return uploadFile(form.getBno(),form.getUploadFile(), getFiledDir(request));
         }
         return null;
     }
@@ -109,10 +108,10 @@ public class FileIO {
     /*
     책이미지s(리스트)업로드
     */
-    public List<ImageVO> getUploadFileVO_imgs(BookSaveForm form, HttpServletRequest request) {
+    public List<ImageVO> getUploadFileVO_imgs(BookForm form, HttpServletRequest request) {
         if(form.getUploadFiles().size()>0){
             //파일의 경로를 구한뒤 업로드
-            return uploadFiles(form.getUploadFiles(), getFiledDir(request));
+            return uploadFiles(form.getBno(),form.getUploadFiles(), getFiledDir(request));
         }
         return null;
     }
@@ -120,7 +119,7 @@ public class FileIO {
     /*
     registerBook을 위한 List<ImageVO> 생성
      */
-    public List<ImageVO> getImageVOList(BookSaveForm form, HttpServletRequest request) {
+    public List<ImageVO> getImageVOList(BookForm form, HttpServletRequest request) {
         //uploadfileVO_cover 초기화
         ImageVO imageVO_cover = getUploadFileVO_cover(form, request);
         //uploadfileVO_imgs 초기화

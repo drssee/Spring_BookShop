@@ -26,10 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static com.example.common.status.RequestStatus.BAD_REQUEST;
-import static com.example.common.status.RequestStatus.INVALID_USER;
-import static com.example.common.validator.BookshopValidator.validateLogin;
-import static com.example.common.validator.BookshopValidator.validateLoginedUser;
+import static com.example.common.status.RequestStatus.*;
+import static com.example.common.validator.BookshopValidator.*;
 
 @Controller
 @RequestMapping("/user")
@@ -42,6 +40,9 @@ public class UserController {
 
     // *UserController api*
 
+    /*
+    유저
+     */
     //get /user/login <-로그인폼
     //post /user/login <-로그인
     //get /user/logout <-로그아웃
@@ -51,6 +52,13 @@ public class UserController {
     //get /user/myPage <-마이페이지
     //get /user/update/{id} <-업데이트폼
     //post /user/update <-업데이트
+
+    /*
+    관리자메뉴
+     */
+    //get /user/admin/page <-관리자 페이지
+    //get /user/admin/search/{id} <-id 존재 확인
+
 
 
     /**
@@ -92,14 +100,19 @@ public class UserController {
         */
         //chk2(로그인 기억)이 체크된 경우
         if("2".equals(userLoginForm.getChk2())){
-            //관리자는 제외 , 로그인 기억 쿠키 값에 uuid 저장
-            if(!"admin".equals(userLoginForm.getId())){
-                Cookie cookie = new Cookie("remember_user",
-                        userService.getUser(userLoginForm.getId()).getUuid());
-                cookie.setPath("/");
-                cookie.setMaxAge(60*60*24*7); //7일간 유지
-                response.addCookie(cookie);
-            }
+//            //관리자는 제외 , 로그인 기억 쿠키 값에 uuid 저장
+//            if(!"admin".equals(userLoginForm.getId())){
+//                Cookie cookie = new Cookie("remember_user",
+//                        userService.getUser(userLoginForm.getId()).getUuid());
+//                cookie.setPath("/");
+//                cookie.setMaxAge(60*60*24*7); //7일간 유지
+//                response.addCookie(cookie);
+//            }
+            Cookie cookie = new Cookie("remember_user",
+                    userService.getUser(userLoginForm.getId()).getUuid());
+            cookie.setPath("/");
+            cookie.setMaxAge(60*60*24*7); //7일간 유지
+            response.addCookie(cookie);
         }
 
         //세션에 user 정보 저장
@@ -293,4 +306,46 @@ public class UserController {
         userService.updateUser(userVO,userAddrVO);
         return "redirect:/user/myPage";
     }
+
+    /**
+     * 관리자 페이지
+     */
+    @GetMapping("/admin/page")
+    public String adminPage(HttpServletRequest request) {
+        /*
+        valid
+        */
+        //관리자 체크
+        if (validateAdmin(request)) {
+            throw new IllegalUserException(UNAUTHORIZED.label());
+        }
+
+        /*
+        core
+        */
+        //관리자 페이지로 이동
+        return "user/adminPage";
+    }
+
+    /**
+     * id존재 확인
+     */
+    @GetMapping("/admin/search/{id}")
+    @ResponseBody
+    public ResponseEntity<Boolean> searchId(@PathVariable String id){
+        /*
+        valid
+        */
+        //id 체크
+        if(id==null||"".equals(id)){
+            throw new IllegalStateException(BAD_REQUEST.label());
+        }
+
+        /*
+        core
+        */
+        //id 존재시 true
+        return ResponseEntity.ok(userService.getUser(id)!=null);
+    }
+
 }

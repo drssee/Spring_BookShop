@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.common.UtilMethod.getUser;
-import static com.example.common.status.RequestStatus.BAD_REQUEST;
-import static com.example.common.status.RequestStatus.INVALID_USER;
+import static com.example.common.status.RequestStatus.*;
 import static com.example.common.validator.BookshopValidator.pageRequestResolver;
 import static com.example.common.validator.BookshopValidator.validateLoginedUserOrAdmin;
 
@@ -172,7 +171,7 @@ public class QnaController {
         QnaVO qna = qnaService.getQna(qno);
         //로그인 체크, 작성자와 로그인유저가 같은지 또는 관리자일 경우
         if(!validateLoginedUserOrAdmin(qna.getId(),request)){
-            throw new IllegalUserException(INVALID_USER.label());
+            throw new IllegalUserException(UNAUTHORIZED.label());
         }
 
         /*
@@ -201,7 +200,7 @@ public class QnaController {
 
         //로그인 체크, 작성자와 로그인유저가 같은지 또는 관리자일 경우
         if(!validateLoginedUserOrAdmin(qnaEditForm.getId(),request)){
-            throw new IllegalUserException(INVALID_USER.label());
+            throw new IllegalUserException(UNAUTHORIZED.label());
         }
 
         //qnaform 검증
@@ -234,7 +233,7 @@ public class QnaController {
 
         //로그인 체크, 작성자와 로그인유저가 같은지 또는 관리자일 경우
         if(!validateLoginedUserOrAdmin(qnaService.getQna(qno).getId(),request)){
-            throw new IllegalUserException(INVALID_USER.label());
+            throw new IllegalUserException(UNAUTHORIZED.label());
         }
 
         /*
@@ -298,7 +297,7 @@ public class QnaController {
 
         //관리자 체크
         if(!"admin".equals(getUser(request).getId())){
-            throw new IllegalUserException(INVALID_USER.label());
+            throw new IllegalUserException(UNAUTHORIZED.label());
         }
 
         /*
@@ -318,13 +317,14 @@ public class QnaController {
         valid
         */
         //qno 체크
+        System.out.println("qno!!!!!!!!!!!!!!! = " + qno);
         if(qno<0){
             throw new IllegalStateException(BAD_REQUEST.label());
         }
 
         //관리자 체크
         if(!"admin".equals(getUser(request).getId())){
-            throw new IllegalUserException(INVALID_USER.label());
+            throw new IllegalUserException(UNAUTHORIZED.label());
         }
 
         //qnaform 검증

@@ -84,6 +84,9 @@ public class BookshopValidator {
 
         return pageRequest;
     }
+    public static PageRequest pageRequestResolver(PageRequest pageRequest) {
+        return pageRequestResolver(String.valueOf(pageRequest.getPage()),String.valueOf(pageRequest.getSize()));
+    }
 
     /*
      * 유저 검증 비밀번호 일치 확인
@@ -106,7 +109,7 @@ public class BookshopValidator {
     }
 
     public static boolean validateLoginedUserOrAdmin(String id,HttpServletRequest request){
-        //관리자일 경우 검증 통과
+        //유저or관리자일 경우 검증 통과
         return validateLoginedUser(id,request)||"admin".equals(getUser(request).getId());
     }
 
@@ -118,4 +121,13 @@ public class BookshopValidator {
         return Objects.equals(reviewVO.getBno(),reviewForm.getBno())&&
                 Objects.equals(reviewVO.getId(),reviewForm.getId());
     }
+
+    /*
+     * 관리자 검증
+     */
+    public static boolean validateAdmin(HttpServletRequest request) {
+        UserVO userVO = (UserVO) request.getSession().getAttribute("user");
+        return (userVO==null||"".equals(userVO.getId())||!"admin".equals(userVO.getId()));
+    }
+
 }

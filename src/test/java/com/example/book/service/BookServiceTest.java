@@ -63,7 +63,7 @@ public class BookServiceTest {
 
         //then
         //업데이트는 성공해야함
-        assertTrue(bookService.updateBook(bookVO));
+        assertDoesNotThrow(()->bookService.updateBook(bookVO));
         BookVO bookVO1 = bookDao.selectBook(bno);
         //업데이트된 bookVo1의 bookVO1.stock, bookVO1.price는 임의의 값 stock,price와 같아야 한다
         assertEquals(stock, bookVO1.getStock());

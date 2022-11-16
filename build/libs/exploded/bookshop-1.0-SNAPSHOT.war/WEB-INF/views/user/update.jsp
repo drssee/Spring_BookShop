@@ -191,7 +191,7 @@
 
                 </div>
                 <div id="login_btn">
-                    <button type="submit" id="btn-join" class="login_submit">회원가입</button>
+                    <button type="submit" id="btn-join" class="login_submit">수정</button>
                     <button type="reset" class="cancel">취소</button>
                 </div>
             </form>
@@ -199,12 +199,12 @@
     </main>
 </div>
 <script>
-    //비밀번호,비밀번호확인 체크
+    //수정 클릭시
     $("#btn-join").click(function (){
-       if($("#u_pw1").val()!=$("#u_pw2").val){
-           alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
-           return false;
-       }
+        if($("#u_pw1").val()!=$("#u_pw2").val()){
+            alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+            return false;
+        }
     });
 
     //유효성 검사에 사용될 변수들

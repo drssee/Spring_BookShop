@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Date;
 import java.util.List;
 
@@ -22,12 +23,17 @@ public class BookSaveForm implements BookForm{
     /*
     book
      */
-    @NotBlank
+    private Long bno;
+    @NotBlank(message = "타이틀을 입력해주세요")
     private String title;
+    @NotNull(message = "가격을 입력해주세요")
+    @Positive
     @Range(min = 5000,max = 100000)
-    private int price;
+    private Integer price;
+    @NotNull(message = "재고를 입력해주세요")
+    @Positive
     @Range(min=1,max=9999)
-    private int stock;
+    private Integer stock;
 
     /*
     book_images
@@ -39,21 +45,17 @@ public class BookSaveForm implements BookForm{
     book_info
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotNull
+    @NotNull(message = "출판일 입력해주세요")
     private Date pubDate;
-    @NotBlank
+    @NotBlank(message = "저자를 입력해주세요")
     private String author;
     private String description;
-    @NotBlank
+    @NotBlank(message = "출판사를 입력해주세요")
     private String publisher;
 
     /*
     category
      */
-    @NotBlank
+    @NotBlank(message = "카테고리를 입력해주세요")
     private String categoryName;
-
-
-
-
 }

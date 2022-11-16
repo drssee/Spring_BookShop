@@ -131,9 +131,30 @@ public class BookServiceImpl implements BookService{
      * 상품(book)의 수정 및 업데이트
      */
     @Override
-    public boolean updateBook(BookVO bookVO) {
-        //업데이트 성공,실패 여부 반환
-        return bookDao.updateBook(bookVO)==1;
+    public void updateBook(BookVO bookVO) {
+        bookDao.updateBook(bookVO);
+    }
+
+    /**
+     * 상품(book,book_info,book_images)의 수정 및 업데이트
+     */
+    @Override
+    public void updateAllBookTables(BookVO bookVO, List<ImageVO> imageVOS) {
+        //bookVO,bookInfo,bookImages 업데이트
+        bookDao.updateBook(bookVO);
+        bookDao.updateBook_info(bookVO);
+        //업데이트할 이미지가 있으면
+        if(imageVOS!=null){
+            //현재 bno에 저장된 이미지 경로를 삭제후 새로운 이미지를 등록
+            bookDao.deleteBook_images(bookVO.getBno());
+            //book_images db에 bookVO를 저장
+            //이미지 저장 실패 롤백을 위한 try-catch
+            try {
+                insertBook_images(bookVO, imageVOS);
+            } catch (Exception e) {
+                throw new RuntimeException("이미지 저장 실패");
+            }
+        }
     }
 
     /**
@@ -167,8 +188,8 @@ public class BookServiceImpl implements BookService{
     }
 
     /*
-        카테고리 이름 검증
-         */
+    카테고리 이름 검증
+     */
     private static void validCategoryName(CategoryVO categoryVO) {
         //categoryVo 검증 1보다 작은 값은 존재하지 않는 카테고리이름
         //현재 존재하지 않는 카테고리 = 기타

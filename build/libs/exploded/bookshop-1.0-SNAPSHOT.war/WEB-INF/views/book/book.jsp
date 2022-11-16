@@ -96,8 +96,8 @@
                     <input id="quantity" name="quantity" class="form-control text-center me-3" type="text" value="1" style="max-width: 3rem" readonly/>
                     <input type='button' onclick='count("plus")' value='+' style="margin-right:10px; position:relative; right:15px;"/>
                     <input type="hidden" name="bno" value="${book.bno}">
-                    <input type="hidden" name="page" value="${bnoDto.page}">
-                    <input type="hidden" name="size" value="${bnoDto.size}">
+                    <input type="hidden" name="page" value="${pageRequest.page}">
+                    <input type="hidden" name="size" value="${pageRequest.size}">
                     <button id="btn-like" style="margin-right: 10px;" class="btn btn-outline-dark flex-shrink-0" type="button">
                         <i class="bi-cart-fill me-1">좋아요!</i>
                         <span id="like_cnt">${book.like_cnt}개</span>
@@ -146,6 +146,7 @@
                     </button>
                     <script>
 
+                        //iamport 결제 기능
                         let buyerName = '<c:out value="${sessionScope.user.id}"/>';
                         let buyerEmail = '<c:out value="${sessionScope.user.email}"/>';
                         let buyerTel = '<c:out value="${sessionScope.user.phone}"/>';
@@ -154,9 +155,7 @@
                         let bookName = '<c:out value="${book.title}"/>';
                         let price = '<c:out value="${book.price}"/>';
 
-
                         $(document).ready(function(){
-
                             let IMP = window.IMP; //import payment == imp
                             // let code = 'imp41427810'; //가맹점 식별코드
                             let code = '<spring:message code="imp"/>'; //가맹점 식별코드
@@ -171,9 +170,16 @@
                                 //재고 체크
                                 if(quantity>stock){
                                     let outOfStock = quantity-stock;
-                                    alert('재고가 '+outOfStock+'개 부족합니다');
+                                    if(outOfStock<0){
+                                        alert('재고가 부족합니다');
+                                    } else{
+                                        alert('재고가 '+outOfStock+'개 부족합니다');
+                                    }
                                     return;
                                 }
+
+                                alert('테스트 결제 시스템과 연동하여 실제로 결제되지 않습니다.(00시에 결제가 자동 취소됩니다.)');
+
                                 //확인
                                 if(!confirm(bookName+' '+quantity+'개(을)를 구매하시겠습니까?')) {
                                     return;
@@ -283,7 +289,11 @@
                             //재고 체크
                             if(quantity>stock){
                                 let outOfStock = quantity-stock;
-                                alert('재고가 '+outOfStock+'개 부족합니다');
+                                if(outOfStock<0){
+                                    alert('재고가 부족합니다');
+                                } else{
+                                    alert('재고가 '+outOfStock+'개 부족합니다');
+                                }
                                 return;
                             }
                             //확인
@@ -355,8 +365,12 @@
                                 data: JSON.stringify(cartForm),
 
                                 success : function(result){
-                                    alert('장바구니 페이지로 이동합니다');
-                                    location.href="/bookshop/cart/carts";
+                                    if(confirm('장바구니 페이지로 이동하시겠습니까?')){
+                                        alert('장바구니 페이지로 이동합니다');
+                                        location.href="/bookshop/cart/carts";
+                                    } else{
+                                        alert(bookName+'을 장바구니에 담았습니다');
+                                    }
                                 },
                                 error: function(request, status, error) {
                                     console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -396,6 +410,21 @@
                             resultElement.value = number;
                         }//count
                     </script>
+                    <c:if test="${'admin'.equals(sessionScope.user.id)}">
+                        <button id="btn-updateBook" class="btn btn-outline-dark flex-shrink-0"
+                         style="margin-left:10px;">물품 관리</button>
+                        <script>
+                            let adminId = '<c:out value="${sessionScope.user.id}"/>';
+                            //관리자 물품관리
+                            $("#btn-updateBook").click(function (){
+                               if(adminId===''||'admin'!==adminId){
+                                   alert('잘못된 접근입니다.');
+                                   return false;
+                               }
+                               window.location="/bookshop/book/"+bno+"/edit";
+                            });
+                        </script>
+                    </c:if>
                 </div><!--div.d-flex-->
             </div><!--상품 상세 정보-->
     </div><!--outer container-->
@@ -777,7 +806,7 @@
 
     //날짜 처리를 위한 함수들
     let addZero = function(value){
-        return value > 9 ? value : "0"+value;ㅈ
+        return value > 9 ? value : "0"+value;
     }
 
     let dateToString = function(reviewDate) {

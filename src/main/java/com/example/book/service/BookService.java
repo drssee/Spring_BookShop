@@ -51,7 +51,8 @@ public interface BookService {
     /**
      * 상품(book)의 수정 및 업데이트
      */
-    boolean updateBook(BookVO bookVO);
+    void updateBook(BookVO bookVO);
+    void updateAllBookTables(BookVO bookVO, List<ImageVO> imageVOS);
 
     /**
      * 상품(book)의 삭제

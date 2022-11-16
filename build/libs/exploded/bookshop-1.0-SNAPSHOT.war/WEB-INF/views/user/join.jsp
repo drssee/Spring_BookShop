@@ -156,6 +156,14 @@
     </main>
 </div>
 <script>
+    //회원가입 클릭시
+    $("#btn-join").click(function (){
+        if($("#u_pw1").val()!=$("#u_pw2").val()){
+            alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+            return false;
+        }
+    });
+
     //유효성 검사에 사용될 변수들
     let id = document.getElementById("u_id");
     let pw1 = document.getElementById("u_pw1");

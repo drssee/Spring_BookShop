@@ -41,7 +41,7 @@
             <button id="qna_modify" class="btn_modify btn_active">수정</button>
             <button id="qna_delete" class="btn_modify btn_delete">삭제</button>
             <a href="<c:url value="/qna/qnas?page="/>${page}" class="btn_modify btn_default">목록</a>
-            <c:if test="${sessionScope.user.id.equals('admin')}">
+            <c:if test="${sessionScope.user.id.equals('admin')&&qna.qno==qna.pqno}">
                 <a class="btn_modify btn_default" href="<c:url value="/qna/answer/"/>${qna.qno}">답변(관리자)</a>
             </c:if>
         </div>
