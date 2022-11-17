@@ -8,13 +8,13 @@
 <br/><br/>
 
 ## 목차
-- [개요](https://github.com/nscv/lotte-kurly#-개요)
-- [기술 스택](https://github.com/nscv/lotte-kurly#-기술-스택)
-- [시스템 구조도](https://github.com/nscv/lotte-kurly#-시스템-구조도)
-- [프로젝트 설계](https://github.com/nscv/lotte-kurly#-프로젝트-설계)
-- [핵심 기능](https://github.com/nscv/lotte-kurly#-핵심-기능)
-- [주요기능 실행화면](https://github.com/nscv/lotte-kurly#-주요기능-실행화면)
-- [개선사항](https://github.com/nscv/lotte-kurly#-팀-정보)
+- [개요](https://github.com/drssee/Spring_bookShop#-개요)
+- [기술 스택](https://github.com/drssee/Spring_bookShop#-기술-스택)
+- [시스템 구조도](https://github.com/drssee/Spring_bookShop#-시스템-구조도)
+- [프로젝트 설계](https://github.com/drssee/Spring_bookShop#-프로젝트-설계)
+- [핵심 기능](https://github.com/drssee/Spring_bookShop#-핵심-기능)
+- [주요기능 실행화면](https://github.com/drssee/Spring_bookShop#-주요기능-실행화면)
+- [개선사항](https://github.com/nscv/drssee/Spring_bookShop#-개선사항)
 
 ## 🚩 개요
 - 프로젝트 목표 : 다양한 `API`를 활용한 `스프링` , `마이바티스` 책 쇼핑몰 프로젝트
@@ -97,8 +97,6 @@
 <summary>주요기능 실행화면</summary>
 
 * **메인 화면**
-  * `베스트셀러` 와 `이달의신간` 을 조회 할 수 있습니다.
-  ![main](https://user-images.githubusercontent.com/113401870/202536886-b4cdf32a-1314-4541-926f-9e6bc3c0a71a.gif)
   * `카테고리` 메뉴를 사용해 카테고리 별로 상품을 확인할 수 있습니다.
   ![category](https://user-images.githubusercontent.com/113401870/202537990-ca444583-bde8-422a-847a-ff26b679c0bd.gif)
 * **회원가입 및 로그인**
@@ -107,11 +105,6 @@
   
   * `다음 우편주소API`를 이용해 배송을 위한 정확한 주소를 가져올 수 있습니다.
    ![join2](https://user-images.githubusercontent.com/113401870/202538839-10142c8f-26e5-4b2f-b6b2-13ee29ff6386.gif)
-  * 로그인시 `아이디기억`과 `로그인기억`을 사용할 수 있습니다.
-    ![login](https://user-images.githubusercontent.com/113401870/202539650-4b931ee1-c9eb-427f-9364-9ad6bc54a262.gif)
-* **마이페이지**
-  * `마이페이지` 메뉴를 통해 사용자 정보와 결제 정보, 문의사항을 조회 할 수 있습니다.
-   ![mypage](https://user-images.githubusercontent.com/113401870/202540095-5021dcf2-a8b8-4d50-9e9c-c46ee043816b.gif)
 
 * **상품 상세 조회**
   * 상품 목록에서 상품의 사진을 클릭하면 `상품 상세 정보` 를 확인할 수 있습니다.
@@ -128,14 +121,12 @@
   ![cart](https://user-images.githubusercontent.com/113401870/202547242-59206077-3a63-458c-a900-1c30e6084b61.gif)
   
 * **주문하기**
-  * `결제하기` 를 누르면 IamportAPI와 연동된 kg이니시스 결제페이지로 이동합니다..
+  * `결제하기` 를 누르면 IamportAPI와 연동된 kg이니시스 결제페이지로 이동합니다.
   * 결제가 완료되면 `결제 내역` 메뉴에서 결제 정보를 확인할 수 있습니다.
   ![pay](https://user-images.githubusercontent.com/113401870/202548370-ebc47a3d-f5ee-46e7-b277-d4bc5818dd51.gif)
   * 주문상태가 배송이전이면 결제를 취소 할 수 있습니다.  
     ![pay2](https://user-images.githubusercontent.com/113401870/202548606-46d00f5c-6817-4128-850b-1bb6cb34bc75.gif)
 * **관리자 페이지**
-  * 관리자 권한이 있는 사용자는 `관리자 페이지` 에 접근할 수 있습니다.
-  ![24-admin-page-link](https://user-images.githubusercontent.com/43202607/180715708-555bf142-9210-494b-98e4-cfdb60ed2550.png)
 
   * `물품등록` 메뉴에서 상품을 등록 할 수 있습니다.
   ![admin2](https://user-images.githubusercontent.com/113401870/202549811-eddff451-16ea-474f-8448-8be485c3d1fc.gif)
@@ -145,6 +136,12 @@
 
   * `고객관리` 메뉴에서 고객의 환불요청을 진행할 수 있습니다.
   ![admin4](https://user-images.githubusercontent.com/113401870/202550341-2bc73d90-5891-49fe-aa8d-a8848b59e0c1.gif)
+
+* **고객센터**
+  * 고객센터에서 유저가 1:1문의를 작성하면 관리자가 답변을 해줄 수 있습니다.
+  ![고객센터1](https://user-images.githubusercontent.com/113401870/202552961-c82c3b11-273c-45a7-8cc8-1a44edc838c0.gif)
+  ![고객센터2](https://user-images.githubusercontent.com/113401870/202552971-c5818ec6-24c3-414c-a611-af7b9a39082f.gif)
+  ![고객센터3](https://user-images.githubusercontent.com/113401870/202552977-d01d5362-e653-49cf-991e-6d8fadb49562.gif)
 </details>
 
 ## 🌄 개선사항
