@@ -46,7 +46,7 @@
 <details>
 <summary>그 외 더보기</summary>
 <div markdown="1">
-<img src="http://hohk.dothome.co.kr/load/data/kt180401/166870315447182400.jpg">
+<img src="">
 </div>
 </details>
 
@@ -106,7 +106,7 @@
   * `다음 우편주소API`를 이용해 배송을 위한 정확한 주소를 가져올 수 있습니다.
    ![join2](https://user-images.githubusercontent.com/113401870/202538839-10142c8f-26e5-4b2f-b6b2-13ee29ff6386.gif)
 
-* **상품 상세 조회**
+* **상품 상세 조회 및 좋아요**
   * 상품 목록에서 상품의 사진을 클릭하면 `상품 상세 정보` 를 확인할 수 있습니다.
   * `상품 상세` 페이지에서 좋아요(추천)을 할 수 있습니다.
   ![like](https://user-images.githubusercontent.com/113401870/202544810-8cf38a72-3d59-4b1e-815d-e3920a45fc6e.gif)
