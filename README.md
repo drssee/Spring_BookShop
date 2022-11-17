@@ -1,4 +1,4 @@
-<h1 align='center'> <img src='https://user-images.githubusercontent.com/21255149/180385609-b0ff770e-470c-4734-bf8c-b0952268b279.png' style='width: 30px; height: 30px;'>&nbsp;내일의 장보기, Lotte Kurly</h1>
+<h1 align='center'> <img src='![begoja](https://user-images.githubusercontent.com/113401870/202498788-74498caa-d4a2-4131-806a-a2c3da64db8f.png)' style='width: 30px; height: 30px;'>&nbsp;내일의 장보기, Lotte Kurly</h1>
 <div align='center'>
   <h3>
     <a href="https://ecshin.notion.site/New-Super-Cucumber-Voucher-36e58840891743068035620afef729cb"> ✏️Notion </a>
