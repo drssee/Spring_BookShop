@@ -44,7 +44,7 @@
             $("#btn_top").fadeOut(300);
         }
         $(".to_service_center").click(function (){
-           window.location="/bookshop/qna/qnas";
+           window.location="/bookshop/qna/page";
         });
         $(".to_top").click(function (){
             $('html,body').stop().animate({scrollTop:0},300);

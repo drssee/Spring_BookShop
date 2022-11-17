@@ -64,5 +64,6 @@ public class BookVO {
         this.price=form.getPrice();
         this.stock=form.getStock();
         this.publisher=form.getPublisher();
+        this.like_cnt=form.getLike_cnt();
     }
 }

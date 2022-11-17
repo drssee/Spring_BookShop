@@ -23,4 +23,9 @@
     <delete id="deleteOrders">
         delete from orders where order_id = #{order_id}
     </delete>
+    <update id="updateOrders">
+        update orders
+        set order_status = #{order_status}
+        where order_id = #{order_id}
+    </update>
 </mapper>

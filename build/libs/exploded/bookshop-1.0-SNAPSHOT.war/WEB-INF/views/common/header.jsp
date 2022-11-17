@@ -111,7 +111,7 @@
                     </li>
 <%--                    <li><a href="<c:url value="/book/books_toBePublished"/>">출판예정도서</a></li>--%>
                     <li><a href="<c:url value="/book/books"/>">도서목록</a></li>
-                    <li><a href="<c:url value="/qna/qnas"/>">고객센터</a>
+                    <li><a href="<c:url value="/qna/page"/>">고객센터</a>
                     </li>
                 </ul>
             </nav>

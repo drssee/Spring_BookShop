@@ -1,7 +1,6 @@
 package com.example.orders.controller;
 
 import com.example.book.service.BookService;
-import com.example.common.status.OrderStatus;
 import com.example.exception.IllegalUserException;
 import com.example.orders.controller.dto.OrdersBookDto;
 import com.example.orders.controller.form.OrdersForm;
@@ -32,9 +31,12 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.example.common.UtilMethod.getUser;
+import static com.example.common.status.OrderStatus.DELIVERY_COMPLETE;
+import static com.example.common.status.OrderStatus.PAYMENT_COMPLETE;
 import static com.example.common.status.RequestStatus.INVALID_USER;
 import static com.example.common.status.RequestStatus.UNAUTHORIZED;
-import static com.example.common.validator.BookshopValidator.*;
+import static com.example.common.validator.BookshopValidator.validateAdmin;
+import static com.example.common.validator.BookshopValidator.validateLoginedUser;
 
 @Controller
 @RequestMapping("/orders")
@@ -60,6 +62,7 @@ public class OrdersController {
     // get /orders/result <-주문결과 페이지
     // get /orders/list <-주문목록 페이지
     // get /orders/list/{id} <-주문목록 페이지(관리자 조회)
+    // post /orders/delevery/{orders_id} <-배송(관리자 기능)
 
     /**
      * 주문결제
@@ -116,7 +119,8 @@ public class OrdersController {
      */
     @PostMapping("/deleteIamport/{imp_uid}")
     @ResponseBody
-    public ResponseEntity<Boolean> deleteOrders(@PathVariable String imp_uid, @Param("order_id") Long order_id){
+    public ResponseEntity<Boolean> deleteOrders(@PathVariable String imp_uid, @Param("order_id") Long order_id,
+                                                HttpServletRequest request){
 
         //imp_uid 검증
         if(imp_uid==null||"".equals(imp_uid)){
@@ -124,10 +128,13 @@ public class OrdersController {
         }
         //order_id 값이 넘어왔을때
         if(order_id!=null){
-            //orderStatus 검증, 주문완료 상태가 아니면 불일치
-            if(!OrderStatus.PAYMENT_COMPLETE.label()
+            //orderStatus 검증, 주문완료 상태가 아니면 불일치(관리자제외)
+            if(!PAYMENT_COMPLETE.label()
                     .equals(ordersService.getOrders(order_id).getOrder_status())){
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"주문상태 불일치");
+                //관리자인지 확인(관리자가 아니면 throw exception)
+                if(validateAdmin(request)){
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"주문상태 불일치");
+                }
             }
             //orders,orders_book db에서 제거
             ordersService.cancelOrders(order_id);
@@ -214,4 +221,26 @@ public class OrdersController {
         return "orders/orders";
     }
 
+    /**
+     * 배송(관리자기능)
+     */
+    @PostMapping("/delevery/{order_id}")
+    @ResponseBody
+    public ResponseEntity<Boolean> delevery(@PathVariable Long order_id, HttpServletRequest request){
+        /*
+        valid
+        */
+        //관리자 체크
+        if(validateAdmin(request)){
+            throw new IllegalUserException(UNAUTHORIZED.label());
+        }
+
+        /*
+        core
+        */
+        //주문상태 변경
+        OrdersVO orders = ordersService.getOrders(order_id);
+        orders.setOrder_status(DELIVERY_COMPLETE.label());
+        return ResponseEntity.ok(ordersService.updateOrders(orders)==1);
+    }
 }

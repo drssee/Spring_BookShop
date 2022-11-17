@@ -73,9 +73,18 @@
                                                             <div style="position:relative;left:15px;bottom:5px;font-weight: bold;">
                                                                 원
                                                             </div>
-                                                            <!--삭제버튼-->
-                                                            <button class="btn-delOrder" data-order_id="${orderBookDto.order_id}" data-imp_uid="${orderBookDto.imp_uid}"
-                                                                     style="font-size: 14px; position: relative;left:190px;bottom:30px;">x</button>
+                                                            <c:if test="${'결제완료'.equals(orderBookDto.order_status)||'admin'.equals(sessionScope.user.id)}">
+                                                                <!--결제완료 상태일경우or관리자일경우 삭제버튼 활성화-->
+                                                                <!--삭제버튼-->
+                                                                <button class="btn-delOrder" data-order_id="${orderBookDto.order_id}" data-imp_uid="${orderBookDto.imp_uid}"
+                                                                        style="font-size: 14px; position: relative;left:190px;bottom:30px;">x</button>
+                                                            </c:if>
+                                                            <c:if test="${'admin'.equals(sessionScope.user.id)&&!'배송완료'.equals(orderBookDto.order_status)}">
+                                                                <!--관리자일 경우and배송완료가 아닐때 배송하기버튼 활성화-->
+                                                                <!--배송버튼-->
+                                                                <button class="btn-DeliveryOrder" data-order_id="${orderBookDto.order_id}" data-imp_uid="${orderBookDto.imp_uid}"
+                                                                        style="font-size: 14px; position: relative;left:190px;bottom:30px;">배송하기</button>
+                                                            </c:if>
                                                         </div>
                                                     </c:forEach>
                                                     <!--foreach-->
@@ -120,6 +129,34 @@
                                             }
                                         });//function
                                     });//btn-payment.click
+
+                                    //배송버튼
+                                    $(".btn-DeliveryOrder").click(function (){
+                                        //관리자체크
+                                        if(id===''||'admin'!==id){
+                                            alert('잘못된 접근입니다');
+                                            return;
+                                        }
+
+                                        //확인
+                                        if(!confirm('배송 하시겠습니까?')){
+                                            return;
+                                        }
+
+                                        let user_order_id = $(this).attr("data-order_id");
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "/bookshop/orders/delevery/"+user_order_id
+                                        }).done(function (data) {
+                                            if(data){
+                                                alert('배송 완료');
+                                                location.reload();
+                                            } else{
+                                                alert('배송물품 전달 실패');
+                                            }
+                                        });//function
+                                    });
                                 });//document.ready
                             </script>
                         </div>

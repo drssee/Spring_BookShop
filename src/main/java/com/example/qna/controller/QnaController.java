@@ -36,6 +36,7 @@ public class QnaController {
 
     // *QnaController api*
 
+    //get /qna/page <-qna페이지 이동
     //get /qna/qnas <-목록 조회
     //get /qna/{qno} <-단일 조회
     //get /qna/add <-등록폼 이동
@@ -46,6 +47,14 @@ public class QnaController {
     //get /qna/search/{id} <-검색byId
     //get /qna/answer/{qno} <-관리자 답변폼 이동
     //post /qna/answer <-관리자 답변
+
+    /**
+     * qna페이지 이동
+     */
+    @GetMapping("/page")
+    public String page(){
+        return "qna/qnaPage";
+    }
 
     /**
      * 목록 조회

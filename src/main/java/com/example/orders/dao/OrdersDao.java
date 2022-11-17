@@ -35,4 +35,9 @@ public interface OrdersDao {
      * 오더 취소
      */
     int deleteOrders(Long order_id);
+
+    /**
+     * 오더 업데이트(주문상태)
+     */
+    int updateOrders(OrdersVO ordersVO);
 }

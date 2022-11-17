@@ -39,7 +39,7 @@
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 12px; font-weight: bold"><strong>제목</strong> : ${book.title}</h5>
                             <p class="card-text"><strong>저자</strong> : ${book.author}</p>
-                            <p class="card-text"><strong>출판일</strong> : ${book.pubDate.toLocaleString().substring(0,11)}</p>
+                            <p class="card-text"><strong>출판일</strong> : ${book.pubDate.toLocaleString().substring(0,12)}</p>
                             <p class="card-text"><strong>출판사</strong> : ${book.publisher}</p>
                         </div>
                     </div>

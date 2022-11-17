@@ -117,4 +117,12 @@ public class OrdersServiceImpl implements OrdersService {
         //orders,orders_book db에서 삭제
         ordersDao.deleteOrders(order_id);
     }
+
+    /**
+     * 오더 업데이트(주문상태)
+     */
+    @Override
+    public int updateOrders(OrdersVO ordersVO) {
+        return ordersDao.updateOrders(ordersVO);
+    }
 }

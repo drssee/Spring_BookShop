@@ -33,6 +33,7 @@ public class BookEditForm implements BookForm{
     @Positive
     @Range(min=1,max=9999)
     private Integer stock;
+    private Long like_cnt;
 
     /*
     book_images

@@ -20,9 +20,10 @@
                 </script>
                 <div class="personal_info">
                     <p>
+                        <input type="button" id="u_id_check" name="id_check" value="아이디 중복확인" onclick="checkID()"
+                               style="position:relative; left:510px; top:65px;">
                         <label for="u_id">아이디<span></span></label>
                         <input type="text" id="u_id" name="id" value="${bindingResult.getFieldValue("id")}">
-                        <input type="button" id="u_id_check" name="id_check" value="중복 확인" onclick="checkID()">
                         <!--바인딩에러가 있을경우-->
                         <spring:hasBindErrors name="user">
                         <!--해당 필드 오류가 있을때 오류 메시지 출력-->
@@ -43,7 +44,7 @@
                         </spring:hasBindErrors>
                     </p>
                     <p>
-                        <label for="u_pw2">비밀번호 확인<span id="pwCheckLabel"></span></label>
+                        <label for="u_pw2">비밀번호 확인<span id="pwCheckLabel" style="font-size: 13px;"></span></label>
                         <input type="password" id="u_pw2">
                     </p>
                     <p>
@@ -230,8 +231,13 @@
                     pwLabel.style.color = "#6edb54";
                 }
             } else {
-                pwLabel.innerHTML = "비밀번호가 일치하지 않습니다.";
-                pwLabel.style.color = "#e76060";
+                if(pw2.value===''){
+                    pwLabel.innerHTML = "비밀번호 확인을 입력해주세요.";
+                    pwLabel.style.color = "#e76060";
+                } else{
+                    pwLabel.innerHTML = "비밀번호가 일치하지 않습니다.";
+                    pwLabel.style.color = "#e76060";
+                }
             }
             console.log("pw1: " + pw1.value);
             console.log("pw2: " + pw2.value);

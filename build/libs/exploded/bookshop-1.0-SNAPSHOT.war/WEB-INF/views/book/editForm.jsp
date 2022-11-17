@@ -258,9 +258,11 @@
                 </p>
                 <c:if test="${bindingResult==null}">
                     <input type="hidden" name="bno" value="${book.bno}">
+                    <input type="hidden" name="like_cnt" value="${book.like_cnt}">
                 </c:if>
                 <c:if test="${bindingResult!=null}">
                     <input type="hidden" name="bno" value="${bindingResult.getFieldValue("bno")}">
+                    <input type="hidden" name="like_cnt" value="${bindingResult.getFieldValue("like_cnt")}">
                 </c:if>
                 <div id="login_btn">
                     <button type="submit">수정</button>

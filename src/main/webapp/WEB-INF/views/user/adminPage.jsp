@@ -27,7 +27,7 @@
     <h3>관리자 메뉴</h3>
     <button id="btn-addBook">물품 등록</button>
     <button id="btn-updateBook">물품 관리</button>
-    <button id="btn-userManagement">고객 관리</button>
+    <button id="btn-userManagement">고객 주문 관리</button>
 
     <script>
         $(document).ready(function (){

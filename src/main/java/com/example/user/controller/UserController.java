@@ -100,14 +100,14 @@ public class UserController {
         */
         //chk2(로그인 기억)이 체크된 경우
         if("2".equals(userLoginForm.getChk2())){
-//            //관리자는 제외 , 로그인 기억 쿠키 값에 uuid 저장
-//            if(!"admin".equals(userLoginForm.getId())){
-//                Cookie cookie = new Cookie("remember_user",
-//                        userService.getUser(userLoginForm.getId()).getUuid());
-//                cookie.setPath("/");
-//                cookie.setMaxAge(60*60*24*7); //7일간 유지
-//                response.addCookie(cookie);
-//            }
+            //관리자는 제외 , 로그인 기억 쿠키 값에 uuid 저장
+            if(!"admin".equals(userLoginForm.getId())){
+                Cookie cookie = new Cookie("remember_user",
+                        userService.getUser(userLoginForm.getId()).getUuid());
+                cookie.setPath("/");
+                cookie.setMaxAge(60*60*24*7); //7일간 유지
+                response.addCookie(cookie);
+            }
             Cookie cookie = new Cookie("remember_user",
                     userService.getUser(userLoginForm.getId()).getUuid());
             cookie.setPath("/");
