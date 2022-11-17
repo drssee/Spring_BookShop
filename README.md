@@ -1,4 +1,4 @@
-<h1 align='center'> <img src='https://user-images.githubusercontent.com/113401870/202498788-74498caa-d4a2-4131-806a-a2c3da64db8f.png' style='width: 300px; height: 100px;' target="_blank">&nbsp;</h1>
+<h1 align='center'> <img src='https://user-images.githubusercontent.com/113401870/202498788-74498caa-d4a2-4131-806a-a2c3da64db8f.png' style='width: 300px; height: 100px;'>&nbsp;</h1>
 <h1  align='center'>📚스프링 책 쇼핑몰 프로젝트</h1>
 <div align='center'>
   <h3>
