@@ -38,7 +38,10 @@
 
 ## 👾 프로젝트 설계
 ### ERD
-  <img width="1252" alt="erd" src="https://user-images.githubusercontent.com/43202607/180723548-6c14ee81-b528-4d03-aa95-91295b5125cd.png">
+-ERD(논리)
+  <img width="1157" alt="erd(논리)" src="https://user-images.githubusercontent.com/113401870/202565354-b120b77f-64ec-4524-8e5b-8512bc649e77.png">
+-ERD(물리)
+  <img width="1295" alt="erd(물리)" src="https://user-images.githubusercontent.com/113401870/202565365-5ea51b19-5808-443d-aaf9-ca57280845fd.png">
 
 ### 클래스 다이어그램
 <img width="1527" alt="ui" src="https://user-images.githubusercontent.com/43202607/180723848-90899ee7-5def-4eef-9b98-e84f968b5994.png">
