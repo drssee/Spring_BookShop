@@ -44,14 +44,7 @@
   <img width="1295" alt="erd(물리)" src="https://user-images.githubusercontent.com/113401870/202565365-5ea51b19-5808-443d-aaf9-ca57280845fd.png">
 
 ### 클래스 다이어그램
-<img width="1527" alt="ui" src="https://user-images.githubusercontent.com/43202607/180723848-90899ee7-5def-4eef-9b98-e84f968b5994.png">
-
-<details>
-<summary>그 외 더보기</summary>
-<div markdown="1">
-<img src="">
-</div>
-</details>
+![book](https://user-images.githubusercontent.com/113401870/202609068-4d67068c-8d63-4391-8d2b-5330476a39c5.png)
 
 ## 💻 핵심 기능
 
