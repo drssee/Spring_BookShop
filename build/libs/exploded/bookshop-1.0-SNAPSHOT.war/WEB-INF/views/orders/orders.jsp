@@ -77,7 +77,7 @@
                                                                 <!--결제완료 상태일경우or관리자일경우 삭제버튼 활성화-->
                                                                 <!--삭제버튼-->
                                                                 <button class="btn-delOrder" data-order_id="${orderBookDto.order_id}" data-imp_uid="${orderBookDto.imp_uid}"
-                                                                        style="font-size: 14px; position: relative;left:190px;bottom:30px;">x</button>
+                                                                        style="font-size: 14px; position: relative;left:190px;bottom:30px;">주문취소</button>
                                                             </c:if>
                                                             <c:if test="${'admin'.equals(sessionScope.user.id)&&!'배송완료'.equals(orderBookDto.order_status)}">
                                                                 <!--관리자일 경우and배송완료가 아닐때 배송하기버튼 활성화-->

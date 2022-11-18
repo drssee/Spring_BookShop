@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice(annotations = {RestController.class, ResponseBody.class})
@@ -14,7 +15,7 @@ public class CustomRestApiExceptionHandler extends ResponseEntityExceptionHandle
 
     //400
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler({IllegalArgumentException.class, ResponseStatusException.class})
     public ErrorResponse illegalExHandle(IllegalArgumentException e){
         log.error("[BAD_REQUEST] ex",e);
         return new ErrorResponse("BAD_REQUEST",e.getMessage());

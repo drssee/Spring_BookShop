@@ -242,7 +242,6 @@ public class BookController {
         //CategoryVO 초기화
         CategoryVO categoryVO = new CategoryVO(bookSaveForm.getCategoryName());
         //imageVOs 초기화
-        bookSaveForm.setBno(bookVO.getBno());
         List<ImageVO> imageVOList = fileIO.getImageVOList(bookSaveForm, request);
 
         //도서 등록

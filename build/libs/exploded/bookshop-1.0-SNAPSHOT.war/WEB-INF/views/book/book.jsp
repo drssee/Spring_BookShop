@@ -103,6 +103,7 @@
                         <span id="like_cnt">${book.like_cnt}개</span>
                     </button>
                     <script>
+                        let bno = <c:out value="${book.bno}"/>
                         /**
                          * 좋아요 카운트 js
                          */
@@ -116,7 +117,6 @@
                             if(!confirm('<c:out value="${book.title}"/>(을)를 추천 하시겠습니까?')){
                                 return;
                             }
-                            let bno = <c:out value="${book.bno}"/>
                             userLike(bno);
                         });
 
@@ -150,7 +150,7 @@
                         let buyerName = '<c:out value="${sessionScope.user.id}"/>';
                         let buyerEmail = '<c:out value="${sessionScope.user.email}"/>';
                         let buyerTel = '<c:out value="${sessionScope.user.phone}"/>';
-                        let bno = '<c:out value="${book.bno}"/>';
+                        <%--let bno = '<c:out value="${book.bno}"/>';--%>
                         let stock = '<c:out value="${book.stock}"/>';
                         let bookName = '<c:out value="${book.title}"/>';
                         let price = '<c:out value="${book.price}"/>';

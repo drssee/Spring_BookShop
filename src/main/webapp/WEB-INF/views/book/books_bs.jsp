@@ -12,7 +12,7 @@
             <a class="new_books_image" href="<c:url value="/book/${book.bno}"/>">
 
                 <div class="col size">
-                    <div style="font-size: 20px; position: relative; bottom:10px;">
+                    <div style="font-size: 20px; position: relative; bottom:10px; color:mediumpurple;">
                         <c:out value="${index.index+1}"/>
                     </div>
                     <div class="card h-100 custom1">

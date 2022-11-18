@@ -1,15 +1,19 @@
 package com.example.exception.controller;
 
 import com.example.exception.IllegalUserException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.MethodNotAllowedException;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice
 @RequestMapping("/errors")
+@Slf4j
 public class CustomExceptionHandler {
 
     //IllegalStateException, BAD_REQUEST 400
@@ -21,13 +25,17 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(IllegalStateException.class)
     @GetMapping("/error400")
-    public String error400(){
+    public String error400(IllegalStateException e){
+        log.error(e.getMessage());
+        e.printStackTrace();
         return "errors/error400";
     }
 
     @ExceptionHandler(IllegalUserException.class)
     @GetMapping("/error401")
-    public String error401(){
+    public String error401(IllegalUserException e){
+        log.error(e.getMessage());
+        e.printStackTrace();
         return "errors/error401";
     }
 
@@ -39,13 +47,20 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(MethodNotAllowedException.class)
     @GetMapping("/error405")
-    public String error405(){
+    public String error405(MethodNotAllowedException e){
+        log.error(e.getMessage());
+        e.printStackTrace();
         return "errors/error405";
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler({RuntimeException.class, Exception.class})
     @GetMapping("/error500")
-    public String error500(){
+    public String error500(Exception e){
+        if(e.getClass().equals(ResponseStatusException.class)){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        log.error(e.getMessage());
+        e.printStackTrace();
         return "errors/error500";
     }
 }

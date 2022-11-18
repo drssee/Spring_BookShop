@@ -108,11 +108,6 @@ public class UserController {
                 cookie.setMaxAge(60*60*24*7); //7일간 유지
                 response.addCookie(cookie);
             }
-            Cookie cookie = new Cookie("remember_user",
-                    userService.getUser(userLoginForm.getId()).getUuid());
-            cookie.setPath("/");
-            cookie.setMaxAge(60*60*24*7); //7일간 유지
-            response.addCookie(cookie);
         }
 
         //세션에 user 정보 저장

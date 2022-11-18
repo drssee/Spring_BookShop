@@ -82,15 +82,15 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 quantity">
-                                                        <label for="cart_quantity<c:out value="${status.index}"/>">수량:</label>
+                                                        <label for="cart_quantity<c:out value="${status.index}"/>" style="position:relative; left:7px;">수량:</label>
                                                         <input id="cart_quantity<c:out value="${status.index}"/>"
                                                                name="quantity" class="form-control quantity-input text-center me-3"
-                                                               type="text" value="${cartBook.quantity}" style="max-width: 3rem" readonly/>
+                                                               type="text" value="${cartBook.quantity}" style="max-width: 3rem; position:relative; right:20px; bottom:5px;" readonly/>
                                                         <button data-price="${cartBook.price}" class="btn-minus" style="position: relative;left:40px;">-</button>
                                                         <button data-price="${cartBook.price}" class="btn-plus" style="position: relative;left:40px;">+</button>
                                                         <!--삭제버튼-->
                                                         <button class="btn-delCart" data-cno="${cartBook.cno}"
-                                                                style="font-size: 14px; position: relative;left:190px;bottom:30px;">x</button>
+                                                                style="font-size: 14px; position: relative;left:190px;bottom:30px;">주문취소</button>
                                                     </div>
                                                     <div class="col-md-3 price">
                                                         <span id="sub-total${status.index}" class="sub-total">${cartBook.price*cartBook.quantity}</span>원
