@@ -14,7 +14,7 @@
 - [프로젝트 설계](https://github.com/drssee/Spring_bookShop#-프로젝트-설계)
 - [핵심 기능](https://github.com/drssee/Spring_bookShop#-핵심-기능)
 - [주요기능 실행화면](https://github.com/drssee/Spring_bookShop#-주요기능-실행화면)
-- [개선사항](https://github.com/nscv/drssee/Spring_bookShop#-개선사항)
+- [개선사항](https://github.com/drssee/Spring_bookShop#-개선사항)
 
 ## 🚩 개요
 - 프로젝트 목표 : 다양한 `API`를 활용한 `스프링` , `마이바티스` 책 쇼핑몰 프로젝트
