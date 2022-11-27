@@ -59,7 +59,7 @@ public class UserServiceTest {
         UserLikeVO userLikeVO = UserLikeVO
                 .builder()
                 .id(id)
-                .bno(1001L)
+                .bno(430L)
                 .build();
 
         //when,then

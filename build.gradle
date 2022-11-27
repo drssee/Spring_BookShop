@@ -29,6 +29,7 @@ dependencies {
      * servlet
      */
     compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+    testCompileOnly('javax.servlet:javax.servlet-api:4.0.1')
     /**
      * spring
      */
@@ -79,6 +80,13 @@ dependencies {
      */
     // https://mvnrepository.com/artifact/javax.servlet/jstl
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+    /**
+     * javax-el
+     */
+    // https://mvnrepository.com/artifact/javax.el/javax.el-api
+    testImplementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    // https://mvnrepository.com/artifact/org.glassfish.web/el-impl
+    testImplementation group: 'org.glassfish.web', name: 'el-impl', version: '2.2'
     /**
      * lombok
      */

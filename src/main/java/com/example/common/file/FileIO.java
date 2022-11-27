@@ -2,6 +2,7 @@ package com.example.common.file;
 
 import com.example.book.controller.form.BookForm;
 import com.example.book.vo.ImageVO;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-//@Component
+@Component
 public class FileIO {
 
     //파일 업로드는 서버에 파일저장 + db에 uuid로 파일 이름 경로 저장
