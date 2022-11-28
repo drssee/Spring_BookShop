@@ -14,7 +14,7 @@
 - [프로젝트 설계](https://github.com/drssee/Spring_bookShop#-프로젝트-설계)
 - [핵심 기능](https://github.com/drssee/Spring_bookShop#-핵심-기능)
 - [주요기능 실행화면](https://github.com/drssee/Spring_bookShop#-주요기능-실행화면)
-- [개선사항](https://github.com/nscv/drssee/Spring_bookShop#-개선사항)
+- [개선사항](https://github.com/drssee/Spring_bookShop#-개선사항)
 
 ## 🚩 개요
 - 프로젝트 목표 : 다양한 `API`를 활용한 `스프링` , `마이바티스` 책 쇼핑몰 프로젝트
@@ -39,9 +39,9 @@
 ## 👾 프로젝트 설계
 ### ERD
 -ERD(논리)
-  <img width="1157" alt="erd(논리)" src="https://user-images.githubusercontent.com/113401870/202565354-b120b77f-64ec-4524-8e5b-8512bc649e77.png">
+  <img width="1249" alt="스크린샷 2022-11-28 오후 5 54 49" src="https://user-images.githubusercontent.com/113401870/204235258-b900f84a-45ef-43ff-b039-713aeafc4d58.png">
 -ERD(물리)
-  <img width="1295" alt="erd(물리)" src="https://user-images.githubusercontent.com/113401870/202565365-5ea51b19-5808-443d-aaf9-ca57280845fd.png">
+  <img width="1243" alt="스크린샷 2022-11-28 오후 5 55 09" src="https://user-images.githubusercontent.com/113401870/204235270-db950697-1a04-4a79-85b0-fd6ee9866fc0.png">
 
 ### 클래스 다이어그램
 ![book](https://user-images.githubusercontent.com/113401870/202609068-4d67068c-8d63-4391-8d2b-5330476a39c5.png)
