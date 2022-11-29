@@ -15,7 +15,9 @@
 - [핵심 기능](https://github.com/drssee/Spring_bookShop#-핵심-기능)
 - [주요기능 실행화면](https://github.com/drssee/Spring_bookShop#-주요기능-실행화면)
 - [개선사항](https://github.com/drssee/Spring_bookShop#-개선사항)
-- [테스트코드 예제(컨트롤러)](https://github.com/drssee/Spring_bookShop/blob/main/src/test/java/com/example/user/controller/UserControllerTest.java)
+- [테스트코드 예제(Controller)](https://github.com/drssee/Spring_bookShop/blob/main/src/test/java/com/example/user/controller/UserControllerTest.java)
+- [테스트코드 예제(Service)](https://github.com/drssee/Spring_bookShop/blob/main/src/test/java/com/example/user/service/UserServiceTest.java)
+- [테스트코드 예제(Dao)](https://github.com/drssee/Spring_bookShop/blob/main/src/test/java/com/example/user/mapper/UserDaoTest.java)
 
 ## 🚩 개요
 - 프로젝트 목표 : 다양한 `API`를 활용한 `스프링` , `마이바티스` 책 쇼핑몰 프로젝트
