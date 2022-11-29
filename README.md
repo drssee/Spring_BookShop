@@ -18,6 +18,7 @@
 - [테스트코드 예제(Controller)](https://github.com/drssee/Spring_bookShop/blob/main/src/test/java/com/example/user/controller/UserControllerTest.java){:target="_blank"}
 - [테스트코드 예제(Service)](https://github.com/drssee/Spring_bookShop/blob/main/src/test/java/com/example/user/service/UserServiceTest.java){:target="_blank"}
 - [테스트코드 예제(Dao)](https://github.com/drssee/Spring_bookShop/blob/main/src/test/java/com/example/user/mapper/UserDaoTest.java){:target="_blank"}
+- <a href="https://www.google.com/" target="_blank">새 탭에서 열기</a>
 
 ## 🚩 개요
 - 프로젝트 목표 : 다양한 `API`를 활용한 `스프링` , `마이바티스` 책 쇼핑몰 프로젝트
