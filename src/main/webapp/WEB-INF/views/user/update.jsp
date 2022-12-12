@@ -8,7 +8,7 @@
     <main id="main">
         <div id="join_wrap">
             <div id="sub_banner">
-                <p><strong>회원 가입</strong></p>
+                <p><strong>회원 정보 수정</strong></p>
             </div>
             <form action="<c:url value="/user/update"/>" method="post" id="join_form">
                 <script>
